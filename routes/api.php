@@ -24,3 +24,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  Route::group(['middleware' => 'auth:api'], function(){
      Route::post('details', 'UserController@details');
      });
+     Route::group(['middleware' => ['web']], function () {
+        Route::get('login/facebook', 'UserController@redirectToProvider');
+        Route::get('login/facebook/callback', 'UserController@handleProviderCallback');
+        });
+
+Route::get('m', 'UserController@m');
+

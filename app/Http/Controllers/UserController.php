@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
 use App\User; 
 use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use Carbon\Carbon;
 class UserController extends Controller 
@@ -93,4 +95,45 @@ return response()->json(['success'=>$success], $this-> successStatus);
         $user = Auth::user(); 
         return response()->json(['success' => $user], $this-> successStatus); 
     } 
+    public function m() 
+    { 
+        return "m"; 
+    } 
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+        $user = User::firstOrCreate([
+            'email'     => $user->getEmail(),
+        ],[
+            'full_name' => $user->getName(),
+            'birth'     => '2000-09-05',
+            'gender'    => 'female',
+            'password'  => Hash::make($user->getId()),
+            'type'      => 's'
+        ]);
+        $tokenResult = $user->createToken('My App');
+        return response()->json([
+            'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'expires_at' => Carbon::parse(
+                $tokenResult->token->expires_at
+            )->toDateTimeString() //will change the expiration date 
+        ]);
+        //return $user->getId();
+    }
 }
