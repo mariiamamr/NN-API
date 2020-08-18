@@ -22,5 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  Route::post('login', 'UserController@login');
  Route::post('register', 'UserController@register');
  Route::group(['middleware' => 'auth:api'], function(){
-     Route::post('details', 'UserController@details');
+    Route::get('logout', 'UserController@logout'); //will see
+     Route::get('details', 'UserController@details');
+     //Edit Profile
+     Route::post('edit','EditProfileController@updateAuthUser');
      });
+
+
+

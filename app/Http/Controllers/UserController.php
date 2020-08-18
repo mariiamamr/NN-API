@@ -25,7 +25,7 @@ public $successStatus = 200;
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
-            //'remember_me' => 'boolean'
+            'remember_me' => 'boolean'
         ]);
         $credentials = request(['email', 'password']);
         if(!Auth::attempt($credentials))
@@ -36,7 +36,8 @@ public $successStatus = 200;
         $tokenResult = $user->createToken('My App');
         $token = $tokenResult->token;
         if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
+            $token->expires_at = Carbon::now()->addDays(365);
+
         $token->save();
         return response()->json([
             'access_token' => $tokenResult->accessToken,
@@ -83,6 +84,19 @@ $input = $request->all();
         $success['name'] =  $user->name;
 return response()->json(['success'=>$success], $this-> successStatus); 
     }
+
+     /**
+     * Logout user (Revoke the token)
+     *
+     * @return [string] message
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+    }
 /** 
      * details api *get users*
      * 
@@ -93,4 +107,5 @@ return response()->json(['success'=>$success], $this-> successStatus);
         $user = Auth::user(); 
         return response()->json(['success' => $user], $this-> successStatus); 
     } 
+      
 }

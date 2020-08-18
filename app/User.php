@@ -22,4 +22,11 @@ protected $fillable = [
 protected $hidden = [
 'password', 'remember_token',
 ];
+
+public function user_profile()
+    {
+        return $this->hasOne(UserInfo::class, 'user_id');
+    }
 }
+
+
