@@ -109,9 +109,7 @@ return response()->json(['success'=>$success], $this-> successStatus);
         $user = Auth::user(); 
         return response()->json(['success' => $user], $this-> successStatus); 
     } 
-<<<<<<< HEAD
       
-=======
     public function m() 
     { 
         return "m"; 
@@ -160,5 +158,4 @@ return response()->json(['success'=>$success], $this-> successStatus);
             )->toDateTimeString() //will change the expiration date 
         ]);
     }
->>>>>>> da17afdd16d9025fdc5c03390fd61094e1edcb2c
 }
