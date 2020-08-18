@@ -106,7 +106,12 @@ return response()->json(['success'=>$success], $this-> successStatus);
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+        //return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->fields([
+            'first_name', 'last_name', 'email', 'gender', 'birthday','name'
+        ])->scopes([
+            'email', 'user_birthday','user_gender'
+        ])->redirect();
     }
 
     /**
@@ -116,13 +121,16 @@ return response()->json(['success'=>$success], $this-> successStatus);
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
-        $user = User::firstOrCreate([
+       // $user = Socialite::driver('facebook')->user();
+       $user = Socialite::driver('facebook')->fields([
+        'first_name', 'last_name', 'email', 'gender', 'birthday','name'
+    ])->user();
+       $user = User::firstOrCreate([
             'email'     => $user->getEmail(),
         ],[
             'full_name' => $user->getName(),
-            'birth'     => '2000-09-05',
-            'gender'    => 'female',
+            'birth'     => Carbon::parse($user['birthday'])->format('Y-m-d'),
+            'gender'    => $user['gender'],
             'password'  => Hash::make($user->getId()),
             'type'      => 's'
         ]);
@@ -134,6 +142,5 @@ return response()->json(['success'=>$success], $this-> successStatus);
                 $tokenResult->token->expires_at
             )->toDateTimeString() //will change the expiration date 
         ]);
-        //return $user->getId();
     }
 }
