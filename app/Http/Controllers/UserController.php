@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
 use App\User; 
 use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use Carbon\Carbon;
 class UserController extends Controller 
@@ -25,7 +27,7 @@ public $successStatus = 200;
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
-            //'remember_me' => 'boolean'
+            'remember_me' => 'boolean'
         ]);
         $credentials = request(['email', 'password']);
         if(!Auth::attempt($credentials))
@@ -36,7 +38,8 @@ public $successStatus = 200;
         $tokenResult = $user->createToken('My App');
         $token = $tokenResult->token;
         if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
+            $token->expires_at = Carbon::now()->addDays(365);
+
         $token->save();
         return response()->json([
             'access_token' => $tokenResult->accessToken,
@@ -83,6 +86,19 @@ $input = $request->all();
         $success['name'] =  $user->name;
 return response()->json(['success'=>$success], $this-> successStatus); 
     }
+
+     /**
+     * Logout user (Revoke the token)
+     *
+     * @return [string] message
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+    }
 /** 
      * details api *get users*
      * 
@@ -93,4 +109,56 @@ return response()->json(['success'=>$success], $this-> successStatus);
         $user = Auth::user(); 
         return response()->json(['success' => $user], $this-> successStatus); 
     } 
+<<<<<<< HEAD
+      
+=======
+    public function m() 
+    { 
+        return "m"; 
+    } 
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        //return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->fields([
+            'first_name', 'last_name', 'email', 'gender', 'birthday','name'
+        ])->scopes([
+            'email', 'user_birthday','user_gender'
+        ])->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+       // $user = Socialite::driver('facebook')->user();
+       $user = Socialite::driver('facebook')->fields([
+        'first_name', 'last_name', 'email', 'gender', 'birthday','name'
+    ])->user();
+       $user = User::firstOrCreate([
+            'email'     => $user->getEmail(),
+        ],[
+            'full_name' => $user->getName(),
+            'birth'     => Carbon::parse($user['birthday'])->format('Y-m-d'),
+            'gender'    => $user['gender'],
+            'password'  => Hash::make($user->getId()),
+            'type'      => 's'
+        ]);
+        $tokenResult = $user->createToken('My App');
+        return response()->json([
+            'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'expires_at' => Carbon::parse(
+                $tokenResult->token->expires_at
+            )->toDateTimeString() //will change the expiration date 
+        ]);
+    }
+>>>>>>> da17afdd16d9025fdc5c03390fd61094e1edcb2c
 }

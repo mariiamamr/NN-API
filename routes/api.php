@@ -22,7 +22,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  Route::post('login', 'UserController@login');
  Route::post('register', 'UserController@register');
  Route::group(['middleware' => 'auth:api'], function(){
-     Route::post('details', 'UserController@details');
+    Route::get('logout', 'UserController@logout'); //will see
+     Route::get('details', 'UserController@details');
+     //Edit Profile
+     Route::post('edit','EditProfileController@updateAuthUser');
      });
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');
  Route::get('/email/verify/{id}/{hash}','VerificationController@verify')->name('verification.verify');
+
+
+     Route::group(['middleware' => ['web']], function () {
+        Route::get('login/facebook', 'UserController@redirectToProvider');
+        Route::get('login/facebook/callback', 'UserController@handleProviderCallback');
+        });
+
+Route::get('m', 'UserController@m');
