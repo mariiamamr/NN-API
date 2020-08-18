@@ -20,7 +20,7 @@ public function getProfile($user){
 $profile = new \App\UserInfo;
 $user->profile()->save($profile);
     }
-   return $user->profile;
+   return UserInfo::firstOrCreate(['user_id'=>$user->id]);
 
 
 }
