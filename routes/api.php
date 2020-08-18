@@ -27,15 +27,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      //Edit Profile
      Route::post('edit','EditProfileController@updateAuthUser');
      });
-<<<<<<< HEAD
 
-
-=======
      Route::group(['middleware' => ['web']], function () {
-        Route::get('login/facebook', 'UserController@redirectToProvider');
         Route::get('login/facebook/callback', 'UserController@handleProviderCallback');
         });
 
 Route::get('m', 'UserController@m');
->>>>>>> da17afdd16d9025fdc5c03390fd61094e1edcb2c
-
