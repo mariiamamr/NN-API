@@ -30,12 +30,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
      Route::post('edit','EditProfileController@updateAuthUser');
      });
+
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');
  Route::get('/email/verify/{id}/{hash}','VerificationController@verify')->name('verification.verify');
 
 
      Route::group(['middleware' => ['web']], function () {
-        Route::get('login/facebook', 'UserController@redirectToProvider');
         Route::get('login/facebook/callback', 'UserController@handleProviderCallback');
         });
 

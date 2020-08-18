@@ -10,22 +10,40 @@ class EditProfileController extends Controller
 {
     public function updateAuthUser(Request $request)
     {
+        
         $this->validate($request, [
             'full_name'=>'required|string',
-            'username' => 'required|string|unique:users',
+           // 'username' => 'required|string|unique:users',
             'gender'=>'required|in:male,female',
             'birth'=>'required',
-            'phone'=>'required|string',
+            'phone'=>'required',
             'nationality'=>'required|string'
-            //'email' => 'required|email|unique:users,email,'.Auth::id()
         ]);
+
         $user = User::find(Auth::id());
-        $user->username = $request->username;
+    //Updating UserInfo
+        $userInfo=$user->profile;
+        if(!$userInfo){
+            UserInfo::create([
+                'user_id'=>$user->id,
+                'phone'=>$request->phone,
+                'nationality'=>$request->nationality,
+            ]);
+        }
+        else{
+            $userInfo->update([
+                'phone' => $request->phone,
+                'nationality'=>$request->nationality,
+            ]);
+        }
+        // Updating User Related Data
+       // $user->username = $request->username;
         $user->full_name = $request->full_name;
         $user->gender = $request->gender;
         $user->birth = $request->birth;
         $user->save();
-       
-          return response()->json($user,200);
+      
+       return response()->json($user,201); //Created
+          
       }
 }

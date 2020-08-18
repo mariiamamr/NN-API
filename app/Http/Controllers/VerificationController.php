@@ -45,25 +45,17 @@ class VerificationController extends Controller
     /**
      * Resend the email verification notification.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function resend(Request $request)
-    {
-        if ($request->user()->hasVerifiedEmail()) {
 
-            return response(['message'=>'Already verified']);
+    public function resend() {
+        if (auth()->user()->hasVerifiedEmail()) {
+            return response()->json(["msg" => "Email already verified."], 400);
         }
-
-        $request->user()->sendEmailVerificationNotification();
-
-        if ($request->wantsJson()) {
-            return response(['message' => 'Email Sent']);
-        }
-
-        return back()->with('resent', true);
+    
+        auth()->user()->sendEmailVerificationNotification();
+    
+        return response()->json(["msg" => "Email verification link sent"]);
     }
-
 
     /**
      * Mark the authenticated user's email address as verified.
@@ -72,28 +64,20 @@ class VerificationController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function verify(Request $request)
-    {
-        auth()->loginUsingId($request->route('id'));
-
-        if ($request->route('id') != $request->user()->getKey()) {
-            throw new AuthorizationException;
-        }
-
-        if ($request->user()->hasVerifiedEmail()) {
-
-            return response(['message'=>'Already verified']);
-
-            // return redirect($this->redirectPath());
-        }
-
-        if ($request->user()->markEmailAsVerified()) {
-            event(new Verified($request->user()));
-        }
-
-        return response(['message'=>'Successfully verified']);
-
+    
+  public function verify($user_id, Request $request) {
+   /* if (!$request->hasValidSignature()) {
+        return response()->json(["msg" => "Invalid/Expired url provided."], 401);
     }
 
+    $user = User::findOrFail($user_id);
+
+    if (!$user->hasVerifiedEmail()) {
+        $user->markEmailAsVerified();
+    }*/
+   return response()->json(["msg" => "verified."], 200);
+
+    //return redirect()->to('/');
+}
    
 }

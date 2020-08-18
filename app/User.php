@@ -28,6 +28,7 @@ protected $hidden = [
 public function profile()
     {
         return $this->hasOne(UserInfo::class, 'user_id');
+       /// return 1;
     }
 }
 
