@@ -25,7 +25,7 @@ protected $hidden = [
 'password', 'remember_token',
 ];
 
-public function user_profile()
+public function profile()
     {
         return $this->hasOne(UserInfo::class, 'user_id');
     }
