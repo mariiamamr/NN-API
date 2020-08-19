@@ -16,6 +16,7 @@
         "laravel/passport": "^9.3",
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
+        "mpociot/laravel-apidoc-generator": "^4.8",
         "nesbot/carbon": "^2.38"
     },
     "require-dev": {
