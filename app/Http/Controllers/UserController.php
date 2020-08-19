@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request; 
 use App\Http\Controllers\Controller; 
 use App\User; 
+use App\UserInfo ; 
+
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
@@ -11,6 +13,32 @@ use Carbon\Carbon;
 class UserController extends Controller 
 {
 public $successStatus = 200;
+public function getProfile($user){
+    $profile=$user->profile;
+    if(!$profile)
+{
+$profile = new \App\UserInfo;
+$user->profile()->save($profile);
+    }
+   return UserInfo::firstOrCreate(['user_id'=>$user->id]);
+
+
+}
+public function updateExperience(Request $request){
+    $request->validate([
+        'exp_years' => 'required',
+        'exp_desc' => 'required'
+    ]);
+    $user = Auth::user(); 
+    //$profile=$this -> getProfile($user);
+    $profile=$this -> getProfile($user);
+    $profile->update(['exp_years'=>$request->exp_years,'exp_desc'=>$request->exp_desc]);
+    $profile->save();
+    return response()->json(['success' => $profile], $this-> successStatus); 
+
+
+
+}
 
 /**
      * Login user and create token
@@ -85,6 +113,7 @@ $input = $request->all();
         $success['token'] =  $user->createToken('MyApp')-> accessToken; //create the access token
         $success['name'] =  $user->name;
 return response()->json(['success'=>$success], $this-> successStatus); 
+
     }
 
      /**
