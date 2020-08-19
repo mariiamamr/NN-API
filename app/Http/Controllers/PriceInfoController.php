@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PriceInfoController extends Controller
 {
+    /**
+     * Update price info
+     *
+     * @param  [numeric] price_info
+     * @return [json] price_info
+     */
     public function updatePriceInfo(Request $request)
     {
         

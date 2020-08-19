@@ -57,26 +57,29 @@ public function updateExperience(Request $request){
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
-        $credentials = request(['email', 'password']);
-        /*if(!Auth::attempt($credentials))
-            return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);*/
-            $user=User::findOrFail(['email'=>$request->username,'password'=>$request->password]);
-            if(!$user){
-                $user=User::findOrFail(['username'=>$request->username,'password'=>$request->password]);
-            }
+                $username = $request->username;
+                if(filter_var($username, FILTER_VALIDATE_EMAIL)) {
+                    //user sent their email 
+                   $user= Auth::attempt(['email' => $username, 'password' => $request->password]);
+                } else {
+                    //they sent their username instead 
+                    $user=Auth::attempt(['username' => $username, 'password' => $request->password]);
+                }
+            
             if(!$user){
                 return response()->json([
                     'message' => 'Unauthorized'
                 ], 401);
                         }
-        //$user = $request->user();
+                        
+        $user = $request->user();
         $tokenResult = $user->createToken('My App');
         $token = $tokenResult->token;
-        if ($request->remember_me)
+        if ($request->remember_me){
             $token->expires_at = Carbon::now()->addDays(365);
-
+            //$user->remember_token=$tokenResult->accessToken; //store token in remember_token column
+            //$user->save();
+        }
         $token->save();
         return response()->json([
             'access_token' => $tokenResult->accessToken,

@@ -8,6 +8,16 @@ use App\UserInfo;
 use Illuminate\Support\Facades\Auth;
 class EditProfileController extends Controller
 {
+    /**
+     * Update user info
+     *
+     * @param  [string] full_name
+     * @param  [string] gender
+     * @param  [boolean] birth
+     * @param  [numeric] phone
+     * @param  [string] nationality
+     * @return [json] user
+     */
     public function updateAuthUser(Request $request)
     {
         
