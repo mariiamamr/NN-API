@@ -53,16 +53,25 @@ public function updateExperience(Request $request){
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email',
+            'username' => 'required|string',
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
         $credentials = request(['email', 'password']);
-        if(!Auth::attempt($credentials))
+        /*if(!Auth::attempt($credentials))
             return response()->json([
                 'message' => 'Unauthorized'
-            ], 401);
-        $user = $request->user();
+            ], 401);*/
+            $user=User::findOrFail(['email'=>$request->username,'password'=>$request->password]);
+            if(!$user){
+                $user=User::findOrFail(['username'=>$request->username,'password'=>$request->password]);
+            }
+            if(!$user){
+                return response()->json([
+                    'message' => 'Unauthorized'
+                ], 401);
+                        }
+        //$user = $request->user();
         $tokenResult = $user->createToken('My App');
         $token = $tokenResult->token;
         if ($request->remember_me)
