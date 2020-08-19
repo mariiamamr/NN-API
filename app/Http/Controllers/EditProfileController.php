@@ -16,7 +16,7 @@ class EditProfileController extends Controller
            // 'username' => 'required|string|unique:users',
             'gender'=>'required|in:male,female',
             'birth'=>'required',
-            'phone'=>'required',
+            'phone'=>'required|numeric|min:11',
             'nationality'=>'required|string'
         ]);
 

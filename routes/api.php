@@ -25,7 +25,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('logout', 'UserController@logout'); //will see
      Route::get('details', 'UserController@details');
      //Edit Profile
-     Route::post('edit','EditProfileController@updateAuthUser');
+     Route::post('editprofile','EditProfileController@updateAuthUser');
+     Route::post('priceinfo','PriceInfoController@updatePriceInfo');
      });
 
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');
