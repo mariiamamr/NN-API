@@ -165,8 +165,10 @@ return response()->json(['success'=>$success], $this-> successStatus);
      */
     public function redirectToProvider()
     {
+        $type=request('type');
+        //return $type;
         //return Socialite::driver('facebook')->redirect();
-        return Socialite::driver('facebook')->fields([
+        return Socialite::driver('facebook')->with(['state' => $type])->fields([
             'first_name', 'last_name', 'email', 'gender', 'birthday','name'
         ])->scopes([
             'email', 'user_birthday','user_gender'
@@ -180,8 +182,9 @@ return response()->json(['success'=>$success], $this-> successStatus);
      */
     public function handleProviderCallback()
     {
+        $type = request()->input('state');
        // $user = Socialite::driver('facebook')->user();
-       $user = Socialite::driver('facebook')->fields([
+       $user = Socialite::driver('facebook')->stateless()->fields([
         'first_name', 'last_name', 'email', 'gender', 'birthday','name'
     ])->user();
        $user = User::firstOrCreate([
@@ -191,7 +194,7 @@ return response()->json(['success'=>$success], $this-> successStatus);
             'birth'     => Carbon::parse($user['birthday'])->format('Y-m-d'),
             'gender'    => $user['gender'],
             'password'  => Hash::make($user->getId()),
-            'type'      => 's'
+            'type'      => $type
         ]);
         $tokenResult = $user->createToken('My App');
         return response()->json([

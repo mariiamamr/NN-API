@@ -36,6 +36,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
      Route::group(['middleware' => ['web']], function () {
+        Route::get('login/facebook', 'UserController@redirectToProvider');
         Route::get('login/facebook/callback', 'UserController@handleProviderCallback');
         });
 
