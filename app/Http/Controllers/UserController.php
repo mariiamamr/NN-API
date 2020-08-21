@@ -69,7 +69,7 @@ public function updateExperience(Request $request){
             
             if(!$user){
                 return response()->json([
-                    'message' => 'Unauthorized'
+                    'error' => 'Unauthorized'
                 ], 401);
                         }
                         
