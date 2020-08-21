@@ -121,7 +121,10 @@ if ($validator->fails()) {
         }
 $input = $request->all(); 
         $input['password'] = bcrypt($input['password']); 
-        $user = User::create($input); //create the user in the database
+
+        //create the user in the database and send email verification message
+        $user = User::create($input);//->SendEmailVerificationNotification(); 
+
         $success['token'] =  $user->createToken('MyApp')-> accessToken; //create the access token
         $success['name'] =  $user->name;
 return response()->json(['success'=>$success], $this-> successStatus); 
