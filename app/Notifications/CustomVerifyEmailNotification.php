@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Lang;
 
 class CustomVerifyEmailNotification extends Notification
 {
@@ -40,10 +41,12 @@ class CustomVerifyEmailNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $urlToResetForm = "/"; //**TO BE CHANGED**//
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject(Lang::get('Verify Email Address'))
+            ->line(Lang::get('Please click the button below to verify your email address.'))
+            ->action(Lang::get('Reset Password'), $urlToResetForm)
+            ->line(Lang::get('If you did not create an account, no further action is required.'));
     }
 
     /**
