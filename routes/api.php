@@ -28,7 +28,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('editprofile','EditProfileController@updateAuthUser');
      Route::post('priceinfo','PriceInfoController@updatePriceInfo');
      Route::get('/getexperience','UserController@getexperience');
-     Route::put('/updateexperience','UserController@updateExperience');
+     Route::put('/updateexperience','EditProfileController@updateExperience');
+     Route::put('/updateEducation','EditProfileController@updateEducation');
      });
 //email verification for new users
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');

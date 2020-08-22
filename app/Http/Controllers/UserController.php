@@ -14,32 +14,6 @@ use Carbon\Carbon;
 class UserController extends Controller 
 {
 public $successStatus = 200;
-public function getProfile($user){
-    $profile=$user->profile;
-    if(!$profile)
-{
-$profile = new \App\UserInfo;
-$user->profile()->save($profile);
-    }
-   return UserInfo::firstOrCreate(['user_id'=>$user->id]);
-
-
-}
-public function updateExperience(Request $request){
-    $request->validate([
-        'exp_years' => 'required',
-        'exp_desc' => 'required'
-    ]);
-    $user = Auth::user(); 
-    //$profile=$this -> getProfile($user);
-    $profile=$this -> getProfile($user);
-    $profile->update(['exp_years'=>$request->exp_years,'exp_desc'=>$request->exp_desc]);
-    $profile->save();
-    return response()->json(['success' => $profile], $this-> successStatus); 
-
-
-
-}
 
 /**
      * Login user and create token
@@ -160,11 +134,13 @@ return response()->json(['success'=>$success], $this-> successStatus);
     { 
         return "m"; 
     } 
+
     /**
-     * Redirect the user to the GitHub authentication page.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * @group  authentication
+    *
+    * login with facebook
+    * @queryParam  type required The type of the user teacher "t" or student "s". Example: s
+    */
     public function redirectToProvider()
     {
         $type=request('type');
@@ -176,12 +152,16 @@ return response()->json(['success'=>$success], $this-> successStatus);
             'email', 'user_birthday','user_gender'
         ])->redirect();
     }
-
     /**
-     * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * @group  authentication
+    *
+    * redirected from the login/facebook request 
+    * @response {
+    *    "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOTI1NDRmNGNjZDI4NmUwY2Y5MGUyMzU4NjllMmRhMTU5ODI4MTk2Nzg0MWYwZDhhMDUyZGRjNTM0YTRmY2E2YTU2NWE5NDA5YjA2ZTU2NTEiLCJpYXQiOjE1OTgwNTM4NTQsIm5iZiI6MTU5ODA1Mzg1NCwiZXhwIjoxNjI5NTg5ODUzLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.lqlGeL1mF6Xt8mTXqnl3HMLi6KkSK2C519qUZkxcrNhKD6dQ60ZHbjmDrXth01FQP8VianigA2bhu6YeY7n4MCbtqMVvbkgxHi7FiHh4a8YXdqcgrBK7t79U4waFhMnLxqYJ8YRPLyn2Jdn7qfKmmevRoxvOvwOcn19TFjVXs1KthRMpvSotwhnc6ExaN0oBN7VdjAKIPnmNQCQ77ZT6KayF-Q8NBf_bz-ENP3y-NTtdfOETd-SPaqGtHAtQxdRrqMUNKIfAgUdVHxO4Mwzv_vayR8a6-aeNShHWl-DCGsTu5c5KE1yum4ALHAxS90VIWTKrNM_P_kwmG91tjbtEnlNWzYjM2rO1Gu9MreMyyVGOjIcwRXdjoGJIw7YebZZ1f0E_v9XBlJ2Wme6KmRFyJpK7qZFY7t_Sk3oenuVaR4qJURNmUznktD_9BxGyKRQ669qjYp1PwbOE_5KxiSOhibO7CVUuHPyAz2tYniX-VN07q462FOv4K4e7a2ifQLyMM8f5Fx9lTL4UF-MxpPNTr6xIXuHE62eu6eZPUgEiDAzjS9JJLAEt7KGwnt-8rumnM6nKFsBqRovHt449dQxGJzw-9RiOecKs744cof0RbZfAf_pXrE0oGnDYx-4_mYvMvBpZ8ykAQuSqDKLtKAaro8FMiYbDAsAcOVC9kczgl14",
+    *    "token_type":"Bearer",
+    *    "expires_at":"2021-08-21 23:50:53"
+    * }
+    */
     public function handleProviderCallback()
     {
         $type = request()->input('state');
