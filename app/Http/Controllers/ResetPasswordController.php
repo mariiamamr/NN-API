@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request; 
 
 class ResetPasswordController extends Controller
 {
@@ -23,12 +24,12 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse(Request $request,$response)
     {
-        return response()->json(['message' => $response], 200);
+        return response()->json(['message' => trans($response)], 200);
     }
 
     protected function sendResetFailedResponse(Request $request,$response)
     {
-        return response()->json(['error' => $response], 422);
+        return response()->json(['error' => trans($response)], 422);
     }
 
 }

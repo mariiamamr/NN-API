@@ -24,14 +24,14 @@ class ForgotPasswordController extends Controller
 
     protected function sendResetLinkResponse(Request $request, $response)
     {
-        return response(['message'=> $response]);
+        return response(['message'=> trans($response)]);
 
     }
 
 
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
-        return response(['error'=> $response], 422);
+        return response(['error'=> trans($response)], 422);
 
     }
 
