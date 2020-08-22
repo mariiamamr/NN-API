@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
 use App\User; 
 use App\UserInfo ; 
+use Illuminate\Auth\Events\Registered;
 
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
@@ -74,7 +75,7 @@ public function updateExperience(Request $request){
             
             if(!$user){
                 return response()->json([
-                    'message' => 'Unauthorized'
+                    'error' => 'Unauthorized'
                 ], 401);
                         }
                         
@@ -129,7 +130,8 @@ $input = $request->all();
         $input['password'] = bcrypt($input['password']); 
 
         //create the user in the database and send email verification message
-        $user = User::create($input);//->SendEmailVerificationNotification(); 
+        // $user = User::create($input);//->SendEmailVerificationNotification(); 
+        event(new Registered($user = User::create($input)));
 
         $success['token'] =  $user->createToken('MyApp')-> accessToken; //create the access token
         $success['name'] =  $user->name;

@@ -30,10 +30,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::get('/getexperience','UserController@getexperience');
      Route::put('/updateexperience','UserController@updateExperience');
      });
-
+//email verification for new users
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');
  Route::get('/email/verify/{id}/{hash}','VerificationController@verify')->name('verification.verify');
 
+ //forgetting password
+ Route::post('/password/email','ForgotPasswordController@sendResetLinkEmail');
+ Route::post('/password/reset','ResetPasswordController@reset');
 
      Route::group(['middleware' => ['web']], function () {
         Route::get('login/facebook', 'UserController@redirectToProvider');
