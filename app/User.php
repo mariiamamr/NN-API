@@ -30,7 +30,7 @@ public function profile()
         return $this->hasOne(UserInfo::class, 'user_id');
        /// return 1;
     }
-    public function uni_degress()
+public function uni_degress()
     {
         return $this->belongsTo(UniversityDegree::class);
     }
