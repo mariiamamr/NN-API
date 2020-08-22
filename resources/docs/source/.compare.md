@@ -20,6 +20,163 @@ Welcome to the generated API reference.
 
 <!-- END_INFO -->
 
+#authentication
+
+
+<!-- START_55223d515da2d77462d233ebb97e3c40 -->
+## login with facebook
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/login/facebook?type=s" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/login/facebook"
+);
+
+let params = {
+    "type": "s",
+};
+Object.keys(params)
+    .forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (302):
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/login/facebook`
+
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    `type` |  required  | The type of the user teacher "t" or student "s".
+
+<!-- END_55223d515da2d77462d233ebb97e3c40 -->
+
+<!-- START_89b9a98360ef8fa1d3520efdf619cec0 -->
+## redirected from the login/facebook request
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/login/facebook/callback" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/login/facebook/callback"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOTI1NDRmNGNjZDI4NmUwY2Y5MGUyMzU4NjllMmRhMTU5ODI4MTk2Nzg0MWYwZDhhMDUyZGRjNTM0YTRmY2E2YTU2NWE5NDA5YjA2ZTU2NTEiLCJpYXQiOjE1OTgwNTM4NTQsIm5iZiI6MTU5ODA1Mzg1NCwiZXhwIjoxNjI5NTg5ODUzLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.lqlGeL1mF6Xt8mTXqnl3HMLi6KkSK2C519qUZkxcrNhKD6dQ60ZHbjmDrXth01FQP8VianigA2bhu6YeY7n4MCbtqMVvbkgxHi7FiHh4a8YXdqcgrBK7t79U4waFhMnLxqYJ8YRPLyn2Jdn7qfKmmevRoxvOvwOcn19TFjVXs1KthRMpvSotwhnc6ExaN0oBN7VdjAKIPnmNQCQ77ZT6KayF-Q8NBf_bz-ENP3y-NTtdfOETd-SPaqGtHAtQxdRrqMUNKIfAgUdVHxO4Mwzv_vayR8a6-aeNShHWl-DCGsTu5c5KE1yum4ALHAxS90VIWTKrNM_P_kwmG91tjbtEnlNWzYjM2rO1Gu9MreMyyVGOjIcwRXdjoGJIw7YebZZ1f0E_v9XBlJ2Wme6KmRFyJpK7qZFY7t_Sk3oenuVaR4qJURNmUznktD_9BxGyKRQ669qjYp1PwbOE_5KxiSOhibO7CVUuHPyAz2tYniX-VN07q462FOv4K4e7a2ifQLyMM8f5Fx9lTL4UF-MxpPNTr6xIXuHE62eu6eZPUgEiDAzjS9JJLAEt7KGwnt-8rumnM6nKFsBqRovHt449dQxGJzw-9RiOecKs744cof0RbZfAf_pXrE0oGnDYx-4_mYvMvBpZ8ykAQuSqDKLtKAaro8FMiYbDAsAcOVC9kczgl14",
+    "token_type": "Bearer",
+    "expires_at": "2021-08-21 23:50:53"
+}
+```
+
+### HTTP Request
+`GET api/login/facebook/callback`
+
+
+<!-- END_89b9a98360ef8fa1d3520efdf619cec0 -->
+
+#edit profile
+
+
+<!-- START_ab3a1673faa84305dd23a5b5e5fff59f -->
+## api/updateexperience
+> Example request:
+
+```bash
+curl -X PUT \
+    "http://localhost/api/updateexperience" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"exp_years":"5","exp_desc":0}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/updateexperience"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "exp_years": "5",
+    "exp_desc": 0
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT api/updateexperience`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `exp_years` | string |  required  | experience years of a teacher.
+        `exp_desc` | integer |  required  | The description of teacher's experience.
+    
+<!-- END_ab3a1673faa84305dd23a5b5e5fff59f -->
+
 #general
 
 
@@ -870,43 +1027,6 @@ fetch(url, {
 
 <!-- END_72b936ae0ca359c0f20175257123c9c2 -->
 
-<!-- START_ab3a1673faa84305dd23a5b5e5fff59f -->
-## api/updateexperience
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost/api/updateexperience" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/updateexperience"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/updateexperience`
-
-
-<!-- END_ab3a1673faa84305dd23a5b5e5fff59f -->
-
 <!-- START_31f430322462abe3fc3e4ba369b8f77d -->
 ## Resend the email verification notification.
 
@@ -996,94 +1116,6 @@ fetch(url, {
 
 
 <!-- END_3e4a08674c3c1aaa7a4e8aacbf86420a -->
-
-<!-- START_55223d515da2d77462d233ebb97e3c40 -->
-## Redirect the user to the GitHub authentication page.
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/api/login/facebook" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/login/facebook"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (302):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/login/facebook`
-
-
-<!-- END_55223d515da2d77462d233ebb97e3c40 -->
-
-<!-- START_89b9a98360ef8fa1d3520efdf619cec0 -->
-## Obtain the user information from GitHub.
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/api/login/facebook/callback" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/login/facebook/callback"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/login/facebook/callback`
-
-
-<!-- END_89b9a98360ef8fa1d3520efdf619cec0 -->
 
 <!-- START_59bbdcd23e875fa73b638c4c3c6aa5d6 -->
 ## api/m
