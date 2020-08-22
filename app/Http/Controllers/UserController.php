@@ -14,38 +14,6 @@ use Carbon\Carbon;
 class UserController extends Controller 
 {
 public $successStatus = 200;
-public function getProfile($user){
-    $profile=$user->profile;
-    if(!$profile)
-{
-$profile = new \App\UserInfo;
-$user->profile()->save($profile);
-    }
-   return UserInfo::firstOrCreate(['user_id'=>$user->id]);
-
-
-}
-    /**
-    * @group  edit profile
-    * @bodyParam  exp_years string required experience years of a teacher. Example: 5
-    * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
-    * update teacher's experience
-    */
-public function updateExperience(Request $request){
-    $request->validate([
-        'exp_years' => 'required|numeric',
-        'exp_desc' => 'required|string'
-    ]);
-    $user = Auth::user(); 
-    //$profile=$this -> getProfile($user);
-    $profile=$this -> getProfile($user);
-    $profile->update(['exp_years'=>$request->exp_years,'exp_desc'=>$request->exp_desc]);
-    $profile->save();
-    return response()->json(['success' => $profile], $this-> successStatus); 
-
-
-
-}
 
 /**
      * Login user and create token
