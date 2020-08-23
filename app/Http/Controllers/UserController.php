@@ -166,6 +166,16 @@ public function saveImageAvatar($avatar, $userId)
             'email', 'user_birthday','user_gender'
         ])->redirect();
     }
+    public function uploadProfilePicture(Request $request){
+        $fileContents = file_get_contents($request->file('photo'));
+        $user = Auth::user(); 
+        $path = public_path() . '/users/images/' . $user->id . "_avatar.jpg";
+        File::put($path, $fileContents);
+        $user->image_url = $path;
+        $user->save();
+        return response()->json(['success'=>$user], $this-> successStatus); 
+
+    }
     /**
     * @group  authentication
     *

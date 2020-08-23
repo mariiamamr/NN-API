@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  Route::post('login', 'UserController@login');
  Route::post('register', 'UserController@register');
  Route::group(['middleware' => 'auth:api'], function(){
+    Route::post('uploadprofilepicture', 'UserController@uploadProfilePicture');
+
     Route::get('logout', 'UserController@logout'); //will see
      Route::get('details', 'UserController@details');
      //Edit Profile
