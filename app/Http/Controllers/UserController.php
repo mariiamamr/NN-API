@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use Carbon\Carbon;
+use File;
 class UserController extends Controller 
 {
 public $successStatus = 200;
@@ -134,7 +135,19 @@ return response()->json(['success'=>$success], $this-> successStatus);
     { 
         return "m"; 
     } 
-
+/**
+ * In order to save the user's avatar
+ * REMEMBER TO ADD "use File; use Illuminate\Support\Carbon; use DB;" TO TOP! 
+ * @param  $avatar Socialite user's avatar ($user->getAvatar())
+ * @param $userId User's id database
+ */
+public function saveImageAvatar($avatar, $userId)
+{
+    $fileContents = file_get_contents($avatar);
+    $path = public_path() . '/users/images/' . $userId . "_avatar.jpg";
+    File::put($path, $fileContents);
+    return $path;
+}
     /**
     * @group  authentication
     *
@@ -143,6 +156,7 @@ return response()->json(['success'=>$success], $this-> successStatus);
     */
     public function redirectToProvider()
     {
+
         $type=request('type');
         //return $type;
         //return Socialite::driver('facebook')->redirect();
@@ -164,11 +178,13 @@ return response()->json(['success'=>$success], $this-> successStatus);
     */
     public function handleProviderCallback()
     {
+        
         $type = request()->input('state');
        // $user = Socialite::driver('facebook')->user();
        $user = Socialite::driver('facebook')->stateless()->fields([
         'first_name', 'last_name', 'email', 'gender', 'birthday','name'
     ])->user();
+    $url=$this->saveImageAvatar($user->getAvatar(), $user->getId());
        $user = User::firstOrCreate([
             'email'     => $user->getEmail(),
         ],[
@@ -176,8 +192,11 @@ return response()->json(['success'=>$success], $this-> successStatus);
             'birth'     => Carbon::parse($user['birthday'])->format('Y-m-d'),
             'gender'    => $user['gender'],
             'password'  => Hash::make($user->getId()),
-            'type'      => $type
+            'type'      => $type,
+            
         ]);
+        $user->image_url = $url;
+        $user->save();
         $tokenResult = $user->createToken('My App');
         return response()->json([
             'access_token' => $tokenResult->accessToken,
