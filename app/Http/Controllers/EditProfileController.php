@@ -5,7 +5,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
 use App\User; 
 use App\UserInfo; 
-use App\UniversityDegree; 
+use App\UniversityDegree;
+use Validator;
+use File;
+
 
 use Illuminate\Support\Facades\Auth;
 class EditProfileController extends Controller
@@ -24,6 +27,7 @@ class EditProfileController extends Controller
     
     }
         /**
+        * @authenticated
         * @group  edit profile
         * @bodyParam  exp_years string required experience years of a teacher. Example: 5
         * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
@@ -44,7 +48,9 @@ class EditProfileController extends Controller
     
     
     }
-            /**
+            
+        /**
+        * @authenticated
         * @group  edit profile
         * @bodyParam  exp_years string required experience years of a teacher. Example: 5
         * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
@@ -72,6 +78,46 @@ class EditProfileController extends Controller
         
         
         }
+    /**
+    * @group  edit profile
+    * @authenticated
+    * upload profile picture
+    * @bodyParam  photo  file required the profile picture 
+    * @response {
+    *"success": {
+    *    "id": 17,
+    *    "email": "aya_1999_mahmoud@hotmail.com",
+    *    "email_verified_at": null,
+    *    "created_at": "2020-08-23 22:13:11",
+    *    "updated_at": "2020-08-23 22:13:55",
+    *    "full_name": "Aya Mahmoud",
+    *    "type": "s",
+    *    "active": 1,
+    *    "birth": "1999-09-09",
+    *    "gender": "female",
+    *    "status": null,
+    *    "image_url": "C:\\Users\\ENG MAHMOUD\\Desktop\\API\\NN-API\\public/users/images/17_avatar.jpg",
+    *    "username": null
+    *}
+    * }
+    */
+    public function uploadProfilePicture(Request $request){
+        //Validating signup form before make the request
+        $validator = Validator::make($request->all(), [ 
+         'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+     ]);
+ if ($validator->fails()) { 
+         return response()->json(['error'=>$validator->errors()], 401);        //unauthorized    
+     }
+         $fileContents = file_get_contents($request->file('photo'));
+         $user = Auth::user(); 
+         $path = public_path() . '/users/images/' . $user->id . "_avatar.jpg";
+         File::put($path, $fileContents);
+         $user->image_url = $path;
+         $user->save();
+         return response()->json(['success'=>$user], $this-> successStatus); 
+ 
+     }
     /**
      * Update user info
      *

@@ -127,8 +127,79 @@ fetch(url, {
 #edit profile
 
 
+<!-- START_09851fbd2b828e86dbb0087ce3bf68a2 -->
+## api/uploadprofilepicture
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/uploadprofilepicture" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"photo":"eveniet"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/uploadprofilepicture"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "photo": "eveniet"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": {
+        "id": 17,
+        "email": "aya_1999_mahmoud@hotmail.com",
+        "email_verified_at": null,
+        "created_at": "2020-08-23 22:13:11",
+        "updated_at": "2020-08-23 22:13:55",
+        "full_name": "Aya Mahmoud",
+        "type": "s",
+        "active": 1,
+        "birth": "1999-09-09",
+        "gender": "female",
+        "status": null,
+        "image_url": "C:\\Users\\ENG MAHMOUD\\Desktop\\API\\NN-API\\public\/users\/images\/17_avatar.jpg",
+        "username": null
+    }
+}
+```
+
+### HTTP Request
+`POST api/uploadprofilepicture`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `photo` | file |  required  | the profile picture
+    
+<!-- END_09851fbd2b828e86dbb0087ce3bf68a2 -->
+
 <!-- START_ab3a1673faa84305dd23a5b5e5fff59f -->
 ## api/updateexperience
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -176,6 +247,57 @@ Parameter | Type | Status | Description
         `exp_desc` | integer |  required  | The description of teacher's experience.
     
 <!-- END_ab3a1673faa84305dd23a5b5e5fff59f -->
+
+<!-- START_6b5a8ab5aafed5d8595341f15d685a83 -->
+## api/updateEducation
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X PUT \
+    "http://localhost/api/updateEducation" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"exp_years":"5","exp_desc":0}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/updateEducation"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "exp_years": "5",
+    "exp_desc": 0
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT api/updateEducation`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `exp_years` | string |  required  | experience years of a teacher.
+        `exp_desc` | integer |  required  | The description of teacher's experience.
+    
+<!-- END_6b5a8ab5aafed5d8595341f15d685a83 -->
 
 #general
 
@@ -1103,11 +1225,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (403):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Invalid signature."
 }
 ```
 
@@ -1116,6 +1238,82 @@ fetch(url, {
 
 
 <!-- END_3e4a08674c3c1aaa7a4e8aacbf86420a -->
+
+<!-- START_b7802a3a2092f162a21dc668479801f4 -->
+## Send a reset link to the given user.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/password/email" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/password/email"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/password/email`
+
+
+<!-- END_b7802a3a2092f162a21dc668479801f4 -->
+
+<!-- START_8ad860d24dc1cc6dac772d99135ad13e -->
+## Reset the given user&#039;s password.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/password/reset" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/password/reset"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/password/reset`
+
+
+<!-- END_8ad860d24dc1cc6dac772d99135ad13e -->
 
 <!-- START_59bbdcd23e875fa73b638c4c3c6aa5d6 -->
 ## api/m
