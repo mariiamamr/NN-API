@@ -8,11 +8,24 @@ use App\User;
 use App\UserInfo; 
 use App\UniversityDegree;
 use Validator;
+use Contracts\Lectures\LecturesContract;
+
 
 
 class CreateSessionController extends Controller
 {
+    public function __construct( LecturesContract $lecture)
+    {
+      parent::__construct();
+      $this->lecture = $lecture;
+    }
+  
     public function createSession(Request $request){
+        
+        if (is_null(\Auth::user()->profile)) {
+            return redirect('/account');
+          }                             //////////check authentication?????
+      
         $request->validate([
             'time_from' => 'required',
             'date' => 'required',
@@ -25,10 +38,14 @@ class CreateSessionController extends Controller
             }
           }
 //
+        $slot = $this->lecture->create_slot(\Auth::id(), $request);
+
+        if (!$slot) {
+            //can't add new slot in this day
+            return response()->json(['error' => "can't add new slot in this day"], 403);   
+        }
+      
         return response()->json(['message'=>"session created"], 200); 
-    
-    
-    
     }
 
 }
