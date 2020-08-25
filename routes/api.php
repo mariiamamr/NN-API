@@ -26,6 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::get('logout', 'UserController@logout'); //will see
      Route::get('details', 'UserController@details');
+
      //Edit Profile
      Route::post('editprofile','EditProfileController@updateAuthUser');
      Route::post('priceinfo','PriceInfoController@updatePriceInfo');
@@ -33,6 +34,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('/updateCertificates','EditProfileController@updateCertificates');
      Route::put('/updateexperience','EditProfileController@updateExperience');
      Route::put('/updateEducation','EditProfileController@updateEducation');
+
+     //creating new sessions
+     Route::post('/session/new','CreateSessionController@createSession');
+
      });
 //email verification for new users
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');
