@@ -21,7 +21,7 @@ class CreateSessionController extends Controller
     }
   
     public function createSession(Request $request){
-        
+
         if (is_null(\Auth::user()->profile)) {
             return redirect('/account');
           }                             //////////check authentication?????
@@ -47,5 +47,31 @@ class CreateSessionController extends Controller
       
         return response()->json(['message'=>"session created"], 200); 
     }
+
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'time_from' => 'required',
+            'date' => 'required',
+            'weekly' => 'boolean',
+        ]);
+
+      if ($request->date == date('Y-m-d')) {
+        $should_start = \Carbon\Carbon::parse('now')->addHours(2);
+        if ($request->time_from <= $should_start->format('H:i')) {
+            return response()->json(['error' => "less than two hours left"], 403);   
+        }
+      }
+      $slot = $this->lecture->update_slot(\Auth::id(), $request);
+        
+      if(!$slot){
+        return response()->json(['error' => "can't add new slot in this day"], 403);   
+        }
+  
+      return response()->json(['message'=>"session updated"], 200); 
+    }
+    
+  
 
 }
