@@ -13,6 +13,12 @@ use File;
 use Illuminate\Support\Facades\Auth;
 class EditProfileController extends Controller
 {
+    protected $addCertificationValidationMessages = [
+        'certifications.*.thumb.mimes' => 'The Certifications File must be a file of type: jpeg, jpg, png, pdf, svg.',
+    ];
+    protected $addCertificationValidationRules  = [
+        'certifications.*.thumb' => 'mimes:jpeg,jpg,png,pdf,svg',
+    ];
     public $successStatus = 200;
 
     public function getProfile($user){
@@ -48,7 +54,56 @@ class EditProfileController extends Controller
     
     
     }
-            
+    public function uploadCertificate($file,$userid,$certificateid)
+    {
+        $fileName="";
+        if ($file && $file->isValid()) {
+          /*  $extension = $file->getClientOriginalExtension();
+            $fileNameWithoutExtension=time().rand(11111,99999);
+            $filePath=$fileNameWithoutExtension.'.'.$extension;
+            $fileName ='/users/certificates/'.$filePath;
+            $file->move(public_path().'/users/certificates/',$fileName);*/
+            $fileContents = file_get_contents($file);
+            $fileName = '/users/certificates/' . $userid . $certificateid.'.jpg';
+            $path = public_path() .$fileName;
+           // $file->move($path,$fileName);
+
+            File::put($path, $fileContents);
+        }
+        return $fileName;
+    }
+          public function updateCertificates(Request $data){
+            $user = Auth::user(); 
+
+            //Validation for uploading file extenstions
+            $data->validate($this->addCertificationValidationRules, $this->addCertificationValidationMessages);
+
+            // Array for save the ids of files in uploading
+            $certificates_array = [];
+            foreach ($data->certifications as $key => $certificate) {
+                //return $data->certifications;
+                if (isset($certificate['thumb'])) {
+                    $file = $certificate['thumb'];
+                    if ($file->isValid()) {
+                        $fileName = $this->uploadCertificate($file,$user->id,$certificate['certificate_id']);
+                        $certificates_array[$key] = [
+                            'certificate_id' => $certificate['certificate_id'],
+                            'thumb_name' => $fileName                        ];
+                    }
+                } else {
+                    $certificates_array[$key] = [
+                        'certificate_id' => $certificate['certificate_id'] ? $certificate['certificate_id'] : null,
+                        'thumb_name' => $certificate['thumb_name'] ? $certificate['thumb_name'] : null
+                    ];
+                }
+            }
+            $data->certifications = json_encode($certificates_array);
+            $profile=$this -> getProfile($user);
+            $profile->update([
+                'certifications' => $data->certifications
+            ]);            $profile->save();
+            return json_decode($profile->certifications);
+          }  
         /**
         * @authenticated
         * @group  edit profile

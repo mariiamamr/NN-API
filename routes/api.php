@@ -31,12 +31,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('editprofile','EditProfileController@updateAuthUser');
      Route::post('priceinfo','PriceInfoController@updatePriceInfo');
      Route::get('/getexperience','UserController@getexperience');
+     Route::post('/updateCertificates','EditProfileController@updateCertificates');
      Route::put('/updateexperience','EditProfileController@updateExperience');
      Route::put('/updateEducation','EditProfileController@updateEducation');
 
-     //creating new sessions
+     //sessions
      Route::post('/session/new','CreateSessionController@createSession');
-     Route::post('/updateSession','UpdateSessionController@UpdateSession');
+     Route::post('/session/update','CreateSessionController@update');
 
      });
 //email verification for new users
