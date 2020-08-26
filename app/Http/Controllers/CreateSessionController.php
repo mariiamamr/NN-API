@@ -50,7 +50,7 @@ class CreateSessionController extends Controller
           
 //
         $slot = $this->lecture->create_slot($user->id, $request);
-        return response()->json(['message'=>"session created"], 200);
+        return response()->json($slot, 200);
 
         if (!$slot) {
             //can't add new slot in this day

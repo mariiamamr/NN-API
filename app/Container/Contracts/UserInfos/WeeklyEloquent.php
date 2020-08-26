@@ -30,7 +30,8 @@ class WeeklyEloquent implements WeeklyContract
 
     private function timeDuration($time)
     {
-        $time_duration = $this->option->getValueByName('session_duration');
+        //$time_duration = $this->option->getValueByName('session_duration');
+        $time_duration =70;
         return date(
             "H:i",
             strtotime('+' . $time_duration . ' minutes', strtotime($time))
