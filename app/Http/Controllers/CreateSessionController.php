@@ -21,10 +21,15 @@ class CreateSessionController extends Controller
     }
   
     public function createSession(Request $request){
+        
+        if (!Auth::check()) {
+            return response()->json(['error' => "unauthenticated"], 401);   
+        }
 
-        if (is_null(\Auth::user()->profile)) {
-            return redirect('/account');
-          }                             //////////check authentication?????
+        $user = Auth::user(); 
+        if ($user->id->type!='t'){
+            return response()->json(['error' => "user must be a teacher"], 401);   
+        }
       
         $request->validate([
             'time_from' => 'required',
@@ -51,6 +56,15 @@ class CreateSessionController extends Controller
 
     public function update(Request $request)
     {
+        if (!Auth::check()) {
+            return response()->json(['error' => "unauthenticated"], 401);   
+        }
+
+        $user = Auth::user(); 
+        if ($user->id->type!='t'){
+            return response()->json(['error' => "user must be a teacher"], 401);   
+        }
+      
         $request->validate([
             'time_from' => 'required',
             'date' => 'required',
