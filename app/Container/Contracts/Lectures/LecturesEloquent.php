@@ -60,6 +60,7 @@ class LecturesEloquent implements LecturesContract
       return false;
     }
     $time_duration = 70;//$this->option->getValueByName('session_duration');
+    //return ($data);
     $start_at = Carbon::parse($data->date . ' ' . $data->time_from);
     return $lecture->update([
       "date" => $start_at->format('Y-m-d'),
@@ -202,7 +203,7 @@ class LecturesEloquent implements LecturesContract
     if (!$this->calender->canAddNewSlot($profile, $data)) {
       return false;
     }
-
+ 
     if ($data->weekly) {
       $slot = $this->user_info->setWeekly($profile, $data);
     } else {
@@ -241,6 +242,7 @@ class LecturesEloquent implements LecturesContract
         $flag = $this->set($teacher_id, (object)$data->new);
       }
     } elseif ($data->lecture_id && isset($data->new['weekly'])) {
+      // $flag = $this->update($data->lecture_id, (object)$data->new);
       $flag = $this->delete($data->lecture_id);
       $flag = $this->user_info->setWeekly($teacher_id, (object)$data->new); //3ayez yet set weekly
     } else {
@@ -250,10 +252,10 @@ class LecturesEloquent implements LecturesContract
     return $flag;
   }
 
-  public function getSessionsCurrentAndPast($teacher_id)
-  {
-    // $profile = $this->lecture->where
-  }
+  // public function getSessionsCurrentAndPast($teacher_id)
+  // {
+  //   // $profile = $this->lecture->where
+  // }
 
  /* public function startSession($id, $type = 's')
   {

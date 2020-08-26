@@ -50,11 +50,11 @@ class CreateSessionController extends Controller
           
 //
         $slot = $this->lecture->create_slot($user->id, $request);
-        return response()->json(['message'=>"session created"], 200);
+        
 
         if (!$slot) {
             //can't add new slot in this day
-            return response()->json(['error' => "can't add new slot in this day"], 403);   
+            return response()->json(['error' => "can't add new slot in this day"], 403);   //????
         }
       
         return response()->json(['message'=>"session created"], 200); 
@@ -92,7 +92,7 @@ class CreateSessionController extends Controller
         return response()->json(['error' => "can't add new slot in this day"], 403);   
         }
   
-      return response()->json(['message'=>"session updated"], 200); 
+      return response()->json($slot, 200); 
     }
     
   
