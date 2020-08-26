@@ -8,7 +8,7 @@ use App\User;
 use App\UserInfo; 
 use App\UniversityDegree;
 use Validator;
-use Contracts\Lectures\LecturesContract;
+use App\Container\Contracts\Lectures\LecturesContract;
 
 
 
