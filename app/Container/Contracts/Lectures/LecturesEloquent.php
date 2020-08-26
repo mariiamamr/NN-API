@@ -56,9 +56,9 @@ class LecturesEloquent implements LecturesContract
   {
     $lecture = $this->get($id);
 
-    /*if (!is_null($lecture->payed_user_id) || !is_null($lecture->checkout_user_id)) {
+    if (!is_null($lecture->payed_user_id) || !is_null($lecture->checkout_user_id)) {
       return false;
-    }*/
+    }
     $time_duration = 70;//$this->option->getValueByName('session_duration');
     $start_at = Carbon::parse($data->date . ' ' . $data->time_from);
     return $lecture->update([
@@ -241,7 +241,6 @@ class LecturesEloquent implements LecturesContract
         $flag = $this->set($teacher_id, (object)$data->new);
       }
     } elseif ($data->lecture_id && isset($data->new['weekly'])) {
-      // $flag = $this->update($data->lecture_id, (object)$data->new);
       $flag = $this->delete($data->lecture_id);
       $flag = $this->user_info->setWeekly($teacher_id, (object)$data->new); //3ayez yet set weekly
     } else {

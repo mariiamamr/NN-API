@@ -38,6 +38,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      //sessions
      Route::post('createsession','CreateSessionController@createSession');
      Route::post('updatesession','CreateSessionController@update');
+     Route::delete('deletesession','CreateSessionController@destroy');
 
      });
 //email verification for new users
