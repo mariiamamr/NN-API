@@ -1,8 +1,8 @@
 <?php
-namespace Contracts\Payments;
+namespace App\Container\Contracts\Payments;
 
-use Contracts\Calenders\CalendersContract;
-use App\Order;
+use App\Container\Contracts\Calenders\CalendersContract;
+use App\Models\Order;
 
 interface PaymentsContract
 {

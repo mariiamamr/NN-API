@@ -178,6 +178,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\GradeServiceprovider::class,
+        App\Providers\OptionServiceprovider::class,
+        App\Providers\UserInfoServiceprovider::class,
+        App\Providers\PaymentServiceprovider::class,
+        App\Providers\CalenderServiceprovider::class,
+        App\Providers\LectureServiceprovider::class,
+
 
     ],
 

@@ -1,11 +1,11 @@
 <?php
-namespace Contracts\Calenders;
+namespace App\Container\Contracts\Calenders;
 
-use App\Schedule;
-use App\Lecture;
-use Contracts\Services\TokBox\TokBoxContract;
-use Contracts\UserInfos\WeeklyContract;
-use Contracts\Payments\PaymentsContract;
+use App\Models\Schedule;
+use App\Models\Lecture;
+//use App\Container\Contracts\Services\TokBox\TokBoxContract;
+use App\Container\Contracts\UserInfos\WeeklyContract;
+use App\Container\Contracts\Payments\PaymentsContract;
 
 
 interface CalendersContract
@@ -13,7 +13,7 @@ interface CalendersContract
     public function __construct(
         Schedule $schedule,
         Lecture $lecture,
-        TokBoxContract $tokbox,
+        //TokBoxContract $tokbox,
         WeeklyContract $weekly_feature,
         PaymentsContract $payment
     );

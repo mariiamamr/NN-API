@@ -1,9 +1,9 @@
 <?php
 
-namespace Contracts\UserInfos;
+namespace App\Container\Contracts\UserInfos;
 
 use App\UserInfo;
-use Contracts\Options\OptionsContract;
+use App\Container\Contracts\Options\OptionsContract;
 
 interface WeeklyContract
 {

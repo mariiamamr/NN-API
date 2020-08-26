@@ -1,5 +1,5 @@
 <?php
-namespace Contracts\UserInfos;
+namespace App\Container\Contracts\UserInfos;
 
 use App\UserInfo;
 

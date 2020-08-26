@@ -1,12 +1,12 @@
 <?php
 
-namespace Contracts\Lectures;
+namespace App\Container\Contracts\Lectures;
 
-use App\Lecture;
-use Contracts\UserInfos\UserInfosContract;
-use Contracts\Calenders\CalendersContract;
-use Contracts\Services\TokBox\TokBoxContract;
-use Contracts\Options\OptionsContract;
+use App\Models\Lecture;
+use App\Container\Contracts\UserInfos\UserInfosContract;
+use App\Container\Contracts\Calenders\CalendersContract;
+//use App\Container\Contracts\Services\TokBox\TokBoxContract;
+use App\Container\Contracts\Options\OptionsContract;
 
 interface LecturesContract
 {
@@ -14,7 +14,7 @@ interface LecturesContract
     Lecture $lecture, 
     UserInfosContract $user_info, 
     CalendersContract $calender,
-    TokBoxContract $tokbox,
+    //TokBoxContract $tokbox,
     OptionsContract $option);
 
   public function get($id);
