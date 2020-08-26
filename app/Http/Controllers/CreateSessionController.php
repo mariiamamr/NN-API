@@ -77,6 +77,7 @@ class CreateSessionController extends Controller
             'time_from' => 'required',
             'date' => 'required',
             'weekly' => 'boolean',
+            'lecture_id'=>'required'
         ]);
 
       if ($request->date == date('Y-m-d')) {
@@ -112,7 +113,7 @@ public function destroy(Request $request)
       return response()->json(['error' => "can't add new slot in this day"], 400);
     }
 
-    return response()->json($slot, 200);
+    return response()->json(['message'=>"session deleted"], 200);
   }
   
 }
