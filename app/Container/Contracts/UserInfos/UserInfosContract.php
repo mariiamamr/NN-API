@@ -2,6 +2,8 @@
 namespace App\Container\Contracts\UserInfos;
 
 use App\UserInfo;
+use App\Container\Contracts\UserInfos\WeeklyContract;
+
 
 interface UserInfosContract
 {

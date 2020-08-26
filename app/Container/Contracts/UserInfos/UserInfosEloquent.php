@@ -7,7 +7,7 @@ use Carbon\Carbon;
 //use function GuzzleHttp\json_encode;
 use App\Models\Schedule;
 //use Contracts\Weekly\Weekly;
-use App\ContainerContracts\UserInfos\WeeklyContract;
+use App\Container\Contracts\UserInfos\WeeklyContract;
 
 class UserInfosEloquent implements UserInfosContract
 {

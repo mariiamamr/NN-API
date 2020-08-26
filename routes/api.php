@@ -36,8 +36,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::put('/updateEducation','EditProfileController@updateEducation');
 
      //sessions
-     Route::post('/session/new','CreateSessionController@createSession');
-     Route::post('/session/update','CreateSessionController@update');
+     Route::post('createsession','CreateSessionController@createSession');
+     Route::post('updatesession','CreateSessionController@update');
 
      });
 //email verification for new users

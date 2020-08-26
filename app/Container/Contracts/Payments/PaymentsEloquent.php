@@ -20,7 +20,7 @@ class PaymentsEloquent implements PaymentsContract
 
     public function __construct()
     {
-        $this->responseUrl       = route('front.payments.callback');
+        //$this->responseUrl       = route('front.payments.callback');
         $this->paymentchannel    = config('payment.' . env('PAYMENT_COUNTRY') . '.payment_code');
     }
 
@@ -44,7 +44,7 @@ class PaymentsEloquent implements PaymentsContract
             'original'       => self::OriginalEncrypted,
             'hash'           => $hash,
             'timestamp'      => time(),
-            'Responseurl'    => $this->responseUrl,
+            //'Responseurl'    => $this->responseUrl,
             "rnd"            => self::rnd,
             "user_id"        => $order->user_id,
         ];

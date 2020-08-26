@@ -35,5 +35,5 @@ interface LecturesContract
 
   public function teacherAvalibleLecutre($teacher, $from);
 
-  public function startSession($id);
+  //public function startSession($id);
 }

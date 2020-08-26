@@ -44,10 +44,12 @@
             "database/seeds",
             "database/factories",
             "app/Container/Contracts"
+            
 
         ],
         "files": [
-            "app/Container/Helpers/Helpers.php"
+            "app/Container/Helpers/Helpers.php",
+            "app/Container/Contracts/Calenders/Formater.php"
         ]
     },
     "autoload-dev": {

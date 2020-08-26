@@ -10,7 +10,7 @@ use Carbon\Carbon;
 //use Contracts\Services\TokBox\TokBoxContract;
 use App\Container\Contracts\Options\OptionsContract;
 
-class LectureEloquent implements LecturesContract
+class LecturesEloquent implements LecturesContract
 {
   public function __construct(
     Lecture $lecture,
@@ -38,8 +38,8 @@ class LectureEloquent implements LecturesContract
 
   public function set($teacher_id, $data)
   {
-    $time_duration = $this->option->getValueByName('session_duration');
-    $start_at = \Carbon\Carbon::parse($data->date . ' ' . $data->time_from);
+    $time_duration = 70;//$this->option->getValueByName('session_duration');
+    $start_at = Carbon::parse($data->date . ' ' . $data->time_from);
 
     return $this->lecture->create([
       "teacher_id" => $teacher_id,
@@ -56,11 +56,11 @@ class LectureEloquent implements LecturesContract
   {
     $lecture = $this->get($id);
 
-    if (!is_null($lecture->payed_user_id) || !is_null($lecture->checkout_user_id)) {
+    /*if (!is_null($lecture->payed_user_id) || !is_null($lecture->checkout_user_id)) {
       return false;
-    }
-    $time_duration = $this->option->getValueByName('session_duration');
-    $start_at = \Carbon\Carbon::parse($data->date . ' ' . $data->time_from);
+    }*/
+    $time_duration = 70;//$this->option->getValueByName('session_duration');
+    $start_at = Carbon::parse($data->date . ' ' . $data->time_from);
     return $lecture->update([
       "date" => $start_at->format('Y-m-d'),
       "time_from" => $data->time_from,

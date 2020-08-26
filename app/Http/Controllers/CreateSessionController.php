@@ -8,26 +8,30 @@ use App\User;
 use App\UserInfo; 
 use App\UniversityDegree;
 use Validator;
+use Carbon\Carbon;
 use App\Container\Contracts\Lectures\LecturesContract;
+use App\Container\Contracts\Lectures\LecturesEloquent;
+use Illuminate\Support\Facades\Auth;
 
 
 
 class CreateSessionController extends Controller
 {
+    protected $lecture;
     public function __construct( LecturesContract $lecture)
     {
-      parent::__construct();
+      //parent::__construct();
       $this->lecture = $lecture;
     }
   
     public function createSession(Request $request){
-        
-        if (!Auth::check()) {
+        $user = User::find(Auth::id());
+        if (!$user) {
             return response()->json(['error' => "unauthenticated"], 401);   
         }
 
-        $user = Auth::user(); 
-        if ($user->id->type!='t'){
+      
+        if ($user->type!='t'){
             return response()->json(['error' => "user must be a teacher"], 401);   
         }
       
@@ -36,14 +40,17 @@ class CreateSessionController extends Controller
             'date' => 'required',
             'weekly' => 'boolean',
         ]);
+       
         if ($request->date == date('Y-m-d')) {
-            $should_start = \Carbon\Carbon::parse('now')->addHours(2);
+            $should_start =Carbon::now()->addHours(2);
             if ($request->time_from <= $should_start->format('H:i')) {
                 return response()->json(['error' => "less than two hours left"], 403);   
             }
           }
+          
 //
-        $slot = $this->lecture->create_slot(\Auth::id(), $request);
+        $slot = $this->lecture->create_slot($user->id, $request);
+        return response()->json(['message'=>"session created"], 200);
 
         if (!$slot) {
             //can't add new slot in this day
@@ -56,12 +63,13 @@ class CreateSessionController extends Controller
 
     public function update(Request $request)
     {
-        if (!Auth::check()) {
+        $user = User::find(Auth::id());
+        if (!$user) {
             return response()->json(['error' => "unauthenticated"], 401);   
         }
 
-        $user = Auth::user(); 
-        if ($user->id->type!='t'){
+      
+        if ($user->type!='t'){
             return response()->json(['error' => "user must be a teacher"], 401);   
         }
       
@@ -72,12 +80,12 @@ class CreateSessionController extends Controller
         ]);
 
       if ($request->date == date('Y-m-d')) {
-        $should_start = \Carbon\Carbon::parse('now')->addHours(2);
+        $should_start = Carbon::now()->addHours(2);
         if ($request->time_from <= $should_start->format('H:i')) {
             return response()->json(['error' => "less than two hours left"], 403);   
         }
       }
-      $slot = $this->lecture->update_slot(\Auth::id(), $request);
+      $slot = $this->lecture->update_slot($user->id, $request);
         
       if(!$slot){
         return response()->json(['error' => "can't add new slot in this day"], 403);   

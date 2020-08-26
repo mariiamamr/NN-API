@@ -1,6 +1,6 @@
 <?php
 namespace App\Container\Contracts\Options;
-use App\Container\Contracts\Grades\OptionsContract as OptionsContract;
+use App\Container\Contracts\Options\OptionsContract as OptionsContract;
 use App\Models\Option;
 
 class OptionsEloquent implements OptionsContract
