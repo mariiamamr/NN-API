@@ -61,11 +61,17 @@ class CreateSessionController extends Controller
       
         return response()->json(['message'=>"session created"], 200); 
     }
-public function getPastSessions(){
+public function getPastSessionsForStudents(){
   return $this->user_enroll->getPastSessionForUserWithPaginate(Auth::id());
 }
-public function getUpcomingSessions(){
+public function getUpcomingSessionsForStudents(){
   return $this->user_enroll->getComingSessionForUserWithPaginate(Auth::id());
+}
+public function getPastSessionsForTeachers(){
+  return $this->user_enroll->getPastSessionForTeacherWithPaginate(Auth::id());
+}
+public function getUpcomingSessionsForTeachers(){
+  return $this->user_enroll->getComingSessionForTeacherWithPaginate(Auth::id());
 }
 
     public function update(Request $request)

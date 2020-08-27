@@ -314,6 +314,24 @@ class UserEnrollsEloquent implements UserEnrollsContract
             ->with('teachers')
             ->paginate($this->number_of_pages);
     }
+    public function getSessionForTeacherWithPaginate($user_id, $date, $operator = '>=')
+    {
+        return $this->schedule
+            ->where('teacher_id', $user_id)
+            ->where('payed', '=', 1)
+            ->whereRaw('CONCAT(`date`," ",`time_to`) ' . $operator . '"' . \Carbon\Carbon::parse($date)->format("Y-m-d H:i:s") . '"')
+            // ->where('time_to',$operator,\Carbon\Carbon::parse($date)->format('H:i'))
+            ->with('teachers')
+            ->paginate($this->number_of_pages);
+    }
+    public function getPastSessionForTeacherWithPaginate($user_id)
+    {
+        return $this->getSessionForTeacherWithPaginate($user_id, now(), "<");
+    }
+    public function getComingSessionForTeacherWithPaginate($user_id)
+    {
+        return $this->getSessionForTeacherWithPaginate($user_id, now(), ">=");
+    }
 
     public function getPastSessionForUserWithPaginate($user_id)
     {
