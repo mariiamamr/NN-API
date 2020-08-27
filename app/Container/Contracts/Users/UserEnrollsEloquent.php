@@ -7,40 +7,40 @@
  * Time: 11:31 AM
  */
 
-namespace Repos\Users;
+namespace App\Container\Contracts\Users;
 
 use App\User;
-use App\Schedule;
-use App\Lecture;
-use App\Order;
-use Contracts\Payments\PaymentsContract;
-use Contracts\Services\TokBox\TokBoxContract;
-use Contracts\Users\UserEnrollsContract;
-use Contracts\Payments\FawryContract;
+use App\Models\Schedule;
+use App\Models\Lecture;
+use App\Models\Order;
+//use Contracts\Payments\PaymentsContract;
+//use Contracts\Services\TokBox\TokBoxContract;
+use App\Container\Contracts\Users\UserEnrollsContract;
+//use Contracts\Payments\FawryContract;
 use Carbon\Carbon;
 
-class UserEnrollsRepo implements UserEnrollsContract
+class UserEnrollsEloquent implements UserEnrollsContract
 {
     public $number_of_pages = 1;
     public function __construct(
         Schedule $schedule,
         Lecture $lecture,
-        Order $order,
-        PaymentsContract $payment,
-        TokBoxContract $tokbox,
-        FawryContract $fawry
+        Order $order
+       // PaymentsContract $payment,
+       // TokBoxContract $tokbox,
+        //FawryContract $fawry
 
     ) {
         $this->schedule        = $schedule;
         $this->lecture         = $lecture;
         $this->order           = $order;
-        $this->payment         = $payment;
-        $this->tokbox          = $tokbox;
+//        $this->payment         = $payment;
+//        $this->tokbox          = $tokbox;
         $this->number_of_pages = config('static.pagination.rowsPerPage');
-        $this->fawry           = $fawry;
+//        $this->fawry           = $fawry;
     }
 
-    public function getPendingItems($user_id)
+   /* public function getPendingItems($user_id)
     {
         return $this->schedule
             ->where('user_id', $user_id)
@@ -303,7 +303,7 @@ class UserEnrollsRepo implements UserEnrollsContract
 
         return $flag_1 && $flag_2;
     }
-
+*/
     public function getSessionForUserWithPaginate($user_id, $date, $operator = '>=')
     {
         return $this->schedule
