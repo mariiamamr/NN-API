@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\Reviews;
+namespace App\Container\Contracts\Reviews;
 
-use App\ReviewStudent;
+use App\Models\ReviewStudent;
 
 interface ReviewStudentContract
 {

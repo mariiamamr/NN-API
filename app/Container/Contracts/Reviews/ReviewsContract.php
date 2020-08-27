@@ -1,8 +1,8 @@
 <?php
-namespace Contracts\Reviews;
+namespace App\Container\Contracts\Reviews;
 
-use App\Review;
-use Contracts\UserInfos\UserInfoReviewsContract;
+use App\Models\Review;
+use App\Container\Contracts\UserInfos\UserInfoReviewsContract;
 
 interface ReviewsContract
 {

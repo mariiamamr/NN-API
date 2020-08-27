@@ -43,6 +43,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::delete('deletesession','CreateSessionController@destroy');
      Route::post('enrollsession','CreateSessionController@enroll');
 
+     //ratings
+     Route::post('/teacherRating','CreateSessionController@enroll');
+     Route::post('/ratingbyteacher','ReviewsController@ratingByTeacher');
+
      });
 //email verification for new users
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');

@@ -183,6 +183,9 @@ return [
         App\Providers\PaymentServiceprovider::class,
         App\Providers\CalenderServiceprovider::class,
         App\Providers\LectureServiceprovider::class,
+        App\Providers\ReviewServiceProvider::class,
+        App\Providers\ReviewStudentServiceProvider::class,
+        App\Providers\UserInfoReviewsServiceProvider::class,
 
 
     ],
