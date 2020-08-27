@@ -6,6 +6,8 @@ use App\Models\Lecture;
 use App\Container\Contracts\Users\UsersContract;
 use App\Container\Contracts\UserInfos\UserInfosContract;
 use App\Container\Contracts\Calenders\CalendersContract;
+// use App\Container\Contracts\Lectures\UserEnrolls;
+
 use Carbon\Carbon;
 //use Contracts\Services\TokBox\TokBoxContract;
 use App\Container\Contracts\Options\OptionsContract;

@@ -123,4 +123,9 @@ public function destroy(Request $request)
     return response()->json(['message'=>"session deleted"], 200);
   }
   
+    public function enroll(Request $request)
+    {
+        $result = $this->lecture->enrollLectureForUser(Auth::id(), $request);
+        return response()->json(["result" => $result], 200);
+    }
 }

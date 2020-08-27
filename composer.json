@@ -49,7 +49,9 @@
         ],
         "files": [
             "app/Container/Helpers/Helpers.php",
-            "app/Container/Contracts/Calenders/Formater.php"
+            "app/Container/Contracts/Calenders/Formater.php",
+            "app/Container/Contracts/Lectures/UserEnrolls.php"
+            
         ]
     },
     "autoload-dev": {
