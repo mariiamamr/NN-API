@@ -237,19 +237,20 @@ class LecturesEloquent implements LecturesContract
       return false;
     }
     if ($data->lecture_id && !isset($data->new['weekly'])) {
-      if ($data->lecture_id) {
-        $flag = $this->update($data->lecture_id, (object)$data->new); //update 3adyy
-      } else {
-        $this->user_info->deleteWeekly($teacher_id, (object)$data->old);
-        $flag = $this->set($teacher_id, (object)$data->new);
-      }
+        $flag = $this->update($data->lecture_id,(object)$data->new); //update 3ady
     } elseif ($data->lecture_id && isset($data->new['weekly'])) {
-      // $flag = $this->update($data->lecture_id, (object)$data->new);
       $flag = $this->delete($data->lecture_id);
-      $flag = $this->user_info->setWeekly($teacher_id, (object)$data->new); //3ayez yet set weekly
-    } else {
+      $flag = $this->user_info->setWeekly($teacher_id,(object)$data->new); //3ayez yet set weekly
+    } elseif(!$data->lecture_id && !isset($data->new['weekly'])) {
+      // $data_old=$data;
+      // $data_old->weekly=true;
+      $this->user_info->deleteWeekly($teacher_id,(object)$data->old);
+      $flag = $this->set($teacher_id, (object)$data->new);
+    } 
+    else {
       $flag = $this->user_info->updateWeekly($teacher_id, $data);
     }
+
 
     return $flag;
   }

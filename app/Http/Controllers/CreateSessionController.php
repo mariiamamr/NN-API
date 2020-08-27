@@ -86,13 +86,12 @@ public function getUpcomingSessionsForTeachers(){
             return response()->json(['error' => "user must be a teacher"], 401);   
         }
       
-        $request->validate([
+     /*   $request->validate([
             'time_from' => 'required',
             'date' => 'required',
-            'weekly' => 'boolean',
+            'weekly' => 'required',
             'lecture_id'=>'required'
-        ]);
-
+        ]);*/
       if ($request->date == date('Y-m-d')) {
         $should_start = Carbon::now()->addHours(2);
         if ($request->time_from <= $should_start->format('H:i')) {
