@@ -44,7 +44,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('enrollsession','CreateSessionController@enroll');
 
      //ratings
-     Route::post('/teacherRating','CreateSessionController@enroll');
+     Route::post('/ratingbystudent','ReviewsController@ratingByStudent');
      Route::post('/ratingbyteacher','ReviewsController@ratingByTeacher');
 
      });

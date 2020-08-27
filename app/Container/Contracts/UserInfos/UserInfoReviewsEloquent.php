@@ -2,8 +2,12 @@
 namespace App\Container\Contracts\UserInfos;
 
 use App\UserInfo;
-use App\ContainerContracts\UserInfos\UserInfoReviewsContract;
-use App\Notifications\Teacher\RatingNewTeacher;
+use App\Container\Contracts\UserInfos\UserInfoReviewsContract;
+use App\Notifications\RatingNewTeacher;
+
+use App\User;
+use App\Models\Lecture;
+
 
 class UserInfoReviewsEloquent implements UserInfoReviewsContract
 {
@@ -19,10 +23,12 @@ class UserInfoReviewsEloquent implements UserInfoReviewsContract
     $avg_rate = ceil(($profile->avg_rate + $data->rate) / $rates_count);
     $month_rate = $data->month_rate;
     
-    $user = $profile->users;
+    // $user = $profile->users;
+    $user =User::find( $profile->user_id);
+
     $user->notify(new RatingNewTeacher(
-      \App\User::find($data->student_id), 
-      \App\Lecture::find($data->lecture_id)));
+      User::find($data->student_id), 
+      Lecture::find($data->lecture_id)));
       
     return $profile->update([
       "rates_count" => $rates_count,
