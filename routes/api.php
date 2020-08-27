@@ -36,6 +36,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::put('/updateEducation','EditProfileController@updateEducation');
 
      //sessions
+     Route::get('getpastsessions','CreateSessionController@getPastSessions');
+     Route::get('getupcomingsessions','CreateSessionController@getUpcomingSessions');
      Route::post('createsession','CreateSessionController@createSession');
      Route::post('updatesession','CreateSessionController@update');
      Route::delete('deletesession','CreateSessionController@destroy');

@@ -11,6 +11,8 @@ use Validator;
 use Carbon\Carbon;
 use App\Container\Contracts\Lectures\LecturesContract;
 use App\Container\Contracts\Lectures\LecturesEloquent;
+use App\Container\Contracts\Users\UserEnrollsContract;
+use App\Container\Contracts\Users\UserEnrollsEloquent;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -18,9 +20,10 @@ use Illuminate\Support\Facades\Auth;
 class CreateSessionController extends Controller
 {
     protected $lecture;
-    public function __construct( LecturesContract $lecture)
+    public function __construct( LecturesContract $lecture, UserEnrollsContract $user_enroll)
     {
       //parent::__construct();
+      $this->user_enroll = $user_enroll;
       $this->lecture = $lecture;
     }
   
@@ -58,7 +61,12 @@ class CreateSessionController extends Controller
       
         return response()->json(['message'=>"session created"], 200); 
     }
-
+public function getPastSessions(){
+  return $this->user_enroll->getPastSessionForUserWithPaginate(Auth::id());
+}
+public function getUpcomingSessions(){
+  return $this->user_enroll->getComingSessionForUserWithPaginate(Auth::id());
+}
 
     public function update(Request $request)
     {

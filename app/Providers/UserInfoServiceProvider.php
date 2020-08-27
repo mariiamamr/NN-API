@@ -15,6 +15,8 @@ class UserInfoServiceProvider extends ServiceProvider
     {
         $this->app->bind('App\Container\Contracts\UserInfos\WeeklyContract', 'App\Container\Contracts\UserInfos\WeeklyEloquent');
         $this->app->bind('App\Container\Contracts\UserInfos\UserInfosContract', 'App\Container\Contracts\UserInfos\UserInfosEloquent');
+        $this->app->bind('App\Container\Contracts\Users\UserEnrollsContract', 'App\Container\Contracts\Users\UserEnrollsEloquent');
+
     }
 
     // /**
