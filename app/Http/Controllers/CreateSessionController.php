@@ -85,11 +85,17 @@ class CreateSessionController extends Controller
       
         return response()->json(['message'=>"session created"], 200); 
     }
-public function getPastSessions(){
+public function getPastSessionsForStudents(){
   return $this->user_enroll->getPastSessionForUserWithPaginate(Auth::id());
 }
-public function getUpcomingSessions(){
+public function getUpcomingSessionsForStudents(){
   return $this->user_enroll->getComingSessionForUserWithPaginate(Auth::id());
+}
+public function getPastSessionsForTeachers(){
+  return $this->user_enroll->getPastSessionForTeacherWithPaginate(Auth::id());
+}
+public function getUpcomingSessionsForTeachers(){
+  return $this->user_enroll->getComingSessionForTeacherWithPaginate(Auth::id());
 }
 
     public function update(Request $request)
@@ -104,13 +110,12 @@ public function getUpcomingSessions(){
             return response()->json(['error' => "user must be a teacher"], 401);   
         }
       
-        $request->validate([
+     /*   $request->validate([
             'time_from' => 'required',
             'date' => 'required',
-            'weekly' => 'boolean',
+            'weekly' => 'required',
             'lecture_id'=>'required'
-        ]);
-
+        ]);*/
       if ($request->date == date('Y-m-d')) {
         $should_start = Carbon::now()->addHours(2);
         if ($request->time_from <= $should_start->format('H:i')) {
