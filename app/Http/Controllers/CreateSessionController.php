@@ -28,9 +28,9 @@ class CreateSessionController extends Controller
     }
       /**
      * Create a new session
-     * @group  edit profile
+     * @group  Sessions
      * 
-     * used to add a new available slot by a teacher. Adds a new row to the Lectures table. 
+     * used to add a new available slot by a teacher. There must be at least 2 hours before the start time.
      *  
      * @authenticated
      * @bodyparam  time_from time required The session's start time in the format hh:mm
@@ -97,6 +97,36 @@ public function getPastSessionsForTeachers(){
 public function getUpcomingSessionsForTeachers(){
   return $this->user_enroll->getComingSessionForTeacherWithPaginate(Auth::id());
 }
+      /**
+     * Update an upcoming session
+     * @group  Sessions
+     * 
+     * used by the teacher to edit the details of one of his upcoming sessions. refer to create session for validations.
+     *  
+     * @authenticated
+     * @bodyparam  new JSON required The session's old details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "05:00", "date":"2020-12-30", "weekly":"false"}
+     * @bodyparam  old JSON required The session's new details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "07:00", "date":"2020-12-29", "weekly":"false"}
+     * @response {
+     *   "started":0,
+     *   "teacher_id":17,
+     *   "date":"2020-10-16",
+     *   "time_from":"09:00:00",
+     *   "time_to":"10:10:00",
+     *   "created_at":"2020-08-27 19:31:13",
+     *   "updated_at:"2020-08-27 19:31:13"
+     * }
+     * @response 401{
+     *      "error": "unauthenticated"
+     * }
+     * @response 401{
+     *      "error": "user must be a teacher"
+     * }
+     * @response 403{
+     *      "error": "less than two hours left"
+     * }
+     * 
+     */
+
 
     public function update(Request $request)
     {
