@@ -26,7 +26,31 @@ class CreateSessionController extends Controller
       $this->user_enroll = $user_enroll;
       $this->lecture = $lecture;
     }
-  
+      /**
+     * Create a new session
+     * @group  edit profile
+     * 
+     * used to add a new available slot by a teacher. Adds a new row to the Lectures table. 
+     *  
+     * @authenticated
+     * @bodyparam  time_from time required The session's start time in the format hh:mm
+     * @bodyparam  date date required The session's date in the format YYYY-MM-DD
+     * @bodyparam  weekly boolean required whether the session should be repeated every week or not.
+     * @response {
+     *      "message": "session created"
+     * }
+     * @response 401{
+     *      "error": "unauthenticated"
+     * }
+     * @response 401{
+     *      "error": "user must be a teacher"
+     * }
+     * @response 403{
+     *      "error": "less than two hours left"
+     * }
+     * 
+     */
+
     public function createSession(Request $request){
         $user = User::find(Auth::id());
         if (!$user) {
@@ -56,7 +80,7 @@ class CreateSessionController extends Controller
 
         if (!$slot) {
             //can't add new slot in this day
-            return response()->json(['error' => "can't add new slot in this day"], 403);   //????
+            return response()->json(['error' => "can't add new slot in this day"], 403);  
         }
       
         return response()->json(['message'=>"session created"], 200); 
