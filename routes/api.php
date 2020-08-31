@@ -49,6 +49,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('/ratingbystudent','ReviewsController@ratingByStudent');
      Route::post('/ratingbyteacher','ReviewsController@ratingByTeacher');
 
+     //home page
+     Route::get('/home','HomeController@getHome');
+
+
      });
 //email verification for new users
  Route::get('/email/resend','VerificationController@resend')->name('verification.resend');
