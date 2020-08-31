@@ -189,6 +189,9 @@ return [
         App\Providers\LanguageServiceProvider::class,
         App\Providers\SearchQueryServiceProvider::class,
         App\Providers\SubjectServiceProvider::class,
+        App\Providers\FileServiceProvider::class,
+        App\Providers\ImageServiceProvider::class,
+        App\Providers\RoleServiceProvider::class,
 
 
     ],
