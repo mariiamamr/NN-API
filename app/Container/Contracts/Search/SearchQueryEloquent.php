@@ -2,7 +2,7 @@
 namespace App\Container\Contracts\Search;
 
 use App\Models\SearchQuery;
-use App\Container\Contracts\SearchQueryContract;
+use App\Container\Contracts\Search\SearchQueryContract;
 use App\Container\Contracts\Subjects\SubjectsContract;
 use App\Container\Contracts\Grades\GradesContract;
 use App\Container\Contracts\Languages\LanguagesContract;

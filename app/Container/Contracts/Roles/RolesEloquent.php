@@ -1,5 +1,5 @@
 <?php
-namespace App\Container\Repos\Roles;
+namespace App\Container\Contracts\Roles;
 
 use App\Container\Contracts\Roles\RolesContract;
 use App\Models\Role;

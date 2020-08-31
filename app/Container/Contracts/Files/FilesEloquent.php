@@ -1,5 +1,5 @@
 <?php
-namespace App\Container\Contracts\File;
+namespace App\Container\Contracts\Files;
 
 use App\Container\Contracts\Files\FilesContract;
 use App\Container\Contracts\Files\ImagesEloquent;

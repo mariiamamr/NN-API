@@ -9,7 +9,7 @@ use App\Container\Contracts\Blogs\BlogsContract;
 use App\Container\Contracts\Lectures\LecturesContract;
 //use App\Container\Contracts\Services\TokBox\TokBoxContract;
 //use App\Container\Repos\Services\TokBox\TokBoxRepo;
-use App\Container\Contracts\SearchQueryContract;
+use App\Container\Contracts\Search\SearchQueryContract;
 use App\Models\Subject;
 use App\User;
 class HomeController extends Controller
@@ -33,7 +33,9 @@ class HomeController extends Controller
       $this->query->set($request->all());
       return $data;
     }
-    return parent::view('index', ["data" => $data]);
+    //return parent::view('index', ["data" => $data]);
+    return response()->json(['data' => $data], 200);   
+
   }
 
   public function approvedTeachers()
@@ -47,8 +49,8 @@ class HomeController extends Controller
     }
     if ($teachers->all() == null) {
       $this->query->set(request()->all());
-      return $teachers;
+      return response()->json(['teachers' => $teachers], 200);   
     }
-    return $teachers;
-  }
+    return response()->json(['teachers' => $teachers], 200);   
+}
 }

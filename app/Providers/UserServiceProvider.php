@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class RoleServiceProvider extends ServiceProvider
+class UserServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -13,7 +13,8 @@ class RoleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Container\Contracts\Roles\RolesContract', 'App\Container\Contracts\Roles\RolesEloquent');
+        $this->app->bind('App\Container\Contracts\Users\UsersContract', 'App\Container\Contracts\Users\UsersEloquent');
     }
 
+    
 }

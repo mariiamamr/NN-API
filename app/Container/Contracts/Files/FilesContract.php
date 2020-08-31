@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Container\Contracts\File;
+namespace App\Container\Contracts\Files;
 
 
 use App\Models\File;

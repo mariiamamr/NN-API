@@ -9,8 +9,8 @@ use App\User;
 use App\Models\File;
 use App\Models\Certificate;
 use App\Container\Contracts\Users\UsersContract;
-use CApp\Container\ontracts\UserInfos\UserInfosContract;
-use Contracts\Files\FilesContract;
+use App\Container\Contracts\UserInfos\UserInfosContract;
+use App\Container\Contracts\Files\FilesContract;
 use App\Models\Grade;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +38,7 @@ class UsersEloquent implements UsersContract
         User $user,
         UserInfosContract $user_info,
         FilesContract $file,
-        Admin $admin,
+        //Admin $admin,
         Permission $permission,
         RolesContract $role,
         Subject $subject
@@ -47,7 +47,7 @@ class UsersEloquent implements UsersContract
         $this->user_info = $user_info;
         $this->file = $file;
         $this->number_of_pages = config('static.pagination.rowsPerPage');
-        $this->admin = $admin;
+        //$this->admin = $admin;
         $this->permission = $permission;
         $this->role = $role;
         $this->subject = $subject;
@@ -361,6 +361,7 @@ class UsersEloquent implements UsersContract
         }
 
         if (isset($data->subject) && !empty($data->subject)) {
+           
             $query = $query->whereHas('specialist_in', function ($query) use ($data) {
                 $query->where("subjects.id", $data->subject);
             });
