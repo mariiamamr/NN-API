@@ -50,7 +50,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('/ratingbyteacher','ReviewsController@ratingByTeacher');
 
      //home page
-     Route::get('/home','HomeController@search');
+     Route::get('/home','HomeController@approvedTeachers');
 
 
      });
