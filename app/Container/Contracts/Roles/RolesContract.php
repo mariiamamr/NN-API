@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\Roles;
+namespace App\Container\Contracts\Roles;
 
-use App\Role;
+use App\Models\Role;
 
 
 interface RolesContract

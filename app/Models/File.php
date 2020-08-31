@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UniversityDegree extends Model
+class File extends Model
 {
-    //
     protected $fillable = [
         'title',
-        'slug',
+        'ext',
+        'size',
+        'mime',
+        'original_title',
+        'type'
     ];
 
 }

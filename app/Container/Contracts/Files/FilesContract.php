@@ -1,16 +1,10 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Backend Dev
- * Date: 9/25/2018
- * Time: 4:14 PM
- */
 
-namespace Contracts\Files;
+namespace App\Container\Contracts\File;
 
 
-use App\File;
+use App\Models\File;
 
 interface FilesContract
 {

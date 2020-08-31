@@ -6,22 +6,22 @@ namespace App\Container\Contracts\Users;
 
 use App\User;
 // //use App\Admin;
-use App\File;
-// use App\Models\Certificate;
+use App\Models\File;
+use App\Models\Certificate;
 use App\Container\Contracts\Users\UsersContract;
 use CApp\Container\ontracts\UserInfos\UserInfosContract;
-// use Contracts\Files\FilesContract;
+use Contracts\Files\FilesContract;
 use App\Models\Grade;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-// use App\Container\Contracts\Roles\RolesContract;
-// use App\Models\Permission;
+use App\Container\Contracts\Roles\RolesContract;
+use App\Models\Permission;
 // //use App\Notifications\Admin\AdminNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
 use App\Models\Subject;
 
-class UsersRepo implements UsersContract
+class UsersEloquent implements UsersContract
 {
     public $number_of_pages = 10;
 

@@ -1,5 +1,5 @@
 <?php
-namespace Contracts\Files;
+namespace App\Container\Contracts\Files;
 
 use ImageLib;
 
