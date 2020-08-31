@@ -7,19 +7,19 @@
  * Time: 11:30 AM
  */
 
-namespace Contracts\Users;
+namespace App\Container\Contracts\Users;
 
 
 use App\User;
-use App\Admin;
-use Contracts\UserInfos\UserInfosContract;
-use Contracts\Files\FilesContract;
-use Contracts\Roles\RolesContract;
-use App\Permission;
-use App\Notifications\Admin\AdminNotification;
+// //use App\Admin;
+use App\Container\Contracts\UserInfos\UserInfosContract;
+// use App\Container\Contracts\Files\FilesContract;
+// use App\Container\Contracts\Roles\RolesContract;
+// use App\Models\Permission;
+// //use App\Notifications\Admin\AdminNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
-use App\Subject;
+use App\Models\Subject;
 
 interface UsersContract
 {
@@ -27,7 +27,7 @@ interface UsersContract
         User $user,
         UserInfosContract $user_info,
         FilesContract $file,
-        Admin $admin,
+        // Admin $admin,
         Permission $permission,
         RolesContract $role,
         Subject $subject

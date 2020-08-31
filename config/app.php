@@ -186,6 +186,9 @@ return [
         App\Providers\ReviewServiceProvider::class,
         App\Providers\ReviewStudentServiceProvider::class,
         App\Providers\UserInfoReviewsServiceProvider::class,
+        App\Providers\LanguageServiceProvider::class,
+        App\Providers\SearchQueryServiceProvider::class,
+        App\Providers\SubjectServiceProvider::class,
 
 
     ],

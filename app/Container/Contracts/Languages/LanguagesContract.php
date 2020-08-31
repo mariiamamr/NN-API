@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\Languages;
+namespace App\Container\Contracts\Languages;
 
-use App\Language;
+use App\Models\Language;
 
 
 interface LanguagesContract

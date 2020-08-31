@@ -1,17 +1,24 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CertificateModel extends Model
+class Certificate extends Model
 {
-    protected $table='certificates';
-    public $timestamps=false;
-    protected $fillable=[
+    public $fillable = [
         'slug',
         'label',
-        'is_required',
-        
+        'is_required'
     ];
+
+    public static $rules = [
+        'label' => 'required',
+        'slug' =>'unique:certificates'
+    ];
+
+    public function files()
+    {
+        return $this->belongsTo('App\File');
+    }
 }

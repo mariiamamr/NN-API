@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\Subjects;
+namespace App\Container\Contracts\Subjects;
 
-use App\Subject;
+use App\Models\Subject;
 
 
 interface SubjectsContract
