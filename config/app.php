@@ -193,6 +193,8 @@ return [
         App\Providers\ImageServiceProvider::class,
         App\Providers\RoleServiceProvider::class,
         App\Providers\UserServiceProvider::class,
+        App\Providers\EduSystemProvider::class,
+        
 
 
     ],

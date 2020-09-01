@@ -28,13 +28,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::get('details', 'UserController@details');
 
      //Edit Profile
+     //Setters
      Route::post('editprofile','EditProfileController@updateAuthUser');
      Route::post('priceinfo','PriceInfoController@updatePriceInfo');
-     Route::get('/getexperience','UserController@getexperience');
      Route::post('/updatecertificates','EditProfileController@updateCertificates');
      Route::put('/updateexperience','EditProfileController@updateExperience');
      Route::put('/updateeducation','EditProfileController@updateEducation');
      Route::post('/updatesubjects','EditProfileController@updateSubjects');
+     //Getters
+     Route::get('/getexperience','UserController@getexperience');
+     Route::get('/getsubjects','GetProfileController@getSubjects');
+     Route::get('/getlanguages','GetProfileController@getLanguages');
+     Route::get('/getedusystems','GetProfileController@getEdusystems');
+     Route::get('/getgrades','GetProfileController@getGrades');
 
 
      //sessions

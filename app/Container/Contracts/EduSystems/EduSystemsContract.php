@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\EduSystems;
+namespace App\Container\Contracts\EduSystems;
 
-use App\EduSystem;
+use App\Models\EduSystem;
 
 
 
