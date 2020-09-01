@@ -17,6 +17,7 @@ use App\UserInfo;
 use App\Models\Lecture;
 use App\Models\Review;
 use App\Models\RewiewStudent;
+use App\Models\EduSystem;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -84,11 +85,11 @@ protected $hidden = [
         return $this->belongsTo(UniversityDegree::class);
     }
 
-  /*  public function edu_systems()
+    public function edu_systems()
     {
         return $this->belongsToMany(EduSystem::class, 'edu_user', 'user_id', 'edu_id');
     }
-*/
+
     public function languages()
     {
         return $this->belongsToMany(Language::class)

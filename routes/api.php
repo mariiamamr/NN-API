@@ -31,9 +31,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('editprofile','EditProfileController@updateAuthUser');
      Route::post('priceinfo','PriceInfoController@updatePriceInfo');
      Route::get('/getexperience','UserController@getexperience');
-     Route::post('/updateCertificates','EditProfileController@updateCertificates');
+     Route::post('/updatecertificates','EditProfileController@updateCertificates');
      Route::put('/updateexperience','EditProfileController@updateExperience');
-     Route::put('/updateEducation','EditProfileController@updateEducation');
+     Route::put('/updateeducation','EditProfileController@updateEducation');
+     Route::post('/updatesubjects','EditProfileController@updateSubjects');
+
 
      //sessions
      Route::get('getpastsessionsforstudents','CreateSessionController@getPastSessionsForStudents');

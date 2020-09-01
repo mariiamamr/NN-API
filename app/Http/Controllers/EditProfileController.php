@@ -8,11 +8,18 @@ use App\UserInfo;
 use App\UniversityDegree;
 use Validator;
 use File;
-
+use App\Container\Contracts\Users\UsersContract;
 
 use Illuminate\Support\Facades\Auth;
 class EditProfileController extends Controller
 {
+
+    protected $user;
+    public function __construct( UsersContract $user)
+    {
+      $this->user = $user;
+
+    }
     protected $addCertificationValidationMessages = [
         'certifications.*.thumb.mimes' => 'The Certifications File must be a file of type: jpeg, jpg, png, pdf, svg.',
     ];
@@ -221,4 +228,15 @@ class EditProfileController extends Controller
        return response()->json($user,201); //Created
           
       }
+
+      public function updateSubjects(Request $request)
+      {
+      
+          $user = $this->user->updateTeacherProfile(Auth::id(), $request);
+        
+          return response()->json($user,200); //Updated
+        
+      }
+
+
 }

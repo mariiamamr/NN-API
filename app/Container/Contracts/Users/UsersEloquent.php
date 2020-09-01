@@ -413,7 +413,7 @@ class UsersEloquent implements UsersContract
     public function updateTeacherProfile($id, $data)
     {
         $user = $this->get($id);
-        if (isset($data->full_name)) {
+        /*if (isset($data->full_name)) {
             \tap($user->update([
                 'full_name' => $data->full_name,
                 'birth' => $data->date,
@@ -425,7 +425,7 @@ class UsersEloquent implements UsersContract
             $image = $data->image;
             $user->image_url = $this->file->uploadTeacherProfile($image);
             $user->save();
-        }
+        }*/
 
         if (isset($data->subjects)) {
             $subjects = array_values(array_filter($data->subjects, function ($item) {
@@ -451,7 +451,7 @@ class UsersEloquent implements UsersContract
             $user->edu_systems()->sync(array_filter($data->edu_systems));
         }
 
-        if (isset($data->certifications)) {
+       /* if (isset($data->certifications)) {
 
             //Validation for uploading file extenstions
             $data->validate($this->addCertificationValidationRules, $this->addCertificationValidationMessages);
@@ -488,8 +488,8 @@ class UsersEloquent implements UsersContract
             $message = 'Price approval of teacher needing for approval!';
             Notification::send($admins, new AdminNotification($message));
         }
-
-        if (isset($data->payment_info)) {
+*/
+       /* if (isset($data->payment_info)) {
             $payment = $data->payment_info;
             $payment_array = [];
             $payment_array[] = [
@@ -508,7 +508,7 @@ class UsersEloquent implements UsersContract
                 'payment_info' => $data->payment_info
             ]);
         }
-
+*/
         if (isset($data->other_subjects)) {
             foreach ($data->other_subjects as $subject) {
                 $subjects =  $this->subject->create(['title' => $subject, 'slug' => make_slug($subject)]);
