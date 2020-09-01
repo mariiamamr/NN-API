@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\UniversityDegrees;
+namespace App\Container\Contracts\UniversityDegrees;
 
-use App\UniversityDegree;
+use App\Models\UniversityDegree;
 
 
 

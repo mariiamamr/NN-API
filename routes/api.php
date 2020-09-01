@@ -26,6 +26,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::get('logout', 'UserController@logout'); //will see
      Route::get('details', 'UserController@details');
+     Route::get('getprofile', 'GetProfileController@getUserProfile');
+
 
      //Edit Profile
      //Setters
@@ -52,6 +54,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('updatesession','CreateSessionController@update');
      Route::delete('deletesession','CreateSessionController@destroy');
      Route::post('enrollsession','CreateSessionController@enroll');
+
+
 
      //ratings
      Route::post('/ratingbystudent','ReviewsController@ratingByStudent');

@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\Certificates;
+namespace App\Container\Contracts\Certificates;
 
-use App\Certificate;
+use App\Models\Certificate;
 
 
 

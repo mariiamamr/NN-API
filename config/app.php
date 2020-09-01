@@ -194,6 +194,10 @@ return [
         App\Providers\RoleServiceProvider::class,
         App\Providers\UserServiceProvider::class,
         App\Providers\EduSystemProvider::class,
+        App\Providers\UniversityDegreeServiceProvider::class,
+        App\Providers\CertificateServiceProvider::class,
+
+
         
 
 
