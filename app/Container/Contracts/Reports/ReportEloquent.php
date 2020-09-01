@@ -19,15 +19,15 @@ class ReportEloquent implements ReportContract
     }
 
     public function set($user_id, $data)
-    {
+    {        
+        $user = $this->user->get($user_id);
         $report = $this->report->create([
-            'email' => $data->email,
+            'email' =>$user->email,
             'content' => $data->content,
             'user_id' => $user_id,
             'teacher_id' => $data->teacher_id
         ]);
 
-        $user = $this->user->get($user_id);
         $message = "Your report has been submitted successfully";
         Notification::send($user, new ReportNotification($message));
 
