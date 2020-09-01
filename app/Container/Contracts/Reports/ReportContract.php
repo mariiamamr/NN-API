@@ -1,8 +1,8 @@
 <?php
-namespace Contracts\Reports;
+namespace  App\Container\Contracts\Reports;
 
-use App\Report;
-use Contracts\Users\UsersContract;
+use App\Models\Report;
+use App\Container\Contracts\Users\UsersContract;
 
 interface ReportContract
 {
