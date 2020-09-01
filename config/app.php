@@ -196,6 +196,7 @@ return [
         App\Providers\EduSystemProvider::class,
         App\Providers\UniversityDegreeServiceProvider::class,
         App\Providers\CertificateServiceProvider::class,
+        App\Providers\PriceServiceProvider::class,
 
 
         

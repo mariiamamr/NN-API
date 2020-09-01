@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\Prices;
+namespace App\Container\Contracts\Prices;
 
-use App\Option;
+use App\Models\Option;
 
 interface PricesContract
 {
