@@ -13,18 +13,23 @@ use App\Container\Contracts\Lectures\LecturesContract;
 use App\Container\Contracts\Lectures\LecturesEloquent;
 use App\Container\Contracts\Users\UserEnrollsContract;
 use App\Container\Contracts\Users\UserEnrollsEloquent;
+use App\Container\Contracts\Calenders\CalendersContract;
 use Illuminate\Support\Facades\Auth;
-
+use App\Container\Contracts\Users\UsersContract;
 
 
 class CreateSessionController extends Controller
 {
-    protected $lecture;
-    public function __construct( LecturesContract $lecture, UserEnrollsContract $user_enroll)
+  protected $lecture;
+  protected $calender;
+  protected $user;
+
+  public function __construct( UsersContract $user, CalendersContract $calender, LecturesContract $lecture, UserEnrollsContract $user_enroll)
     {
-      //parent::__construct();
       $this->user_enroll = $user_enroll;
       $this->lecture = $lecture;
+      $this->user = $user;
+      $this->calender = $calender;
     }
       /**
      * Create a new session
@@ -187,4 +192,67 @@ public function destroy(Request $request)
         $result = $this->lecture->enrollLectureForUser(Auth::id(), $request);
         return response()->json(["result" => $result], 200);
     }
+
+    public function available_days()
+    {
+        $id    = (int) request('teacher_id');
+        $month = (int) request('month');
+        $year  = (int) request('year');
+
+        if ($id <= 0)
+            return response()->json([], 404);
+
+        $teacher = $this->user->get($id);
+
+        if (!isset($teacher->profile))
+            return response()->json([], 404);
+
+        $month = sprintf("%02d", $month);
+
+        $slots = $this->calender->getDates($teacher->profile, "{$year}-{$month}-01");
+
+        $result = [];
+
+        foreach ($slots as $slot) {
+            $result[] = ["date" => $slot, "badge" => false];
+        }
+
+        return response()->json($result);
+    }
+
+    public function available_slots()
+    {
+        $id   = (int) request('teacher');
+        $date = request('date');
+
+        if ($id <= 0)
+            return response()->json([], 404);
+
+        $teacher = $this->user->get($id);
+
+        if (!isset($teacher->profile))
+            return response()->json([], 404);
+
+        $slots  = $this->calender->getDateSlots($teacher->profile, $date, true);
+        $result = [];
+
+        foreach ($slots['slots'] as $slot) {
+            if ($slot['date'] == request('date')) {
+                $result[] = [
+                    'id'        => $slot['lecture_id'],
+                    'title'     => $slot['time_from'] . ' To ' . $slot['time_to'],
+                    'time_from' => $slot['time_from'],
+                    'time_to'   => $slot['time_to'],
+                    'date'      => request('date')
+                ];
+            }
+        }
+
+        return response()->json([
+            'date'  => $slots,
+            'slots' => $result
+        ]);
+    }
+
+
 }

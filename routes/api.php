@@ -54,6 +54,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::post('updatesession','CreateSessionController@update');
      Route::delete('deletesession','CreateSessionController@destroy');
      Route::post('enrollsession','CreateSessionController@enroll');
+     Route::get('availabledays','CreateSessionController@available_days');
+     Route::get('availableslots','CreateSessionController@available_slots');
 
 
 

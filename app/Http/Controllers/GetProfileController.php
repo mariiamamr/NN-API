@@ -128,7 +128,7 @@ public function getUserProfile(){
         'langs' => $this->language->getList(['id', 'title']),
         'edus' => $this->edu_system->getList(['id', 'title']),
         'certificates' => $this->certificates->getList(['id', 'label', 'is_required']),
-       'price_config' => json_decode($this->price->get()->value),
+        'price_config' => json_decode($this->price->get()->value),
         'user_certifications' => isset($user->profile->certifications) ? json_decode($user->profile->certifications, 'Array') : null,
         'payment_info' => isset($user->profile->payment_info) ? json_decode($user->profile->payment_info, 'Array') : null,
         'profilePower' => $profilePower,
