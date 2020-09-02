@@ -13,10 +13,10 @@ use App\User;
 use App\Models\Schedule;
 use App\Models\Lecture;
 use App\Models\Order;
-use Contracts\Payments\PaymentsContract;
+use App\Container\Contracts\Payments\PaymentsContract;
 //use Contracts\Services\TokBox\TokBoxContract;
 use App\Container\Contracts\Users\UserEnrollsContract;
-use Contracts\Payments\FawryContract;
+use App\Container\Contracts\Payments\FawryContract;
 use Carbon\Carbon;
 
 class UserEnrollsEloquent implements UserEnrollsContract
@@ -25,22 +25,22 @@ class UserEnrollsEloquent implements UserEnrollsContract
     public function __construct(
         Schedule $schedule,
         Lecture $lecture,
-        Order $order
-       // PaymentsContract $payment,
+        Order $order,
+        PaymentsContract $payment,
        // TokBoxContract $tokbox,
-        //FawryContract $fawry
+        FawryContract $fawry
 
     ) {
         $this->schedule        = $schedule;
         $this->lecture         = $lecture;
         $this->order           = $order;
-//        $this->payment         = $payment;
+       $this->payment         = $payment;
 //        $this->tokbox          = $tokbox;
         $this->number_of_pages = config('static.pagination.rowsPerPage');
-//        $this->fawry           = $fawry;
+        $this->fawry           = $fawry;
     }
 
-   /* public function getPendingItems($user_id)
+   public function getPendingItems($user_id)
     {
         return $this->schedule
             ->where('user_id', $user_id)
@@ -192,7 +192,7 @@ class UserEnrollsEloquent implements UserEnrollsContract
                 'user_id'     => \Auth::user()->id,
                 'merchant_reference_number'   => time() . rand(1111, 9999),
                 'payment_method' => $data->payment_method,
-                'expiry_hours'   => (min($fawryExpiryHours) >= 24) ? '24' : min($fawryExpiryHours)
+                'expiry_hours'   => ($fawryExpiryHours >= 24) ? '24' : $fawryExpiryHours
             ]);
 
             if ($total_amount == 0)
@@ -262,7 +262,7 @@ class UserEnrollsEloquent implements UserEnrollsContract
             ->whereIn('id', $lectures_ids)
             ->update([
                 'payed_user_id' => $userId,
-                'tokbox_session_id' => $this->tokbox->create_session()
+               // 'tokbox_session_id' => $this->tokbox->create_session()
             ]);
 
         $order->update(['status' => 'success']);
@@ -303,7 +303,6 @@ class UserEnrollsEloquent implements UserEnrollsContract
 
         return $flag_1 && $flag_2;
     }
-*/
     public function getSessionForUserWithPaginate($user_id, $date, $operator = '>=')
     {
         return $this->schedule

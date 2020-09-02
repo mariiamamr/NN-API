@@ -27,6 +27,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     //report teacher
     Route::post('report', 'ReportController@report');
 
+    //payments
+    Route::post('checkout', 'PaymentController@checkout');
+    
+
 
     Route::get('logout', 'UserController@logout'); //will see
      Route::get('details', 'UserController@details');

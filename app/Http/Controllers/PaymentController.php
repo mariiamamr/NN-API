@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Payments;
+namespace App\Http\Controllers;
 
 use App\Models\Lecture;
 use App\Models\Order;
@@ -22,7 +22,7 @@ use App\Container\Contracts\Payments\FawryContract;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Log;
 
-class PaymentsController extends Controller
+class PaymentController extends Controller
 {
     protected $user_enrolls;
     protected $promocode;
@@ -104,19 +104,23 @@ class PaymentsController extends Controller
     $url = $this->user_enrolls->checkout(Auth::id(), $request);
 
     if (is_string($url)) {
-      return redirect($url);
+      return response()->json(['url' => $url],200);   
     } elseif ($url instanceof Order) {
-      return $this->freeLectures($url);
+      
+      return  $this->freeLectures($url);   
+
     }
 
-    alert()->error(__('frontend.error_checkout'), __('frontend.sorry'))->persistent('Close');
-    return redirect()->back();
+    return response()->json(['error' => 'no items found for checkout'],400);   
+
   }
 
   public function freeLectures(Order $order)
   {
     $this->user_enrolls->booked($order);
-    alert()->success(__('frontend.success_checkout'), __('frontend.thanks'))->persistent('Close');
+    //alert()->success(__('frontend.success_checkout'), __('frontend.thanks'))->persistent('Close');
+    //return response()->json(['sucess' => 'thanks'],200);   
+
 
     $lectures = json_decode($order->lectures, 'Array');
 
@@ -155,10 +159,12 @@ class PaymentsController extends Controller
         $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
       };
 
-    $teacher->notify(new BookSession($teacher_message));
-    $user->notify(new BookSessionStudent($message));
+    /*$teacher->notify(new BookSession($teacher_message));
+    $user->notify(new BookSessionStudent($message));*/
 
-    return redirect()->route('front.profile.index');
+    //return redirect()->route('front.profile.index');
+    return response()->json(['sucess' => 'thank you'],200);   
+
   }
 
 
@@ -211,8 +217,8 @@ class PaymentsController extends Controller
           $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
         };
   
-        $teacher->notify(new BookPendingSession($teacher_message));
-        $user->notify(new BookPendingSessionStudent($message));
+       // $teacher->notify(new BookPendingSession($teacher_message));
+        //$user->notify(new BookPendingSessionStudent($message));
      
       return redirect()->to('/');
   }
@@ -283,8 +289,8 @@ class PaymentsController extends Controller
             $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
           };
     
-          $teacher->notify(new BookSession($teacher_message));
-          $user->notify(new BookSessionStudent($message));
+         // $teacher->notify(new BookSession($teacher_message));
+         // $user->notify(new BookSessionStudent($message));
       }
 
       if ($fawryResponse['OrderStatus'] == "EXPIRED" || $fawryResponse['OrderStatus'] == "CANCELED") {
@@ -292,7 +298,7 @@ class PaymentsController extends Controller
         $order->update(["status" => $fawryResponse['OrderStatus']]);
         $user = $this->user->get($order->user_id);
         $message = 'Session has been '.$fawryResponse['OrderStatus'];
-        $user->notify(new BookSession($message));
+       // $user->notify(new BookSession($message));
       }
 
       
@@ -359,8 +365,8 @@ class PaymentsController extends Controller
       $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
     };
 
-    $teacher->notify(new BookSession($teacher_message));
-    $user->notify(new BookSessionStudent($message));
+   // $teacher->notify(new BookSession($teacher_message));
+   // $user->notify(new BookSessionStudent($message));
 
     return redirect()->to('/');
   }
