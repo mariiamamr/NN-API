@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Container\Contracts\Payments\PaymentsContract;
 use App\Container\Contracts\Users\UserEnrollsContract;
 use App\Container\Contracts\PromoCodes\PromoCodesContract;
-// use App\Notifications\BookSession;
-// use App\Notifications\BookSessionStudent;
-// use App\Notifications\BookPendingSession;
-// use App\Notifications\BookPendingSessionStudent;
+use App\Notifications\BookSession;
+use App\Notifications\BookSessionStudent;
+use App\Notifications\BookPendingSession;
+use App\Notifications\BookPendingSessionStudent;
 use App\Container\Contracts\Payments\FawryContract;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Log;
@@ -159,10 +159,10 @@ class PaymentController extends Controller
         $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
       };
 
-    /*$teacher->notify(new BookSession($teacher_message));
-    $user->notify(new BookSessionStudent($message));*/
+    $teacher->notify(new BookSession($teacher_message));
+    $user->notify(new BookSessionStudent($message));
 
-    //return redirect()->route('front.profile.index');
+    return redirect()->route('front.profile.index');
     return response()->json(['sucess' => 'thank you'],200);   
 
   }
@@ -217,8 +217,8 @@ class PaymentController extends Controller
           $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
         };
   
-       // $teacher->notify(new BookPendingSession($teacher_message));
-        //$user->notify(new BookPendingSessionStudent($message));
+       $teacher->notify(new BookPendingSession($teacher_message));
+        $user->notify(new BookPendingSessionStudent($message));
      
       return redirect()->to('/');
   }
@@ -289,8 +289,8 @@ class PaymentController extends Controller
             $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
           };
     
-         // $teacher->notify(new BookSession($teacher_message));
-         // $user->notify(new BookSessionStudent($message));
+         $teacher->notify(new BookSession($teacher_message));
+         $user->notify(new BookSessionStudent($message));
       }
 
       if ($fawryResponse['OrderStatus'] == "EXPIRED" || $fawryResponse['OrderStatus'] == "CANCELED") {
@@ -298,7 +298,7 @@ class PaymentController extends Controller
         $order->update(["status" => $fawryResponse['OrderStatus']]);
         $user = $this->user->get($order->user_id);
         $message = 'Session has been '.$fawryResponse['OrderStatus'];
-       // $user->notify(new BookSession($message));
+       $user->notify(new BookSession($message));
       }
 
       
@@ -365,8 +365,8 @@ class PaymentController extends Controller
       $teacher_message.= $schedule_date['date'] .' at '. $schedule_date['time_from']."\r\n";
     };
 
-   // $teacher->notify(new BookSession($teacher_message));
-   // $user->notify(new BookSessionStudent($message));
+   $teacher->notify(new BookSession($teacher_message));
+   $user->notify(new BookSessionStudent($message));
 
     return redirect()->to('/');
   }
