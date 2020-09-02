@@ -1,7 +1,7 @@
 <?php
-namespace Contracts\PromoCodes;
+namespace App\Container\Contracts\PromoCodes;
 
-use App\Promocode;
+use App\Models\Promocode;
 
 interface PromoCodesContract
 {

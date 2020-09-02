@@ -13,7 +13,7 @@ use App\Container\Contracts\Calenders\CalendersContract;
 use Illuminate\Support\Facades\Mail;
 use App\Container\Contracts\Payments\PaymentsContract;
 use App\Container\Contracts\Users\UserEnrollsContract;
-//use App\Container\Contracts\PromoCodes\PromoCodesContract;
+use App\Container\Contracts\PromoCodes\PromoCodesContract;
 // use App\Notifications\BookSession;
 // use App\Notifications\BookSessionStudent;
 // use App\Notifications\BookPendingSession;
@@ -24,6 +24,14 @@ use Illuminate\Support\Facades\Log;
 
 class PaymentsController extends Controller
 {
+    protected $user_enrolls;
+    protected $promocode;
+    protected $user;
+    protected $payments;
+    protected $lecture;
+    protected $order;
+    protected $fawry;
+    protected $schedule;
 
   public function __construct(
     UserEnrollsContract $user_enrolls,
@@ -35,7 +43,7 @@ class PaymentsController extends Controller
     FawryContract $fawry,
     Schedule $schedule
   ) {
-    parent::__construct();
+    //parent::__construct();
     $this->user_enrolls = $user_enrolls;
     $this->promocode    = $promocode;
     $this->user         = $user;
@@ -79,13 +87,12 @@ class PaymentsController extends Controller
     ]);
   }
 
-  public function checkout(DataValidation $request)
+  public function checkout(Request $request)
   {
     $count = ($request->items != null) ? count($request->items) : 0;
     if ($count == 0 || $request->items == null) {
-      return redirect()->back()->withErrors([
-        "items" => "no items to checkout for."
-      ])->withInput();
+        return response()->json(['error' => 'no items found for checkout'],404);   
+
     }
 
     if ($request->promo_code) {

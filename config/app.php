@@ -199,6 +199,7 @@ return [
         App\Providers\PriceServiceProvider::class,
         App\Providers\ReportServiceProvider::class,
         App\Providers\FawryServiceProvider::class,
+        App\Providers\PromoCodeServiceProvider::class,
 
 
 
