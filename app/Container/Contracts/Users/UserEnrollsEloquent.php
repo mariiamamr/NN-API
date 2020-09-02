@@ -192,7 +192,7 @@ class UserEnrollsEloquent implements UserEnrollsContract
                 'user_id'     => \Auth::user()->id,
                 'merchant_reference_number'   => time() . rand(1111, 9999),
                 'payment_method' => $data->payment_method,
-                'expiry_hours'   => ($fawryExpiryHours >= 24) ? '24' : $fawryExpiryHours
+                'expiry_hours'   => (min($fawryExpiryHours) >= 24) ? '24' : min($fawryExpiryHours)
             ]);
 
             if ($total_amount == 0)
