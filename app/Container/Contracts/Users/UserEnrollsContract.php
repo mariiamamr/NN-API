@@ -13,9 +13,9 @@ namespace App\Container\Contracts\Users;
 use App\Models\Schedule;
 use App\Models\Lecture;
 use App\Models\Order;
-//use Contracts\Payments\PaymentsContract;
+use Contracts\Payments\PaymentsContract;
 //use Contracts\Services\TokBox\TokBoxContract;
-//use Contracts\Payments\FawryContract;
+use Contracts\Payments\FawryContract;
 
 interface UserEnrollsContract
 {

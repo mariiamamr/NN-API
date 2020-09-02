@@ -1,8 +1,8 @@
 <?php
-namespace Contracts\Payments;
+namespace app\Container\Contracts\Contracts\Payments;
 
-use Contracts\Calenders\CalendersContract;
-use App\Order;
+use app\Container\Contracts\Calenders\CalendersContract;
+use App\Models\Order;
 
 interface FawryContract
 {

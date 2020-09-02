@@ -198,6 +198,7 @@ return [
         App\Providers\CertificateServiceProvider::class,
         App\Providers\PriceServiceProvider::class,
         App\Providers\ReportServiceProvider::class,
+        App\Providers\FawryServiceProvider::class,
 
 
 

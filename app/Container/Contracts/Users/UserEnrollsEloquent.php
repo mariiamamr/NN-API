@@ -13,10 +13,10 @@ use App\User;
 use App\Models\Schedule;
 use App\Models\Lecture;
 use App\Models\Order;
-//use Contracts\Payments\PaymentsContract;
+use Contracts\Payments\PaymentsContract;
 //use Contracts\Services\TokBox\TokBoxContract;
 use App\Container\Contracts\Users\UserEnrollsContract;
-//use Contracts\Payments\FawryContract;
+use Contracts\Payments\FawryContract;
 use Carbon\Carbon;
 
 class UserEnrollsEloquent implements UserEnrollsContract
