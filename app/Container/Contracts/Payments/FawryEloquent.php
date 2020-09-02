@@ -14,8 +14,8 @@ class FawryEloquent implements FawryContract
 
     public function __construct()
     {
-      // $this->redirectToURL = route('front.fawry.callback');
-      // $this->failerPageUrl = route('front.payments.index');
+      $this->redirectToURL = /*route(*/'front.fawry.callback';/*);*/
+      $this->failerPageUrl = /*route(*/'front.payments.index';/*);*/
         $this->merchantCode = env('MERCHANT_CODE');
         $this->secureHashKey = env('SECURE_HASH_KEY');
     }
@@ -60,7 +60,7 @@ class FawryEloquent implements FawryContract
         /*$url = self::Endpoint . '?chargeRequest=' . json_encode($chargeRequest) . '&successPageUrl=' .
             $this->redirectToURL . '&failerPageUrl=' . $this->failerPageUrl;*/
 
-        return "fkgkf";
+        return "url";
     }
 
 }
