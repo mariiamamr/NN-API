@@ -74,6 +74,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      //home page
      Route::get('/home','HomeController@approvedTeachers');
 
+     //notifications
+     Route::get('/notifications','NotificationController@getAll');
 
      });
 //email verification for new users
