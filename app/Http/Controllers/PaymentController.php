@@ -162,7 +162,7 @@ class PaymentController extends Controller
     $teacher->notify(new BookSession($teacher_message));
     $user->notify(new BookSessionStudent($message));
 
-    return redirect()->route('front.profile.index');
+    // return redirect()->route('front.profile.index');
     return response()->json(['sucess' => 'thank you'],200);   
 
   }

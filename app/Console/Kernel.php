@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\SessionReminder',
+        'App\Console\Commands\SessionRating',
+        'App\Console\Commands\NajahVersion',
     ];
 
     /**
@@ -24,8 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('session:reminder')->everyThirtyMinutes();
+        $schedule->command('session:rate');
+        $schedule->command('najah:version');
     }
 
     /**
