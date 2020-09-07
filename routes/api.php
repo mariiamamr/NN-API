@@ -32,7 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     
 
 
-    Route::get('logout', 'UserController@logout'); //will see
+    Route::get('logout', 'UserController@logout'); 
      Route::get('details', 'UserController@details');
      Route::get('getprofile', 'GetProfileController@getUserProfile');
 
