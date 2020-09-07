@@ -134,9 +134,11 @@ return response()->json(['success'=>$success], $this-> successStatus);
     }
 
      /**
+     * @group authentication 
      * Logout user (Revoke the token)
      *
-     * @return [string] message
+     * @response 200{
+     * "message":"Successfully logged out"} 
      */
     public function logout(Request $request)
     {
