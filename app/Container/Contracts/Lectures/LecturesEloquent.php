@@ -30,7 +30,9 @@ class LecturesEloquent implements LecturesContract
 
   public function get($id)
   {
+
     return $this->lecture->findOrFail($id);
+  
   }
 
   public function getAll()
@@ -77,7 +79,6 @@ class LecturesEloquent implements LecturesContract
   public function delete($id)
   {
     $lecture = $this->get($id);
-
     // if (!is_null($lecture->payed_user_id) || !is_null($lecture->checkout_user_id))
     if (!is_null($lecture->payed_user_id)) {
       return false;
