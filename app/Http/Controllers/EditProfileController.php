@@ -180,29 +180,49 @@ class EditProfileController extends Controller
          return response()->json(['success'=>$user], $this-> successStatus); 
  
      }
-    /**
-     * Update user info
+       
+   /**
+     * Edit profile
+     * @group  edit profile
+     * 
+     * used to edit profile
+     *  
      *
-     * @param  [string] full_name
-     * @param  [string] gender
-     * @param  [boolean] birth
-     * @param  [numeric] phone
-     * @param  [string] nationality
-     * @return [json] user
+     * @bodyparam full_name required String
+     * @bodyparam birth required Must be in format "YYYY-MM-DD"
+     * @bodyparam gender required The gender of the user "male" or "female". Example: female
+     * @bodyparam phone not required Must be a numeric 
+     * @bodyparam nationality not required String
+     * @response 200{
+     *      "user": [
+     *   "mariam",
+     *  "female",
+     *   "1999-11-11",
+     *  null,
+     *   "egyptian"
+     *  ]
+     * }
+     * @response 401{
+     *      "error" : 'Unauthorized'
+     * }
+     * 
      */
     public function updateAuthUser(Request $request)
     {
         
         $this->validate($request, [
-            'full_name'=>'required|string',
-           // 'username' => 'required|string|unique:users',
-            'gender'=>'required|in:male,female',
-            'birth'=>'required',
-            'phone'=>'required|numeric|min:11',
-            'nationality'=>'required|string'
+            'full_name'=>'string',
+            'gender'=>'in:male,female',
+            'phone'=>'numeric|min:11',
+            'nationality'=>'string'
         ]);
 
         $user = User::find(Auth::id());
+        if(!$user){
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
+        }
     //Updating UserInfo
         $userInfo=$user->profile;
         if(!$userInfo){
@@ -219,13 +239,13 @@ class EditProfileController extends Controller
             ]);
         }
         // Updating User Related Data
-       // $user->username = $request->username;
         $user->full_name = $request->full_name;
         $user->gender = $request->gender;
         $user->birth = $request->birth;
         $user->save();
       
-       return response()->json($user,201); //Created
+       return response()->json(["user"=>[$user->full_name,$user->gender,$user->birth,
+       $userInfo->phone,$userInfo->nationality]],200); //Created
           
       }
 

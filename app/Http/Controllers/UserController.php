@@ -65,8 +65,8 @@ public $successStatus = 200;
         $token = $tokenResult->token;
         if ($request->remember_me){
             $token->expires_at = Carbon::now()->addDays(365);
-            $user->remember_token=$tokenResult->accessToken; //store token in remember_token column
-            $user->save();
+           // $user->remember_token=$tokenResult->accessToken; //store token in remember_token column
+            //$user->save();
         }
         $token->save();
         return response()->json([
