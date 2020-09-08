@@ -75,7 +75,9 @@ class UserInfosEloquent implements UserInfosContract
   {
     $sorted_data = ($status) ? $data->except('price_info', 'certifications', 'payment_info', 'other_subjects') : $data->except('certifications', 'payment_info', 'other_subjects');
     $profile = $this->getByUserID($user_id)->fill((array)$sorted_data);
+    
     if ($status) {
+      
       $price = $profile->price_info;
       $price['pending'] = $data->price_info;
       $profile->price_info = $price;
