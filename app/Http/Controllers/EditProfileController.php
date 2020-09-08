@@ -61,21 +61,33 @@ class EditProfileController extends Controller
     
     
     }
-    public function uploadCertificate($file,$userid,$certificateid)
+    /*public function uploadCertificate($file,$userid,$certificateid)
     {
         $fileName="";
-        if ($file && $file->isValid()) {
+        if ($file && $file->isValid()) {*/
           /*  $extension = $file->getClientOriginalExtension();
             $fileNameWithoutExtension=time().rand(11111,99999);
             $filePath=$fileNameWithoutExtension.'.'.$extension;
             $fileName ='/users/certificates/'.$filePath;
             $file->move(public_path().'/users/certificates/',$fileName);*/
-            $fileContents = file_get_contents($file);
+          /*  $fileContents = file_get_contents($file);
             $fileName = '/users/certificates/' . $userid . $certificateid.'.jpg';
             $path = public_path() .$fileName;
            // $file->move($path,$fileName);
 
             File::put($path, $fileContents);
+        }
+        return $fileName;
+    }*/
+    public function uploadCertificate($file)
+    {
+        $fileName="";
+        if ($file && $file->isValid()) {
+            $extension = $file->getClientOriginalExtension();
+            $fileNameWithoutExtension=time().rand(11111,99999);
+            $filePath=$fileNameWithoutExtension.'.'.$extension;
+            $fileName ='files/'.$filePath;
+            $file->move(public_path().'/files/',$fileName);
         }
         return $fileName;
     }
@@ -109,7 +121,8 @@ class EditProfileController extends Controller
             $profile->update([
                 'certifications' => $data->certifications
             ]);            $profile->save();
-            return json_decode($profile->certifications);
+           // return json_decode($profile->certifications);
+           return response()->json(['success' => json_decode($profile->certifications)], $this-> successStatus); 
           }  
         /**
         * @authenticated
