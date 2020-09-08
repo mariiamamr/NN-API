@@ -166,25 +166,39 @@ public function getUpcomingSessionsForTeachers(){
       return response()->json($slot, 200); 
     }
     
-  
-
-
+  /**
+     * Delete session
+     * @group  Sessions
+     * 
+     * used to delete sessions
+     *  
+     * @authenticated
+     * @bodyparam  lecture_id required Integer
+     * @response 200{
+     *      "message": "session deleted"
+     * }
+     * @response 401{
+     *      "error": "session can't be deleted"
+     * }
+     *  @response 404{
+     *  "Not Found"
+     * }
+     */
 
 public function destroy(Request $request)
   {
     $user = User::find(Auth::id());
-
+   if(!$user){
+     return response()->json(['errror'=>"Unauthorized"],401);
+   }
     $slot = $this->lecture->delete_slot($user->id, (object)[
-      "date" => (Carbon::parse($request->date_time))->format('Y-m-d'),
-      "time_from" => (Carbon::parse($request->date_time))->format('H:i'),
       "lecture_id" => $request->lecture_id
     ]);
-
-    if (!$slot) {
-      return response()->json(['error' => "can't add new slot in this day"], 400);
-    }
-
-    return response()->json(['message'=>"session deleted"], 200);
+    return response()->json($slot, 200);
+  if(!$slot){
+    return response()->json(["error"=>"session can't be deleted"], 401);
+  }
+    return response()->json(["message"=>"session deleted"], 200);
   }
   
     public function enroll(Request $request)

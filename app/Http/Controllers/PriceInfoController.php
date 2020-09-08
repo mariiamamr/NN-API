@@ -10,10 +10,20 @@ use Illuminate\Support\Facades\Auth;
 class PriceInfoController extends Controller
 {
     /**
-     * Update price info
+     * Edit price info
+     * @group  edit profile
+     * 
+     * used to edit price in teacher profile
+     *  
      *
-     * @param  [numeric] price_info
-     * @return [json] price_info
+     * @bodyparam price_info required Array of two prices includes individual price and group price written in json. Example: [150,250]
+     * @response 200{
+     *    "price_info": "{\"individual\":150,\"group\":250}"
+     * }
+     * @response 401{
+     *      "error" : 'Unauthorized'
+     * }
+     * 
      */
     public function updatePriceInfo(Request $request)
     {
@@ -23,6 +33,11 @@ class PriceInfoController extends Controller
         ]);
 
         $user = User::find(Auth::id()); //Find auth user
+        if(!$user){
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
+        }
     //Updating UserInfo
         $userInfo=$user->profile;
         if(!$userInfo){
@@ -45,7 +60,7 @@ class PriceInfoController extends Controller
    
         $userInfo->save();
       
-       return response()->json($userInfo->price_info,201); //Created and response returned price info
+       return response()->json(["price_info"=>$userInfo->price_info],200);
           
       }
 }
