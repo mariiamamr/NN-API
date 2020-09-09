@@ -262,6 +262,130 @@ class EditProfileController extends Controller
           
       }
 
+      /**
+     * Update subjects
+     * @group  edit profile
+     * 
+     * used to update subjects
+     *  
+     *
+     * @bodyparam subjects not required Array of subject id. Example: [1]
+     * @bodyparam languages not required Array of subject id. Example: [1]
+     * @bodyparam grades not required Array of subject id. Example: [3]
+     * @bodyparam edu_systems not required Array of subject id. Example: [2] 
+     * @response 200
+     *      {
+     * "id": 4,
+     *"email": "ayamaygdy2@gmail.com",
+     *"email_verified_at": null,
+     *"created_at": "2020-08-26 15:20:10",
+     *"updated_at": "2020-08-26 15:20:10",
+     *"full_name": "aya",
+     *"type": "t",
+     *"active": 1,
+     *"birth": "1999-05-05",
+     *"gender": "female",
+     *"status": 1,
+     *"image_url": null,
+     *"username": "ayamagdy",
+     *"profile": {
+     *   "id": 3,
+     *   "user_id": 4,
+     *   "nationality": null,
+     *   "phone": "01059996633",
+     *   "postal_code": null,
+     *   "exp_years": null,
+     *   "exp_desc": null,
+     *   "payment_info": null,
+     *   "avg_rate": 0,
+     *   "month_rate": 0,
+     *   "rank": 0,
+     *   "rates_count": 0,
+     *   "courses": null,
+     *   "certifications": null,
+     *   "master_degree": null,
+     *   "weekly": [
+     *       {
+     *          "at": [
+     *               {
+     *                   "time_to": "12:10",
+     *                   "time_from": "11:00",
+     *                   "started_from": "2020-09-03"
+     *               }
+     *           ],
+     *           "on": "thu"
+     *       }
+     *   ],
+     *   "university_degree_id": null,
+     *   "price_info": {
+     *       "pending": null
+     *   },
+     *   "national_id": null,
+     *   "phones": null,
+     *   "suggested_subjects": [],
+     *   "other_subjects": null
+     *},
+     *"specialist_in": [
+     *  {
+     *       "id": 1,
+     *       "slug": "hello",
+     *       "title": "hello",
+     *       "created_at": "2020-09-01 12:35:49",
+     *       "updated_at": "2020-09-01 12:35:49",
+     *       "is_active": 1,
+     *       "pivot": {
+     *           "user_id": 4,
+     *           "subject_id": 1
+     *       }
+     *   }
+     *],
+     *"languages": [
+     *   {
+     *       "id": 1,
+     *       "slug": "english",
+     *       "title": "english",
+     *       "pivot": {
+     *           "user_id": 4,
+     *           "language_id": 1
+     *       }
+     *   }
+     *],
+     *"edu_systems": [
+     *   {
+     *       "id": 1,
+     *       "slug": "maam",
+     *       "title": "maamm",
+     *       "created_at": "2020-09-01 12:37:19",
+     *       "updated_at": "2020-09-01 12:37:19",
+     *       "pivot": {
+     *           "user_id": 4,
+     *           "edu_id": 1
+     *       }
+     *   }
+     *],
+     *"latest_reviews": [],
+     *"grades": [
+     *   {
+     *       "id": 2,
+     *       "slug": "kg2",
+     *       "title": "kg2",
+     *      "created_at": "2020-09-09 00:00:00",
+     *        "updated_at": "2020-09-09 00:00:00",
+     *       "pivot": {
+     *           "user_id": 4,
+     *           "grade_id": 2
+     *       }
+     *   }
+     *]
+     *}
+     *   
+     * 
+     *  
+     *   
+     *  
+     * 
+     *
+     */
       public function updateSubjects(Request $request)
       {
       
