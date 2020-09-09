@@ -91,6 +91,12 @@ class EditProfileController extends Controller
         }
         return $fileName;
     }
+        /**
+        * @authenticated
+        * @group  edit profile
+        * @bodyParam  certifications array required array of certifications the user adds where each object contains certificate_id(the id that refers to the certificate in certificate table)and thumb(the file of the certificate). Example: [{'certificate_id':1,'thumb':image.jpg}]
+        * update certifications of the user
+        */
           public function updateCertificates(Request $data){
             $user = Auth::user(); 
 
@@ -201,11 +207,11 @@ class EditProfileController extends Controller
      * used to edit profile
      *  
      *
-     * @bodyparam full_name required String
-     * @bodyparam birth required Must be in format "YYYY-MM-DD"
-     * @bodyparam gender required The gender of the user "male" or "female". Example: female
-     * @bodyparam phone not required Must be a numeric 
-     * @bodyparam nationality not required String
+     * @bodyParam full_name required String
+     * @bodyParam birth required Must be in format "YYYY-MM-DD"
+     * @bodyParam gender required The gender of the user "male" or "female". Example: female
+     * @bodyParam phone not required Must be a numeric 
+     * @bodyParam nationality not required String
      * @response 200{
      *      "user": [
      *   "mariam",
@@ -269,10 +275,10 @@ class EditProfileController extends Controller
      * used to update subjects
      *  
      *
-     * @bodyparam subjects not required Array of subject id. Example: [1]
-     * @bodyparam languages not required Array of subject id. Example: [1]
-     * @bodyparam grades not required Array of subject id. Example: [3]
-     * @bodyparam edu_systems not required Array of subject id. Example: [2] 
+     * @bodyParam subjects not required Array of subject id. Example: [1]
+     * @bodyParam languages not required Array of subject id. Example: [1]
+     * @bodyParam grades not required Array of subject id. Example: [3]
+     * @bodyParam edu_systems not required Array of subject id. Example: [2] 
      * @response 200
      *      {
      * "id": 4,

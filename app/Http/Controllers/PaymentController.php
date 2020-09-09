@@ -372,26 +372,4 @@ class PaymentController extends Controller
   }
 
 
-  public function getFaq()
-  {
-    return parent::view('faq', [
-      "rows" => $this->faq->getAll()
-    ]);
-  }
-
-  public function removeItem($id)
-  {
-    $this->user_enrolls->removeItem(Auth::id(), $id);
-    return parent::redirectToIndex([
-      "items" => $this->user_enrolls->getUnPaid(Auth::id())
-    ]);
-  }
-
-  public function removeGroupItem($lecture_id)
-  {
-    $this->user_enrolls->removeGroupItem(Auth::id(), $lecture_id);
-    return parent::redirectToIndex([
-      "items" => $this->user_enrolls->getUnPaid(Auth::id())
-    ]);
-  }
 }

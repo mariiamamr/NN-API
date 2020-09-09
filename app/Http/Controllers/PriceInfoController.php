@@ -31,7 +31,7 @@ class PriceInfoController extends Controller
      * used to edit price in teacher profile
      *  
      *
-     * @bodyparam price_info required Object of two prices includes individual price and group price written in json. Example: {"individual":"50","group":"150"}
+     * @bodyParam price_info required Object of two prices includes individual price and group price written in json. Example: {"individual":"50","group":"150"}
      * @response 200{
      *"msg": "price pending"
     *}
