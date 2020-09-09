@@ -5,7 +5,7 @@ namespace App\Container\Contracts\Users;
 
 
 use App\User;
-// //use App\Admin;
+use App\Admin;
 use App\Models\File;
 use App\Models\Certificate;
 use App\Container\Contracts\Users\UsersContract;
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Container\Contracts\Roles\RolesContract;
 use App\Models\Permission;
-// //use App\Notifications\Admin\AdminNotification;
+use App\Notifications\Admin\AdminNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
 use App\Models\Subject;
@@ -38,7 +38,7 @@ class UsersEloquent implements UsersContract
         User $user,
         UserInfosContract $user_info,
         FilesContract $file,
-        //Admin $admin,
+        Admin $admin,
         Permission $permission,
         RolesContract $role,
         Subject $subject
@@ -47,7 +47,7 @@ class UsersEloquent implements UsersContract
         $this->user_info = $user_info;
         $this->file = $file;
         $this->number_of_pages = config('static.pagination.rowsPerPage');
-        //$this->admin = $admin;
+        $this->admin = $admin;
         $this->permission = $permission;
         $this->role = $role;
         $this->subject = $subject;
@@ -481,14 +481,14 @@ class UsersEloquent implements UsersContract
             ]);
         }
 
-        if (isset($data->price_info)) {
+      */  if (isset($data->price_info)) {
             $permission = $this->permission->where('name', 'teacher-price_approval')->first();
             $roles = $permission->roles()->get()->pluck('id')->toArray();
             $admins = $this->admin->whereIn('role_id', $roles)->get();
             $message = 'Price approval of teacher needing for approval!';
             Notification::send($admins, new AdminNotification($message));
         }
-*/
+
        /* if (isset($data->payment_info)) {
             $payment = $data->payment_info;
             $payment_array = [];
