@@ -51,6 +51,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
      Route::get('/getlanguages','GetProfileController@getLanguages');
      Route::get('/getedusystems','GetProfileController@getEdusystems');
      Route::get('/getgrades','GetProfileController@getGrades');
+     Route::get('/getprice','PriceInfoController@getPrice');
 
 
      //sessions
