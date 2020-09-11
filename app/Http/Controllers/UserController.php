@@ -24,9 +24,9 @@ public $successStatus = 200;
      * used to login and create token
      *  
      *
-     * @bodyparam username required "this will be username or email"
-     * @bodyparam password required
-     * @bodyparam remember_me required boolen with value 1 or 0 
+     * @bodyParam username required "this will be username or email"
+     * @bodyParam password required
+     * @bodyParam remember_me required boolen with value 1 or 0 
      * @response 200{
      *  
      *      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTg1M2U3MjNmMjBlNDg3MDBlNDhkYTU2ZmU2MDQ3MGU3ZGFmNjM2YTRmNmM3NTAyYWY3NGM3YTQzYzQyZWM2NmY0NDEzYTY2MTczMTdlZWIiLCJpYXQiOjE1OTk1MDAyMzgsIm5iZiI6MTU5OTUwMDIzOCwiZXhwIjoxNjMxMDM2MjM4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Fo0udtMETBRLa4hYX99uErc7eOxTkPAFvaUffpogHnBo2xAMAwRyq-u15L2Hx510kQS2RqlHhOdzuSvIbtPIYJ6OyjlbP9XQxBSbVEKo3Pcbr9twTrAmwPifpEgc3zT9q_NRrnm9UabzfMy3-5tCwvGdNAv3yZet4CjVqTF-7lmFIt2MjSH1Si2WxlGa8Y3DMzvr0t4PuA8_ju8MK5Ql8ylNF10DQyi2YbbULXVHNJXKYIqDRElsAhzN185GTxYHvudvH_VIPOHMCkUeR4i5FAPHkhB_PGSrF9nde6CfbAQ7GIkiC5q9-wB4_Dt5sYjAX1y0VqUiL-y0V99XKS88_1AWkue2W1YfsxI76hcmTIGUR_57IxWVJPNlGXPzpUGdsHlKBmyH7mIHmo8wVMIq3woEy2ilfCLqyVAMIca-94nqY7iqmjhlrE_rBgvfpRz19n2AOWgI9Q33SrNYR4MM_g9XONXpYsjbpAz5BzahWbLRALTqGQNgKy7GNJbMld6Q0jKrZqek0T7Tb6sP1jSgWQaLz5VBhUJvZRDW2zO6-acBg3yQvRTqyMVeFigZaG4Rx9CnH-xd40WeeEjhA--uyCj0XD2zfhdPxNLhYvFa3tCYCJJwuffogpkAcd0pwuUsPS1Rvw75z5AqObFWiYqmwWDbwyrpF_xsVOUWIrqHxX0",
@@ -87,14 +87,14 @@ public $successStatus = 200;
      * used to register a user and create token
      *  
      *
-     * @bodyparam username required Unique string for every user
-     * @bodyparam email required Unique string for every user
-     * @bodyparam password required Minimun 6 char
-     * @bodyparam type required The type of the user teacher "t" or student "s". Example: s
-     * @bodyparam birth required Must be in format "YYYY-MM-DD"
-     * @bodyparam gender required The gender of the user "male" or "female". Example: female
-     * @bodyparam full_name required Must be a string 
-     * @bodyparam password_confirmation required Must be a the same as the password 
+     * @bodyParam username required Unique string for every user
+     * @bodyParam email required Unique string for every user
+     * @bodyParam password required Minimun 6 char
+     * @bodyParam type required The type of the user teacher "t" or student "s". Example: s
+     * @bodyParam birth required Must be in format "YYYY-MM-DD"
+     * @bodyParam gender required The gender of the user "male" or "female". Example: female
+     * @bodyParam full_name required Must be a string 
+     * @bodyParam password_confirmation required Must be a the same as the password 
      * @response 200{
      *       "success": {
      *   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzA0NWJlMmY0MjNhZTU0YTI3NjFjNDYyNWM1ZDM2ZmRmYzk5MWJiYjRkOWZlZDRiMTQ5YmQ4MjAwODExOWZkZDBhMWMyNjE3MDhkZGYwNGUiLCJpYXQiOjE1OTk1MDg4NzAsIm5iZiI6MTU5OTUwODg3MCwiZXhwIjoxNjMxMDQ0ODcwLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.EarO8YHGHKdsDD3QVcBoT0L4bIztSJRlzE0jLM15xOJWOsUe1-1Xguolc9aPi4nADQ-spMstP0INNVE9Tyw6T-AuwqIP6I2YhFGh8eEVUFTXqaC29SR-CH53Bch5k-pXpwEdWoGgePSes-EC6ZntlmfGXEmAMhcmhvB_iddXqVaxSzxph-PBX9q78pYsozxSZVeZd0WwndCjzZOS5wJkBD70W6tQuINYVc3pgz60w585Ns2bzIDxBJZHDtyOcnZyOYbGiJDIu-0c8dyorj8q8XfnjHnd43ImBYjgZR5dIM7Ymo37Q62CD_lv1ex9zJFXhCSFn3QYSDesPlvy_l-7tugSwHMKVIqDBfJBxG9gQxO_yjoZwWYJmysqmA6crcHjZLcW-HVoOPnx6cak6MyyTvAcX7mWDBJ0Te5HV3ALK8ZFHhPae2qmB-H1TvPyxlHdY0cYIkEiGfIgX1pijIbbbeBq7EcP9dO6JAEWaD5SDKvc0tn7Se09AXS1fygxgAWgvazev4V06aZG-_t5F0S6jbCBnKHmx9f9NsDZahAAppnUX7VZ2mA5yOGzo3UEJxz3tA9EIGv2zPgrKPZE4AMaJzsR-_vL7KfHxJfmoberYs0pbGyUMi_K-GtaOnAqdE0XDNsfLRs9ACkH2rCeTuwwCgRHlLy9R9DIQ5nIeRrmQsc",

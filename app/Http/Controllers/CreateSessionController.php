@@ -38,9 +38,9 @@ class CreateSessionController extends Controller
      * used to add a new available slot by a teacher. There must be at least 2 hours before the start time.
      *  
      * @authenticated
-     * @bodyparam  time_from time required The session's start time in the format hh:mm
-     * @bodyparam  date date required The session's date in the format YYYY-MM-DD
-     * @bodyparam  weekly boolean required whether the session should be repeated every week or not.
+     * @bodyParam  time_from time required The session's start time in the format hh:mm
+     * @bodyParam  date date required The session's date in the format YYYY-MM-DD
+     * @bodyParam  weekly boolean required whether the session should be repeated every week or not.
      * @response {
      *      "message": "session created"
      * }
@@ -90,17 +90,238 @@ class CreateSessionController extends Controller
       
         return response()->json(['message'=>"session created"], 200); 
     }
+     /**
+     * get past sessions for students
+     * @group  Sessions
+     * 
+     * used to get past sessions of the students
+     *  
+     * @authenticated
+     * @response 200{
+     * "Past sessions": {
+     *   "current_page": 1,
+     *   "data": [
+     *       {
+     *           "id": 1,
+     *           "user_id": 17,
+     *           "lecture_id": 8,
+     *           "teacher_id": 17,
+     *           "price": 1,
+     *           "date": "2020-04-04",
+     *           "time_from": "05:30:00",
+     *           "time_to": "06:30:00",
+     *           "payed": 1,
+     *           "sub_user_id": null,
+     *           "type": "individual",
+     *           "status": "success",
+     *           "teachers": {
+     *               "id": 17,
+     *               "email": "aya_1999_mahmoud@hotmail.com",
+     *               "email_verified_at": null,
+     *               "created_at": "2020-08-23 22:13:11",
+     *               "updated_at": "2020-08-25 19:51:11",
+     *               "full_name": "Aya Mahmoud",
+     *               "type": "t",
+     *               "active": 1,
+     *               "birth": "1999-09-09",
+     *               "gender": "female",
+     *               "status": null,
+     *               "image_url": "C:\\Users\\ENG MAHMOUD\\Desktop\\API\\NN-API\\public/users/images/3315277565246255_avatar.jpg",
+     *               "username": null
+     *           }
+     *       }
+     *   ],
+     *   "first_page_url": "http://localhost:8000/api/getpastsessionsforstudents?page=1",
+     *   "from": 1,
+     *   "last_page": 1,
+     *   "last_page_url": "http://localhost:8000/api/getpastsessionsforstudents?page=1",
+     *   "next_page_url": null,
+     *   "path": "http://localhost:8000/api/getpastsessionsforstudents",
+     *   "per_page": 15,
+     *   "prev_page_url": null,
+     *   "to": 1,
+     *   "total": 1
+     *    }
+     *}
+     * 
+     */
 public function getPastSessionsForStudents(){
-  return $this->user_enroll->getPastSessionForUserWithPaginate(Auth::id());
+  return response()->json(['Past sessions'=>$this->user_enroll->getPastSessionForUserWithPaginate(Auth::id())], 200); 
 }
+/**
+     * get upcoming sessions for students
+     * @group  Sessions
+     * 
+     * used to get upcoming sessions of the students
+     *  
+     * @authenticated
+     * @response 200{
+     * "Upcoming sessions": {
+     *   "current_page": 1,
+     *   "data": [
+     *       {
+     *           "id": 1,
+     *           "user_id": 17,
+     *           "lecture_id": 8,
+     *           "teacher_id": 17,
+     *           "price": 1,
+     *           "date": "2020-04-04",
+     *           "time_from": "05:30:00",
+     *           "time_to": "06:30:00",
+     *           "payed": 1,
+     *           "sub_user_id": null,
+     *           "type": "individual",
+     *           "status": "success",
+     *           "teachers": {
+     *               "id": 17,
+     *               "email": "aya_1999_mahmoud@hotmail.com",
+     *               "email_verified_at": null,
+     *               "created_at": "2020-08-23 22:13:11",
+     *               "updated_at": "2020-08-25 19:51:11",
+     *               "full_name": "Aya Mahmoud",
+     *               "type": "t",
+     *               "active": 1,
+     *               "birth": "1999-09-09",
+     *               "gender": "female",
+     *               "status": null,
+     *               "image_url": "C:\\Users\\ENG MAHMOUD\\Desktop\\API\\NN-API\\public/users/images/3315277565246255_avatar.jpg",
+     *               "username": null
+     *           }
+     *       }
+     *   ],
+     *   "first_page_url": "http://localhost:8000/api/getupcomingsessionsforstudents?page=1",
+     *   "from": 1,
+     *   "last_page": 1,
+     *   "last_page_url": "http://localhost:8000/api/getupcomingsessionsforstudents?page=1",
+     *   "next_page_url": null,
+     *   "path": "http://localhost:8000/api/getupcomingsessionsforstudents",
+     *   "per_page": 15,
+     *   "prev_page_url": null,
+     *   "to": 1,
+     *   "total": 1
+     *    }
+     *}
+     * 
+     */
 public function getUpcomingSessionsForStudents(){
-  return $this->user_enroll->getComingSessionForUserWithPaginate(Auth::id());
+  return response()->json(['Upcoming sessions'=>$this->user_enroll->getComingSessionForUserWithPaginate(Auth::id())], 200); 
 }
+/**
+     * get past sessions for students
+     * @group  Sessions
+     * 
+     * used to get past sessions of the students
+     *  
+     * @authenticated
+     * @response 200{
+     * "Past sessions": {
+     *   "current_page": 1,
+     *   "data": [
+     *       {
+     *           "id": 1,
+     *           "user_id": 17,
+     *           "lecture_id": 8,
+     *           "teacher_id": 17,
+     *           "price": 1,
+     *           "date": "2020-04-04",
+     *           "time_from": "05:30:00",
+     *           "time_to": "06:30:00",
+     *           "payed": 1,
+     *           "sub_user_id": null,
+     *           "type": "individual",
+     *           "status": "success",
+     *           "teachers": {
+     *               "id": 17,
+     *               "email": "aya_1999_mahmoud@hotmail.com",
+     *               "email_verified_at": null,
+     *               "created_at": "2020-08-23 22:13:11",
+     *               "updated_at": "2020-08-25 19:51:11",
+     *               "full_name": "Aya Mahmoud",
+     *               "type": "t",
+     *               "active": 1,
+     *               "birth": "1999-09-09",
+     *               "gender": "female",
+     *               "status": null,
+     *               "image_url": "C:\\Users\\ENG MAHMOUD\\Desktop\\API\\NN-API\\public/users/images/3315277565246255_avatar.jpg",
+     *               "username": null
+     *           }
+     *       }
+     *   ],
+     *   "first_page_url": "http://localhost:8000/api/getpastsessionsforteachers?page=1",
+     *   "from": 1,
+     *   "last_page": 1,
+     *   "last_page_url": "http://localhost:8000/api/getpastsessionsforteachers?page=1",
+     *   "next_page_url": null,
+     *   "path": "http://localhost:8000/api/getpastsessionsforteachers",
+     *   "per_page": 15,
+     *   "prev_page_url": null,
+     *   "to": 1,
+     *   "total": 1
+     *    }
+     *}
+     * 
+     */
 public function getPastSessionsForTeachers(){
-  return $this->user_enroll->getPastSessionForTeacherWithPaginate(Auth::id());
+  return response()->json(['Past sessions'=>$this->user_enroll->getPastSessionForTeacherWithPaginate(Auth::id())], 200); 
+  
 }
+/**
+     * get upcoming sessions for students
+     * @group  Sessions
+     * 
+     * used to get upcoming sessions of the students
+     *  
+     * @authenticated
+     * @response 200{
+     * "Upcoming sessions": {
+     *   "current_page": 1,
+     *   "data": [
+     *       {
+     *           "id": 1,
+     *           "user_id": 17,
+     *           "lecture_id": 8,
+     *           "teacher_id": 17,
+     *           "price": 1,
+     *           "date": "2020-04-04",
+     *           "time_from": "05:30:00",
+     *           "time_to": "06:30:00",
+     *           "payed": 1,
+     *           "sub_user_id": null,
+     *           "type": "individual",
+     *           "status": "success",
+     *           "teachers": {
+     *               "id": 17,
+     *               "email": "aya_1999_mahmoud@hotmail.com",
+     *               "email_verified_at": null,
+     *               "created_at": "2020-08-23 22:13:11",
+     *               "updated_at": "2020-08-25 19:51:11",
+     *               "full_name": "Aya Mahmoud",
+     *               "type": "t",
+     *               "active": 1,
+     *               "birth": "1999-09-09",
+     *               "gender": "female",
+     *               "status": null,
+     *               "image_url": "C:\\Users\\ENG MAHMOUD\\Desktop\\API\\NN-API\\public/users/images/3315277565246255_avatar.jpg",
+     *               "username": null
+     *           }
+     *       }
+     *   ],
+     *   "first_page_url": "http://localhost:8000/api/getupcomingsessionsforteachers?page=1",
+     *   "from": 1,
+     *   "last_page": 1,
+     *   "last_page_url": "http://localhost:8000/api/getupcomningsessionsforteachers?page=1",
+     *   "next_page_url": null,
+     *   "path": "http://localhost:8000/api/getupcomingsessionsforteachers",
+     *   "per_page": 15,
+     *   "prev_page_url": null,
+     *   "to": 1,
+     *   "total": 1
+     *    }
+     *}
+     * 
+     */
 public function getUpcomingSessionsForTeachers(){
-  return $this->user_enroll->getComingSessionForTeacherWithPaginate(Auth::id());
+  return response()->json(['Upcoming sessions'=>  $this->user_enroll->getComingSessionForTeacherWithPaginate(Auth::id())], 200);
 }
       /**
      * Update an upcoming session
@@ -109,8 +330,8 @@ public function getUpcomingSessionsForTeachers(){
      * used by the teacher to edit the details of one of his upcoming sessions. refer to create session for validations.
      *  
      * @authenticated
-     * @bodyparam  new JSON required The session's old details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "05:00", "date":"2020-12-30", "weekly":"false"}
-     * @bodyparam  old JSON required The session's new details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "07:00", "date":"2020-12-29", "weekly":"false"}
+     * @bodyParam  new JSON required The session's old details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "05:00", "date":"2020-12-30", "weekly":"false"}
+     * @bodyParam  old JSON required The session's new details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "07:00", "date":"2020-12-29", "weekly":"false"}
      * @response {
      *   "started":0,
      *   "teacher_id":17,
@@ -200,12 +421,47 @@ public function destroy(Request $request)
   }
     return response()->json(["message"=>"session deleted"], 200);
   }
-  
+  /**
+     * enroll session
+     * @group  Sessions
+     * 
+     * used to enroll sessions for students
+     *  
+     * @authenticated
+     * @bodyParam  lecture_id required Integer the lecture the student wants to enroll
+     * @bodyParam  teacher_id required Integer the teacher the student want to enroll the lecture with
+     * @response 200{
+     * "result": {
+     *   "checkedout": true,
+     *   "payed": true
+     * }
+     *}
+     */
     public function enroll(Request $request)
     {
         $result = $this->lecture->enrollLectureForUser(Auth::id(), $request);
         return response()->json(["result" => $result], 200);
     }
+
+
+    /**
+     * 
+     * @group  Sessions
+     * 
+     * used to check available days in a certain month and year
+     *  
+     * @authenticated
+     * @bodyParam  teacher_id required Integer the id of the teacher
+     * @bodyParam  month required Integer
+     * @bodyParam  year required Integer
+     * @response 200{
+     * "result": {[
+     * {
+     *   "date": "2020-07-29",
+     *  "badge": false
+     * }
+     *]}
+     */
 
     public function available_days()
     {
@@ -231,9 +487,41 @@ public function destroy(Request $request)
             $result[] = ["date" => $slot, "badge" => false];
         }
 
-        return response()->json($result);
+        return response()->json(["result" => $result], 200);
     }
-
+    /**
+     * 
+     * @group  Sessions
+     * 
+     * used to check available slots in a certain date
+     *  
+     * @authenticated
+     * @bodyParam  teacher required Integer the id of the teacher
+     * @bodyParam  date required date
+     * @response 200{
+     * "result": {
+     * "date": {
+     *    "date": "Wednesday, July 29, 2020",
+     *    "slots": [
+     *        {
+     *            "date": "2020-07-29",
+     *            "time_from": "02:30",
+     *            "time_to": "03:40",
+     *            "lecture_id": 8
+     *        }
+     *    ]
+     *},
+     *"slots": [
+     *    {
+     *        "id": 8,
+     *        "title": "02:30 To 03:40",
+     *        "time_from": "02:30",
+     *        "time_to": "03:40",
+     *        "date": "2020-07-29"
+     *    }
+     *]
+     *}
+     */
     public function available_slots()
     {
         $id   = (int) request('teacher');

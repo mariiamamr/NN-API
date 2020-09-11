@@ -62,7 +62,37 @@ class GetProfileController extends Controller
     
     
     }
-//Get All Subjects
+/**
+     * Get all subject
+     * @group  getters
+     * 
+     * used to get subjects
+     *  
+     * @response 200{
+    *"Subjects": [
+    *  {
+    *        "id": 1,
+    *        "slug": "hello",
+    *        "title": "hello",
+    *        "created_at": "2020-09-01 12:35:49",
+    *        "updated_at": "2020-09-01 12:35:49",
+    *        "is_active": 1
+    *    },
+    *    {
+    *        "id": 2,
+    *        "slug": "maths",
+    *        "title": "maths",
+    *        "created_at": "2020-09-09 00:00:00",
+    *        "updated_at": "2020-09-09 00:00:00",
+    *        "is_active": 1
+    *    }
+    *]
+    *}
+     * @response 401{
+     *      "error" : 'Unauthorized'
+     * }
+     * 
+     */
 
 public function getSubjects(){
     $user = User::find(Auth::id());
@@ -74,7 +104,26 @@ public function getSubjects(){
     return response()->json(['Subjects'=>$subjects], 200); 
 }
 
-//Get All Languages
+/**
+     * Get all languages
+     * @group  getters
+     * 
+     * used to get languages
+     *  
+     * @response 200{
+     * "Languages": [
+     *   {
+     *       "id": 1,
+     *       "slug": "english",
+     *       "title": "english"
+     *   }
+     * ]
+     * }
+     * @response 401{
+     *      "error" : 'Unauthorized'
+     * }
+     * 
+     */
 public function getLanguages(){
     $user = User::find(Auth::id());
     if(!$user){
@@ -85,7 +134,28 @@ public function getLanguages(){
     return response()->json(['Languages'=>$languages], 200); 
 }
 
-//Get All EduSystems
+/**
+     * Get all edusystems
+     * @group  getters
+     * 
+     * used to get edusystems
+     *  
+     * @response 200{
+     *"EduSystems": [
+     *   {
+     *       "id": 1,
+     *       "slug": "maam",
+     *       "title": "maamm",
+     *       "created_at": "2020-09-01 12:37:19",
+     *       "updated_at": "2020-09-01 12:37:19"
+     *   }
+     *]
+     *}
+     * @response 401{
+     *      "error" : 'Unauthorized'
+     * }
+     * 
+     */
 public function getEdusystems(){
     $user = User::find(Auth::id());
     if(!$user){
@@ -96,7 +166,28 @@ public function getEdusystems(){
     return response()->json(['EduSystems'=>$edu_systems], 200); 
 }
 
-//Get All Grades
+/**
+     * Get all grades
+     * @group  getters
+     * 
+     * used to get grades
+     *  
+     * @response 200{
+     * "Grades": [
+     *   {
+     *       "id": 1,
+     *       "slug": "kg1",
+     *       "title": "kg1",
+     *       "created_at": "2020-09-01 12:37:48",
+     *       "updated_at": "2020-09-01 12:37:48"
+     *   }
+     *]
+     *}
+     * @response 401{
+     *      "error" : 'Unauthorized'
+     * }
+     * 
+     */
 public function getGrades(){
     $user = User::find(Auth::id());
     if(!$user){
