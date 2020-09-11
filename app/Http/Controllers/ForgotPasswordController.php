@@ -22,6 +22,21 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
+      /**
+     * Forget Password
+     * @group  Password
+     * 
+     * used to send a reset link to the required email.
+     *  
+     * @bodyParam  email the email associated with the account whose password will be forgotten. a link will be sent to that address
+     * @response {
+     *  "message": "We have e-mailed your password reset link!"
+     *  }
+     * @response 422{
+     *  "error": "We can't find a user with that e-mail address."
+     * }
+     * 
+     */
     protected function sendResetLinkResponse(Request $request, $response)
     {
         return response(['message'=> trans($response)]);
