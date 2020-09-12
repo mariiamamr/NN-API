@@ -35,6 +35,9 @@ class ForgotPasswordController extends Controller
      * @response 422{
      *  "error": "We can't find a user with that e-mail address."
      * }
+     * @response 422{
+     *  "error": "Please wait before retrying."
+     * }
      * 
      */
     protected function sendResetLinkResponse(Request $request, $response)
