@@ -24,6 +24,21 @@ class ReviewsController extends Controller
         $this->review = $review;
 
     }
+      /**
+     * Rating by teacher
+     * @group  Ratings
+     * 
+     * Used by the teacher to rate a student.
+     *  
+     * @authenticated
+     * @bodyParam  lecture_id integer the ID of the lecture about which the student will be rated.
+     * @bodyParam  student_id integer the ID of the student to be rated.
+     * @bodyParam  rate integer the rating value.
+     * @bodyParam  content string rating message/ comments.
+     * @response {
+     *  "message": "rating added"
+     *  }
+     */
     
 
     public function ratingByTeacher(Request $request)//,$lecture_id)
@@ -36,6 +51,21 @@ class ReviewsController extends Controller
 
         return response()->json(['message'=>"rating added"], 200); 
     }
+      /**
+     * Rating by student
+     * @group  Ratings
+     * 
+     * Used by the student to rate a teacher.
+     *  
+     * @authenticated
+     * @bodyParam  lecture_id integer the ID of the lecture about which the teacher will be rated.
+     * @bodyParam  teacher_id integer the ID of the teacher to be rated.
+     * @bodyParam  rate integer the rating value.
+     * @bodyParam  content string rating message/ comments.
+     * @response {
+     *  "message": "rating added"
+     *  }
+     */
 
     public function ratingByStudent(Request $request)
     {

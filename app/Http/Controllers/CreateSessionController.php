@@ -394,7 +394,7 @@ public function getUpcomingSessionsForTeachers(){
      * used to delete sessions
      *  
      * @authenticated
-     * @bodyparam  lecture_id required Integer
+     * @bodyParam  lecture_id required Integer
      * @response 200{
      *      "message": "session deleted"
      * }
