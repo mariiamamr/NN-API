@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "108153db-55f5-4047-9dc1-22b096ee6f75",
+        "_postman_id": "2e9e02ed-475f-47f3-b93f-319e602a60c6",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,41 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lang\": 19,\n    \"subject\": 11,\n    \"grade\": 11\n}"
+                            "raw": "{\n    \"lang\": 6,\n    \"subject\": 17,\n    \"grade\": 8\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Notifications",
+            "description": "used to get the notification history for the currently logged in user.",
+            "item": [
+                {
+                    "name": "Notification History",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/notifications",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
                         },
                         "description": "",
                         "response": []
@@ -67,7 +101,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 8,\n    \"teacher_id\": 11,\n    \"rate\": 5,\n    \"content\": \"enim\"\n}"
+                            "raw": "{\n    \"lecture_id\": 9,\n    \"teacher_id\": 15,\n    \"rate\": 4,\n    \"content\": \"non\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -95,7 +129,41 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 18,\n    \"student_id\": 12,\n    \"rate\": 8,\n    \"content\": \"est\"\n}"
+                            "raw": "{\n    \"lecture_id\": 16,\n    \"student_id\": 7,\n    \"rate\": 6,\n    \"content\": \"eaque\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Report",
+            "description": "used to report a teacher",
+            "item": [
+                {
+                    "name": "Report teacher",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/report",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"nam\",\n    \"teacher_id\": 13\n}"
                         },
                         "description": "",
                         "response": []
@@ -241,7 +309,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"time_from\": \"ratione\",\n    \"date\": \"officiis\",\n    \"weekly\": true\n}"
+                            "raw": "{\n    \"time_from\": \"sunt\",\n    \"date\": \"id\",\n    \"weekly\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -297,7 +365,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"possimus\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"et\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -325,7 +393,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"iure\",\n    \"teacher_id\": \"alias\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"consequatur\",\n    \"teacher_id\": \"debitis\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -353,7 +421,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher_id\": \"rem\",\n    \"month\": \"non\",\n    \"year\": \"repellat\"\n}"
+                            "raw": "{\n    \"teacher_id\": \"dolorum\",\n    \"month\": \"sed\",\n    \"year\": \"labore\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -381,7 +449,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher\": \"error\",\n    \"date\": \"quia\"\n}"
+                            "raw": "{\n    \"teacher\": \"voluptatum\",\n    \"date\": \"suscipit\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -415,7 +483,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"non\",\n    \"password\": \"autem\",\n    \"remember_me\": \"doloribus\"\n}"
+                            "raw": "{\n    \"username\": \"natus\",\n    \"password\": \"quam\",\n    \"remember_me\": \"et\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -443,7 +511,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"voluptatem\",\n    \"email\": \"et\",\n    \"password\": \"et\",\n    \"type\": \"s\",\n    \"birth\": \"repudiandae\",\n    \"gender\": \"female\",\n    \"full_name\": \"et\",\n    \"password_confirmation\": \"quia\"\n}"
+                            "raw": "{\n    \"username\": \"et\",\n    \"email\": \"deleniti\",\n    \"password\": \"ipsum\",\n    \"type\": \"s\",\n    \"birth\": \"consequatur\",\n    \"gender\": \"female\",\n    \"full_name\": \"molestiae\",\n    \"password_confirmation\": \"modi\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -574,7 +642,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"photo\": \"corrupti\"\n}"
+                            "raw": "{\n    \"photo\": \"nihil\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -602,7 +670,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"full_name\": \"qui\",\n    \"birth\": \"ut\",\n    \"gender\": \"female\",\n    \"phone\": \"ut\",\n    \"nationality\": \"numquam\"\n}"
+                            "raw": "{\n    \"full_name\": \"aperiam\",\n    \"birth\": \"non\",\n    \"gender\": \"female\",\n    \"phone\": \"distinctio\",\n    \"nationality\": \"rerum\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -637,7 +705,7 @@
                     }
                 },
                 {
-                    "name": "api\/updatecertificates",
+                    "name": "update certifications of the user",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -693,7 +761,7 @@
                     }
                 },
                 {
-                    "name": "api\/updateeducation",
+                    "name": "update teacher's education",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -714,7 +782,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"exp_years\": \"5\",\n    \"exp_desc\": 0\n}"
+                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"rerum\",\n    \"courses\": \"illo\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -1175,62 +1243,6 @@
                     }
                 },
                 {
-                    "name": "api\/report",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/report",
-                            "query": []
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "api\/checkout",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/checkout",
-                            "query": []
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
                     "name": "details api *get users*",
                     "request": {
                         "url": {
@@ -1265,34 +1277,6 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/getprofile",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "api\/notifications",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/notifications",
                             "query": []
                         },
                         "method": "GET",
@@ -1987,6 +1971,40 @@
                         "body": {
                             "mode": "raw",
                             "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "payment",
+            "description": "Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.",
+            "item": [
+                {
+                    "name": "Checkout",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/checkout",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"items\": 12,\n    \"payment_method\": \"\\\"fawry\\\"\",\n    \"percent\": 0\n}"
                         },
                         "description": "",
                         "response": []

@@ -33,6 +33,7 @@ class ReportController extends Controller
      *   "created_at": "2020-09-14 19:27:06",
      *   "id": 4
      *}
+     *}
      * 
      */
 

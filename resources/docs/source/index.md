@@ -33,7 +33,7 @@ curl -X GET \
     -G "http://localhost/api/home" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lang":19,"subject":11,"grade":11}'
+    -d '{"lang":6,"subject":17,"grade":8}'
 
 ```
 
@@ -48,9 +48,9 @@ let headers = {
 };
 
 let body = {
-    "lang": 19,
-    "subject": 11,
-    "grade": 11
+    "lang": 6,
+    "subject": 17,
+    "grade": 8
 }
 
 fetch(url, {
@@ -191,6 +191,156 @@ Parameter | Type | Status | Description
     
 <!-- END_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
 
+#Notifications
+
+used to get the notification history for the currently logged in user.
+<!-- START_e65df2963c4f1f0bfdd426ee5170e8b7 -->
+## Notification History
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/notifications" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/notifications"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "notifications": [
+        {
+            "id": "79947688-9376-4b3f-95fd-6e3f4c31c1f4",
+            "type": "App\\Notifications\\ReportNotification",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "message": "Your report has been submitted successfully"
+            },
+            "read_at": null,
+            "created_at": "2020-09-14 19:27:31",
+            "updated_at": "2020-09-14 19:27:31"
+        },
+        {
+            "id": "66354ef2-9168-4efc-a13d-942cef01ab87",
+            "type": "App\\Notifications\\Admin\\AdminNotification",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "message": "Price approval of teacher needing for approval!"
+            },
+            "read_at": null,
+            "created_at": "2020-09-08 19:10:14",
+            "updated_at": "2020-09-08 19:10:14"
+        },
+        {
+            "id": "c5bbb766-cfa9-4b37-9a4e-bc144eb0298f",
+            "type": "App\\Notifications\\Admin\\AdminNotification",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "message": "Price approval of teacher needing for approval!"
+            },
+            "read_at": null,
+            "created_at": "2020-09-08 19:06:49",
+            "updated_at": "2020-09-08 19:06:49"
+        },
+        {
+            "id": "23ff3d46-bc8f-47cf-9f60-c3c72682c2db",
+            "type": "App\\Notifications\\BookSessionStudent",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "message": "Dear wrcefc:\r\n      This is to confirm that you have booked a session:2020-10-20 at 04:00:00\r\n"
+            },
+            "read_at": null,
+            "created_at": "2020-09-02 14:43:50",
+            "updated_at": "2020-09-02 14:43:50"
+        },
+        {
+            "id": "07706623-f57b-4d60-95b1-d8e93dbc0093",
+            "type": "App\\Notifications\\BookSession",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "message": "Dear wrcefc:\r\n      wrcefc has booked a session with you:\r\n      2020-10-20 at 04:00:00\r\n"
+            },
+            "read_at": null,
+            "created_at": "2020-09-02 14:43:48",
+            "updated_at": "2020-09-02 14:43:48"
+        },
+        {
+            "id": "3d346d9f-0d81-4f70-ac8d-94aa6f9207c2",
+            "type": "App\\Notifications\\ReportNotification",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "message": "Your report has been submitted successfully"
+            },
+            "read_at": null,
+            "created_at": "2020-09-01 14:46:52",
+            "updated_at": "2020-09-01 14:46:52"
+        },
+        {
+            "id": "e40a4875-2ad6-4ea4-aa1e-49e78f6b29a8",
+            "type": "App\\Notifications\\ReportNotification",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "message": "Your report has been submitted successfully"
+            },
+            "read_at": null,
+            "created_at": "2020-09-01 14:34:11",
+            "updated_at": "2020-09-01 14:34:11"
+        },
+        {
+            "id": "097f3495-b9b3-456f-9f9b-5b5aae0a0f7f",
+            "type": "App\\Notifications\\RatingNewTeacher",
+            "notifiable_type": "App\\User",
+            "notifiable_id": 17,
+            "data": {
+                "student_id": 18,
+                "student_name": "wrcefc",
+                "student_image": null,
+                "session_date": "2020-10-20",
+                "session_time": "04:00:00"
+            },
+            "read_at": null,
+            "created_at": "2020-08-27 18:50:42",
+            "updated_at": "2020-08-27 18:50:42"
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/notifications`
+
+
+<!-- END_e65df2963c4f1f0bfdd426ee5170e8b7 -->
+
 #Ratings
 
 Used by the student to rate a teacher.
@@ -205,7 +355,7 @@ curl -X POST \
     "http://localhost/api/ratingbystudent" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":8,"teacher_id":11,"rate":5,"content":"enim"}'
+    -d '{"lecture_id":9,"teacher_id":15,"rate":4,"content":"non"}'
 
 ```
 
@@ -220,10 +370,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 8,
-    "teacher_id": 11,
-    "rate": 5,
-    "content": "enim"
+    "lecture_id": 9,
+    "teacher_id": 15,
+    "rate": 4,
+    "content": "non"
 }
 
 fetch(url, {
@@ -268,7 +418,7 @@ curl -X POST \
     "http://localhost/api/ratingbyteacher" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":18,"student_id":12,"rate":8,"content":"est"}'
+    -d '{"lecture_id":16,"student_id":7,"rate":6,"content":"eaque"}'
 
 ```
 
@@ -283,10 +433,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 18,
-    "student_id": 12,
-    "rate": 8,
-    "content": "est"
+    "lecture_id": 16,
+    "student_id": 7,
+    "rate": 6,
+    "content": "eaque"
 }
 
 fetch(url, {
@@ -319,6 +469,75 @@ Parameter | Type | Status | Description
         `content` | string |  optional  | rating message/ comments.
     
 <!-- END_472f74a214bfb1bc280784c41dbc5ab4 -->
+
+#Report
+
+used to report a teacher
+<!-- START_513d4e19011ae1f92bd8858b5eb059b2 -->
+## Report teacher
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/report" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"content":"nam","teacher_id":13}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/report"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "content": "nam",
+    "teacher_id": 13
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "message": {
+        "email": "ayaelsac.1999@gmail.com",
+        "content": "byhjn",
+        "user_id": 17,
+        "teacher_id": 20,
+        "updated_at": "2020-09-14 19:27:06",
+        "created_at": "2020-09-14 19:27:06",
+        "id": 4
+    }
+}
+```
+
+### HTTP Request
+`POST api/report`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `content` | string |  required  | the report message.
+        `teacher_id` | integer |  required  | the ID of the teacher to be reported.
+    
+<!-- END_513d4e19011ae1f92bd8858b5eb059b2 -->
 
 #Sessions
 
@@ -690,7 +909,7 @@ curl -X POST \
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"ratione","date":"officiis","weekly":true}'
+    -d '{"time_from":"sunt","date":"id","weekly":false}'
 
 ```
 
@@ -705,9 +924,9 @@ let headers = {
 };
 
 let body = {
-    "time_from": "ratione",
-    "date": "officiis",
-    "weekly": true
+    "time_from": "sunt",
+    "date": "id",
+    "weekly": false
 }
 
 fetch(url, {
@@ -856,7 +1075,7 @@ curl -X DELETE \
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"possimus"}'
+    -d '{"lecture_id":"et"}'
 
 ```
 
@@ -871,7 +1090,7 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "possimus"
+    "lecture_id": "et"
 }
 
 fetch(url, {
@@ -925,7 +1144,7 @@ curl -X POST \
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"iure","teacher_id":"alias"}'
+    -d '{"lecture_id":"consequatur","teacher_id":"debitis"}'
 
 ```
 
@@ -940,8 +1159,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "iure",
-    "teacher_id": "alias"
+    "lecture_id": "consequatur",
+    "teacher_id": "debitis"
 }
 
 fetch(url, {
@@ -987,7 +1206,7 @@ curl -X GET \
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"rem","month":"non","year":"repellat"}'
+    -d '{"teacher_id":"dolorum","month":"sed","year":"labore"}'
 
 ```
 
@@ -1002,9 +1221,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "rem",
-    "month": "non",
-    "year": "repellat"
+    "teacher_id": "dolorum",
+    "month": "sed",
+    "year": "labore"
 }
 
 fetch(url, {
@@ -1053,7 +1272,7 @@ curl -X GET \
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"error","date":"quia"}'
+    -d '{"teacher":"voluptatum","date":"suscipit"}'
 
 ```
 
@@ -1068,8 +1287,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "error",
-    "date": "quia"
+    "teacher": "voluptatum",
+    "date": "suscipit"
 }
 
 fetch(url, {
@@ -1133,7 +1352,7 @@ curl -X POST \
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"non","password":"autem","remember_me":"doloribus"}'
+    -d '{"username":"natus","password":"quam","remember_me":"et"}'
 
 ```
 
@@ -1148,9 +1367,9 @@ let headers = {
 };
 
 let body = {
-    "username": "non",
-    "password": "autem",
-    "remember_me": "doloribus"
+    "username": "natus",
+    "password": "quam",
+    "remember_me": "et"
 }
 
 fetch(url, {
@@ -1202,7 +1421,7 @@ curl -X POST \
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"voluptatem","email":"et","password":"et","type":"s","birth":"repudiandae","gender":"female","full_name":"et","password_confirmation":"quia"}'
+    -d '{"username":"et","email":"deleniti","password":"ipsum","type":"s","birth":"consequatur","gender":"female","full_name":"molestiae","password_confirmation":"modi"}'
 
 ```
 
@@ -1217,14 +1436,14 @@ let headers = {
 };
 
 let body = {
-    "username": "voluptatem",
-    "email": "et",
-    "password": "et",
+    "username": "et",
+    "email": "deleniti",
+    "password": "ipsum",
     "type": "s",
-    "birth": "repudiandae",
+    "birth": "consequatur",
     "gender": "female",
-    "full_name": "et",
-    "password_confirmation": "quia"
+    "full_name": "molestiae",
+    "password_confirmation": "modi"
 }
 
 fetch(url, {
@@ -1434,7 +1653,7 @@ curl -X POST \
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"corrupti"}'
+    -d '{"photo":"nihil"}'
 
 ```
 
@@ -1449,7 +1668,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "corrupti"
+    "photo": "nihil"
 }
 
 fetch(url, {
@@ -1504,7 +1723,7 @@ curl -X POST \
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"qui","birth":"ut","gender":"female","phone":"ut","nationality":"numquam"}'
+    -d '{"full_name":"aperiam","birth":"non","gender":"female","phone":"distinctio","nationality":"rerum"}'
 
 ```
 
@@ -1519,11 +1738,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "qui",
-    "birth": "ut",
+    "full_name": "aperiam",
+    "birth": "non",
     "gender": "female",
-    "phone": "ut",
-    "nationality": "numquam"
+    "phone": "distinctio",
+    "nationality": "rerum"
 }
 
 fetch(url, {
@@ -1621,7 +1840,8 @@ Parameter | Type | Status | Description
 <!-- END_72b936ae0ca359c0f20175257123c9c2 -->
 
 <!-- START_003250fdb51ad58e191a88343ae16988 -->
-## api/updatecertificates
+## update certifications of the user
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -1658,6 +1878,18 @@ fetch(url, {
 ```
 
 
+> Example response (200):
+
+```json
+{
+    "success": [
+        {
+            "certificate_id": "photo",
+            "thumb_name": "files\/160011349783963.jpg"
+        }
+    ]
+}
+```
 
 ### HTTP Request
 `POST api/updatecertificates`
@@ -1798,7 +2030,8 @@ Parameter | Type | Status | Description
 <!-- END_ab3a1673faa84305dd23a5b5e5fff59f -->
 
 <!-- START_e0e0c684f73c35683de9f5fe1236338e -->
-## api/updateeducation
+## update teacher&#039;s education
+
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -1807,7 +2040,7 @@ curl -X PUT \
     "http://localhost/api/updateeducation" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"exp_years":"5","exp_desc":0}'
+    -d '{"uni_degree_id":1,"master_degree":"rerum","courses":"illo"}'
 
 ```
 
@@ -1822,8 +2055,9 @@ let headers = {
 };
 
 let body = {
-    "exp_years": "5",
-    "exp_desc": 0
+    "uni_degree_id": 1,
+    "master_degree": "rerum",
+    "courses": "illo"
 }
 
 fetch(url, {
@@ -1836,6 +2070,82 @@ fetch(url, {
 ```
 
 
+> Example response (200):
+
+```json
+{
+    "success": {
+        "id": 32,
+        "user_id": 17,
+        "nationality": null,
+        "phone": null,
+        "postal_code": null,
+        "exp_years": 5,
+        "exp_desc": "I love me",
+        "payment_info": null,
+        "avg_rate": 0,
+        "month_rate": 0,
+        "rank": 0,
+        "rates_count": 0,
+        "courses": "ef.re;fr.fr.e'",
+        "certifications": "[{\"certificate_id\":\"photo\",\"thumb_name\":\"files\\\/159957261167645.jpg\"}]",
+        "master_degree": "fdl[d]",
+        "weekly": [
+            {
+                "on": "wed",
+                "at": [
+                    {
+                        "time_from": "05:30",
+                        "time_to": "07:30",
+                        "started_from": "2020-09-30"
+                    },
+                    {
+                        "time_from": "02:30",
+                        "time_to": "03:40",
+                        "started_from": "2020-07-29"
+                    }
+                ]
+            },
+            {
+                "on": "mon",
+                "at": [
+                    {
+                        "time_from": "05:30",
+                        "time_to": "06:40",
+                        "started_from": "2020-11-30"
+                    }
+                ]
+            },
+            {
+                "on": "thu",
+                "at": [
+                    {
+                        "time_from": "05:30",
+                        "time_to": "05:50",
+                        "started_from": "2020-1-30"
+                    }
+                ]
+            },
+            {
+                "on": "sat",
+                "at": [
+                    {
+                        "time_from": "05:30",
+                        "time_to": "06:40",
+                        "started_from": "2021-1-30"
+                    }
+                ]
+            }
+        ],
+        "university_degree_id": null,
+        "price_info": null,
+        "national_id": null,
+        "phones": null,
+        "suggested_subjects": null,
+        "other_subjects": null
+    }
+}
+```
 
 ### HTTP Request
 `PUT api/updateeducation`
@@ -1843,8 +2153,9 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `exp_years` | string |  required  | experience years of a teacher.
-        `exp_desc` | integer |  required  | The description of teacher's experience.
+    `uni_degree_id` | integer |  required  | university degree id of the teacher.
+        `master_degree` | string |  required  | master degree of the teacher.
+        `courses` | string |  required  | courses of the teacher.
     
 <!-- END_e0e0c684f73c35683de9f5fe1236338e -->
 
@@ -2619,80 +2930,6 @@ fetch(url, {
 
 <!-- END_bae65df80fd9d72a01439241a9ea20d0 -->
 
-<!-- START_513d4e19011ae1f92bd8858b5eb059b2 -->
-## api/report
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost/api/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/report`
-
-
-<!-- END_513d4e19011ae1f92bd8858b5eb059b2 -->
-
-<!-- START_d4be91a3a8d5235a2d282e7158c2bdb6 -->
-## api/checkout
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost/api/checkout" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/checkout"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/checkout`
-
-
-<!-- END_d4be91a3a8d5235a2d282e7158c2bdb6 -->
-
 <!-- START_f50fecb2993d22653a99f84a5951e92c -->
 ## details api *get users*
 
@@ -2781,50 +3018,6 @@ fetch(url, {
 
 
 <!-- END_a3e1881290e56344612a4642673397ed -->
-
-<!-- START_e65df2963c4f1f0bfdd426ee5170e8b7 -->
-## api/notifications
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/api/notifications" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/notifications"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (401):
-
-```json
-{
-    "message": "Unauthenticated."
-}
-```
-
-### HTTP Request
-`GET api/notifications`
-
-
-<!-- END_e65df2963c4f1f0bfdd426ee5170e8b7 -->
 
 <!-- START_31f430322462abe3fc3e4ba369b8f77d -->
 ## Resend the email verification notification.
@@ -3675,11 +3868,6 @@ fetch(url, {
     ]
 }
 ```
-> Example response (401):
-
-```json
-null
-```
 
 ### HTTP Request
 `GET api/getsubjects`
@@ -3895,5 +4083,82 @@ fetch(url, {
 
 
 <!-- END_9c02760d4d20e71c342fa52a8838d2fd -->
+
+#payment
+
+Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.
+<!-- START_d4be91a3a8d5235a2d282e7158c2bdb6 -->
+## Checkout
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/checkout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"items":12,"payment_method":"\"fawry\"","percent":0}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/checkout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "items": 12,
+    "payment_method": "\"fawry\"",
+    "percent": 0
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "sucess": "thank you for checking out"
+}
+```
+> Example response (302):
+
+```json
+{
+    "url": "https:\/\/pay-it.mobi\/globalpayit\/pciglobal\/WebForms\/Payitcheckoutservice%20.aspx?isysid=16001206822235&amount=50.00&description=Payed+Sessions+for+2020-09-05&description2=Payed+Sessions+for+2020-09-05&language=EN&merchant_name=NajahNow&akey=YW52DzYnU8E7PMyE&original=Uq85b%2Fz3Yu4iQ0efflLzXxso1Wsg11FrA6ZZNDCBWsI%3D&hash=0FD16DCFCFC7A92A8593042C1E22D17A5EF0F63F173CD0AA05D4683C66218428&timestamp=1600120683&rnd=&user_id=18"
+}
+```
+> Example response (404):
+
+```json
+{
+    "error": "no items found for checkout"
+}
+```
+
+### HTTP Request
+`POST api/checkout`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `items` | integer |  required  | at least one element in the array
+        `payment_method` | string |  required  | fawry or credit_card.
+        `percent` | integer |  optional  | optional discount percent of promocode.
+    
+<!-- END_d4be91a3a8d5235a2d282e7158c2bdb6 -->
 
 

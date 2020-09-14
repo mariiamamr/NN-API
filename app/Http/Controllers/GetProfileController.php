@@ -272,9 +272,6 @@ class GetProfileController extends Controller
     *    }
     *]
     *}
-     * @response 401{
-     *      "error" : 'Unauthorized'
-     * }
      * 
      */
 
