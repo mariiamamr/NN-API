@@ -45,6 +45,7 @@ class EditProfileController extends Controller
         * @bodyParam  exp_years string required experience years of a teacher. Example: 5
         * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
         * update teacher's experience
+        * 
         */
     public function updateExperience(Request $request){
         $request->validate([
@@ -61,24 +62,6 @@ class EditProfileController extends Controller
     
     
     }
-    /*public function uploadCertificate($file,$userid,$certificateid)
-    {
-        $fileName="";
-        if ($file && $file->isValid()) {*/
-          /*  $extension = $file->getClientOriginalExtension();
-            $fileNameWithoutExtension=time().rand(11111,99999);
-            $filePath=$fileNameWithoutExtension.'.'.$extension;
-            $fileName ='/users/certificates/'.$filePath;
-            $file->move(public_path().'/users/certificates/',$fileName);*/
-          /*  $fileContents = file_get_contents($file);
-            $fileName = '/users/certificates/' . $userid . $certificateid.'.jpg';
-            $path = public_path() .$fileName;
-           // $file->move($path,$fileName);
-
-            File::put($path, $fileContents);
-        }
-        return $fileName;
-    }*/
     public function uploadCertificate($file)
     {
         $fileName="";
