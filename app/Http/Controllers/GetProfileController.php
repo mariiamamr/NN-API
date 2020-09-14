@@ -119,9 +119,6 @@ public function getSubjects(){
      *   }
      * ]
      * }
-     * @response 401{
-     *      "error" : 'Unauthorized'
-     * }
      * 
      */
 public function getLanguages(){
@@ -151,9 +148,6 @@ public function getLanguages(){
      *   }
      *]
      *}
-     * @response 401{
-     *      "error" : 'Unauthorized'
-     * }
      * 
      */
 public function getEdusystems(){
@@ -183,9 +177,6 @@ public function getEdusystems(){
      *   }
      *]
      *}
-     * @response 401{
-     *      "error" : 'Unauthorized'
-     * }
      * 
      */
 public function getGrades(){

@@ -333,12 +333,13 @@ public function getUpcomingSessionsForTeachers(){
      * @bodyParam  new JSON required The session's old details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "05:00", "date":"2020-12-30", "weekly":"false"}
      * @bodyParam  old JSON required The session's new details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "07:00", "date":"2020-12-29", "weekly":"false"}
      * @response {
-     *"slot": {
+     * "slot": {
      *   "date": "2020-07-06",
      *   "time_from": "01:30",
      *   "time_to": "02:30"
-     *  }
      * }
+     * }
+     *
      * @response 401{
      *      "error": "unauthenticated"
      * }
@@ -497,27 +498,26 @@ public function destroy(Request $request)
      * @bodyParam  teacher required Integer the id of the teacher
      * @bodyParam  date required date
      * @response 200{
-     * "result": {
      * "date": {
-     *    "date": "Wednesday, July 29, 2020",
-     *    "slots": [
-     *        {
-     *            "date": "2020-07-29",
-     *            "time_from": "02:30",
-     *            "time_to": "03:40",
-     *            "lecture_id": 8
-     *        }
+     *   "date": "Wednesday, July 29, 2020",
+     *   "slots": [
+     *      {
+     *           "date": "2020-07-29",
+     *           "time_from": "02:30",
+     *           "time_to": "03:40",
+     *           "lecture_id": null
+     *       }
+     *   ]
+     *  },
+     *  "slots": [
+     *   {
+     *       "id": null,
+     *       "title": "02:30 To 03:40",
+     *       "time_from": "02:30",
+     *       "time_to": "03:40",
+     *       "date": "2020-07-29"
+     *   }
      *    ]
-     *},
-     *"slots": [
-     *    {
-     *        "id": 8,
-     *        "title": "02:30 To 03:40",
-     *        "time_from": "02:30",
-     *        "time_to": "03:40",
-     *        "date": "2020-07-29"
-     *    }
-     *]
      *}
      */
     public function available_slots()

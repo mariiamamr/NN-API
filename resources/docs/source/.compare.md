@@ -33,7 +33,7 @@ curl -X GET \
     -G "http://localhost/api/home" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lang":15,"subject":12,"grade":1}'
+    -d '{"lang":17,"subject":13,"grade":14}'
 
 ```
 
@@ -48,9 +48,9 @@ let headers = {
 };
 
 let body = {
-    "lang": 15,
-    "subject": 12,
-    "grade": 1
+    "lang": 17,
+    "subject": 13,
+    "grade": 14
 }
 
 fetch(url, {
@@ -205,7 +205,7 @@ curl -X POST \
     "http://localhost/api/ratingbystudent" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":13,"teacher_id":4,"rate":8,"content":"quo"}'
+    -d '{"lecture_id":17,"teacher_id":12,"rate":16,"content":"harum"}'
 
 ```
 
@@ -220,10 +220,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 13,
-    "teacher_id": 4,
-    "rate": 8,
-    "content": "quo"
+    "lecture_id": 17,
+    "teacher_id": 12,
+    "rate": 16,
+    "content": "harum"
 }
 
 fetch(url, {
@@ -268,7 +268,7 @@ curl -X POST \
     "http://localhost/api/ratingbyteacher" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":12,"student_id":4,"rate":1,"content":"enim"}'
+    -d '{"lecture_id":19,"student_id":2,"rate":17,"content":"optio"}'
 
 ```
 
@@ -283,10 +283,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 12,
-    "student_id": 4,
-    "rate": 1,
-    "content": "enim"
+    "lecture_id": 19,
+    "student_id": 2,
+    "rate": 17,
+    "content": "optio"
 }
 
 fetch(url, {
@@ -690,7 +690,7 @@ curl -X POST \
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"iusto","date":"consequatur","weekly":false}'
+    -d '{"time_from":"esse","date":"perferendis","weekly":false}'
 
 ```
 
@@ -705,8 +705,8 @@ let headers = {
 };
 
 let body = {
-    "time_from": "iusto",
-    "date": "consequatur",
+    "time_from": "esse",
+    "date": "perferendis",
     "weekly": false
 }
 
@@ -804,7 +804,13 @@ fetch(url, {
 > Example response (200):
 
 ```json
-null
+{
+    "slot": {
+        "date": "2020-07-06",
+        "time_from": "01:30",
+        "time_to": "02:30"
+    }
+}
 ```
 > Example response (401):
 
@@ -850,7 +856,7 @@ curl -X DELETE \
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"esse"}'
+    -d '{"lecture_id":"occaecati"}'
 
 ```
 
@@ -865,7 +871,7 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "esse"
+    "lecture_id": "occaecati"
 }
 
 fetch(url, {
@@ -919,7 +925,7 @@ curl -X POST \
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"reiciendis","teacher_id":"veniam"}'
+    -d '{"lecture_id":"nam","teacher_id":"fugiat"}'
 
 ```
 
@@ -934,8 +940,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "reiciendis",
-    "teacher_id": "veniam"
+    "lecture_id": "nam",
+    "teacher_id": "fugiat"
 }
 
 fetch(url, {
@@ -981,7 +987,7 @@ curl -X GET \
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"suscipit","month":"eos","year":"commodi"}'
+    -d '{"teacher_id":"nihil","month":"temporibus","year":"perspiciatis"}'
 
 ```
 
@@ -996,9 +1002,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "suscipit",
-    "month": "eos",
-    "year": "commodi"
+    "teacher_id": "nihil",
+    "month": "temporibus",
+    "year": "perspiciatis"
 }
 
 fetch(url, {
@@ -1047,7 +1053,7 @@ curl -X GET \
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"est","date":"similique"}'
+    -d '{"teacher":"consequatur","date":"quod"}'
 
 ```
 
@@ -1062,8 +1068,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "est",
-    "date": "similique"
+    "teacher": "consequatur",
+    "date": "quod"
 }
 
 fetch(url, {
@@ -1079,7 +1085,28 @@ fetch(url, {
 > Example response (200):
 
 ```json
-null
+{
+    "date": {
+        "date": "Wednesday, July 29, 2020",
+        "slots": [
+            {
+                "date": "2020-07-29",
+                "time_from": "02:30",
+                "time_to": "03:40",
+                "lecture_id": null
+            }
+        ]
+    },
+    "slots": [
+        {
+            "id": null,
+            "title": "02:30 To 03:40",
+            "time_from": "02:30",
+            "time_to": "03:40",
+            "date": "2020-07-29"
+        }
+    ]
+}
 ```
 
 ### HTTP Request
@@ -1106,7 +1133,7 @@ curl -X POST \
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"ratione","password":"veniam","remember_me":"natus"}'
+    -d '{"username":"sit","password":"magni","remember_me":"recusandae"}'
 
 ```
 
@@ -1121,9 +1148,9 @@ let headers = {
 };
 
 let body = {
-    "username": "ratione",
-    "password": "veniam",
-    "remember_me": "natus"
+    "username": "sit",
+    "password": "magni",
+    "remember_me": "recusandae"
 }
 
 fetch(url, {
@@ -1175,7 +1202,7 @@ curl -X POST \
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"autem","email":"tempora","password":"temporibus","type":"s","birth":"sit","gender":"female","full_name":"explicabo","password_confirmation":"laborum"}'
+    -d '{"username":"et","email":"quod","password":"in","type":"s","birth":"illum","gender":"female","full_name":"beatae","password_confirmation":"velit"}'
 
 ```
 
@@ -1190,14 +1217,14 @@ let headers = {
 };
 
 let body = {
-    "username": "autem",
-    "email": "tempora",
-    "password": "temporibus",
+    "username": "et",
+    "email": "quod",
+    "password": "in",
     "type": "s",
-    "birth": "sit",
+    "birth": "illum",
     "gender": "female",
-    "full_name": "explicabo",
-    "password_confirmation": "laborum"
+    "full_name": "beatae",
+    "password_confirmation": "velit"
 }
 
 fetch(url, {
@@ -1213,12 +1240,19 @@ fetch(url, {
 > Example response (200):
 
 ```json
-null
+{
+    "success": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzA0NWJlMmY0MjNhZTU0YTI3NjFjNDYyNWM1ZDM2ZmRmYzk5MWJiYjRkOWZlZDRiMTQ5YmQ4MjAwODExOWZkZDBhMWMyNjE3MDhkZGYwNGUiLCJpYXQiOjE1OTk1MDg4NzAsIm5iZiI6MTU5OTUwODg3MCwiZXhwIjoxNjMxMDQ0ODcwLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.EarO8YHGHKdsDD3QVcBoT0L4bIztSJRlzE0jLM15xOJWOsUe1-1Xguolc9aPi4nADQ-spMstP0INNVE9Tyw6T-AuwqIP6I2YhFGh8eEVUFTXqaC29SR-CH53Bch5k-pXpwEdWoGgePSes-EC6ZntlmfGXEmAMhcmhvB_iddXqVaxSzxph-PBX9q78pYsozxSZVeZd0WwndCjzZOS5wJkBD70W6tQuINYVc3pgz60w585Ns2bzIDxBJZHDtyOcnZyOYbGiJDIu-0c8dyorj8q8XfnjHnd43ImBYjgZR5dIM7Ymo37Q62CD_lv1ex9zJFXhCSFn3QYSDesPlvy_l-7tugSwHMKVIqDBfJBxG9gQxO_yjoZwWYJmysqmA6crcHjZLcW-HVoOPnx6cak6MyyTvAcX7mWDBJ0Te5HV3ALK8ZFHhPae2qmB-H1TvPyxlHdY0cYIkEiGfIgX1pijIbbbeBq7EcP9dO6JAEWaD5SDKvc0tn7Se09AXS1fygxgAWgvazev4V06aZG-_t5F0S6jbCBnKHmx9f9NsDZahAAppnUX7VZ2mA5yOGzo3UEJxz3tA9EIGv2zPgrKPZE4AMaJzsR-_vL7KfHxJfmoberYs0pbGyUMi_K-GtaOnAqdE0XDNsfLRs9ACkH2rCeTuwwCgRHlLy9R9DIQ5nIeRrmQsc",
+        "name": "mariam"
+    }
+}
 ```
 > Example response (401):
 
 ```json
-null
+{
+    "error": "a specific error will be displayed here"
+}
 ```
 
 ### HTTP Request
@@ -1400,7 +1434,7 @@ curl -X POST \
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"necessitatibus"}'
+    -d '{"photo":"non"}'
 
 ```
 
@@ -1415,7 +1449,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "necessitatibus"
+    "photo": "non"
 }
 
 fetch(url, {
@@ -1470,7 +1504,7 @@ curl -X POST \
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"similique","birth":"dolores","gender":"female","phone":"optio","nationality":"facilis"}'
+    -d '{"full_name":"vel","birth":"voluptas","gender":"female","phone":"rerum","nationality":"vero"}'
 
 ```
 
@@ -1485,11 +1519,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "similique",
-    "birth": "dolores",
+    "full_name": "vel",
+    "birth": "voluptas",
     "gender": "female",
-    "phone": "optio",
-    "nationality": "facilis"
+    "phone": "rerum",
+    "nationality": "vero"
 }
 
 fetch(url, {
@@ -1514,11 +1548,6 @@ fetch(url, {
         "egyptian"
     ]
 }
-```
-> Example response (401):
-
-```json
-null
 ```
 
 ### HTTP Request
@@ -2796,11 +2825,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (403):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Invalid signature."
 }
 ```
 
@@ -3625,11 +3654,6 @@ fetch(url, {
     ]
 }
 ```
-> Example response (401):
-
-```json
-null
-```
 
 ### HTTP Request
 `GET api/getlanguages`
@@ -3683,11 +3707,6 @@ fetch(url, {
     ]
 }
 ```
-> Example response (401):
-
-```json
-null
-```
 
 ### HTTP Request
 `GET api/getedusystems`
@@ -3740,11 +3759,6 @@ fetch(url, {
         }
     ]
 }
-```
-> Example response (401):
-
-```json
-null
 ```
 
 ### HTTP Request

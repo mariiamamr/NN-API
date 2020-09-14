@@ -221,9 +221,6 @@ class EditProfileController extends Controller
      *   "egyptian"
      *  ]
      * }
-     * @response 401{
-     *      "error" : 'Unauthorized'
-     * }
      * 
      */
     public function updateAuthUser(Request $request)

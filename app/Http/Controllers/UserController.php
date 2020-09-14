@@ -100,10 +100,10 @@ public $successStatus = 200;
      *   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzA0NWJlMmY0MjNhZTU0YTI3NjFjNDYyNWM1ZDM2ZmRmYzk5MWJiYjRkOWZlZDRiMTQ5YmQ4MjAwODExOWZkZDBhMWMyNjE3MDhkZGYwNGUiLCJpYXQiOjE1OTk1MDg4NzAsIm5iZiI6MTU5OTUwODg3MCwiZXhwIjoxNjMxMDQ0ODcwLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.EarO8YHGHKdsDD3QVcBoT0L4bIztSJRlzE0jLM15xOJWOsUe1-1Xguolc9aPi4nADQ-spMstP0INNVE9Tyw6T-AuwqIP6I2YhFGh8eEVUFTXqaC29SR-CH53Bch5k-pXpwEdWoGgePSes-EC6ZntlmfGXEmAMhcmhvB_iddXqVaxSzxph-PBX9q78pYsozxSZVeZd0WwndCjzZOS5wJkBD70W6tQuINYVc3pgz60w585Ns2bzIDxBJZHDtyOcnZyOYbGiJDIu-0c8dyorj8q8XfnjHnd43ImBYjgZR5dIM7Ymo37Q62CD_lv1ex9zJFXhCSFn3QYSDesPlvy_l-7tugSwHMKVIqDBfJBxG9gQxO_yjoZwWYJmysqmA6crcHjZLcW-HVoOPnx6cak6MyyTvAcX7mWDBJ0Te5HV3ALK8ZFHhPae2qmB-H1TvPyxlHdY0cYIkEiGfIgX1pijIbbbeBq7EcP9dO6JAEWaD5SDKvc0tn7Se09AXS1fygxgAWgvazev4V06aZG-_t5F0S6jbCBnKHmx9f9NsDZahAAppnUX7VZ2mA5yOGzo3UEJxz3tA9EIGv2zPgrKPZE4AMaJzsR-_vL7KfHxJfmoberYs0pbGyUMi_K-GtaOnAqdE0XDNsfLRs9ACkH2rCeTuwwCgRHlLy9R9DIQ5nIeRrmQsc",
      *   "name": "mariam"
      * }
-     * @response 401{
-     *      "error" : 'a specific error will be displayed here'
      * }
-     * 
+     * @response 401{
+     *      "error" : "a specific error will be displayed here"
+     * }
      */
     public function register(Request $request) 
     { 
