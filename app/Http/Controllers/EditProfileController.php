@@ -133,7 +133,6 @@ class EditProfileController extends Controller
     
     
     }
-    
     public function uploadCertificate($file)
     {
         $fileName="";

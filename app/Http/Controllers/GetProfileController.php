@@ -51,6 +51,190 @@ class GetProfileController extends Controller
 
 
     }
+    /**
+     * Get user profile
+     * @group  getters
+     * 
+     * used to get the user's profile.
+     *  
+     * @response 200{
+     *"user": {
+     *  "id": 17,
+     *   "email": "ayaelsac.1999@gmail.com",
+     *   "email_verified_at": null,
+     *   "created_at": "2020-08-27 14:31:25",
+     *   "updated_at": "2020-08-27 14:31:25",
+     *   "full_name": "wrcefc",
+     *   "type": "t",
+     *   "active": 1,
+     *   "birth": "2000-01-01",
+     *   "gender": "female",
+     *   "status": 1,
+     *   "image_url": null,
+     *   "username": "ayakolj",
+     *   "profile": {
+     *       "id": 1,
+     *       "user_id": 17,
+     *       "nationality": null,
+     *       "phone": null,
+     *       "postal_code": null,
+     *       "exp_years": null,
+     *      "exp_desc": null,
+     *       "payment_info": null,
+     *       "avg_rate": 3,
+     *       "month_rate": 0,
+     *       "rank": 0,
+     *       "rates_count": 1,
+     *       "courses": null,
+     *       "certifications": null,
+     *       "master_degree": null,
+     *       "weekly": [
+     *           {
+     *               "on": "mon",
+     *               "at": [
+     *                   {
+     *                       "time_from": "01:30",
+     *                       "time_to": "02:40",
+     *                       "started_from": "2020-07-06"
+     *                  }
+     *              ]
+     *          }
+     *       ],
+     *       "university_degree_id": null,
+     *       "price_info": {
+     *           "pending": {
+     *               "individual": 50,
+     *               "group": 100
+     *           }
+     *       },
+     *      "national_id": null,
+     *      "phones": null,
+     *       "suggested_subjects": null,
+     *       "other_subjects": null
+     *   },
+     *   "languages": [
+     *       {
+     *           "id": 1,
+     *           "slug": "english",
+     *           "title": "english",
+     *           "pivot": {
+     *               "user_id": 17,
+     *               "language_id": 1
+     *           }
+     *       }
+     *   ],
+     *   "specialist_in": [
+     *       {
+     *           "id": 1,
+     *           "slug": "sub",
+     *           "title": "subj_test",
+     *           "created_at": null,
+     *           "updated_at": null,
+     *           "is_active": 1,
+     *           "pivot": {
+     *               "user_id": 17,
+     *               "subject_id": 1
+      *          }
+      *      },
+     *       {
+     *           "id": 1,
+     *           "slug": "sub",
+     *          "title": "subj_test",
+     *           "created_at": null,
+     *           "updated_at": null,
+     *           "is_active": 1,
+     *           "pivot": {
+     *               "user_id": 17,
+     *               "subject_id": 1
+     *           }
+     *       }
+     *   ],
+     *   "grades": [
+     *       {
+     *           "id": 1,
+     *           "slug": "kg1",
+     *           "title": "kg1",
+     *           "created_at": "2020-08-31 16:04:27",
+     *          "updated_at": "2020-08-31 16:04:27",
+     *           "pivot": {
+     *               "user_id": 17,
+     *               "grade_id": 1
+     *           }
+     *       }
+     *  ]
+     *},
+     *"profile": {
+     *   "id": 1,
+      *  "user_id": 17,
+     *   "nationality": null,
+     *   "phone": null,
+     *   "postal_code": null,
+     *   "exp_years": null,
+     *   "exp_desc": null,
+     *   "payment_info": null,
+      *  "avg_rate": 3,
+      *  "month_rate": 0,
+      *  "rank": 0,
+      *  "rates_count": 1,
+      *  "courses": null,
+      *  "certifications": null,
+      *  "master_degree": null,
+      *  "weekly": [
+      *      {
+      *          "on": "mon",
+      *          "at": [
+      *              {
+      *                  "time_from": "01:30",
+      *                  "time_to": "02:40",
+      *                  "started_from": "2020-07-06"
+      *              }
+     *           ]
+     *       }
+     *   ],
+     *   "university_degree_id": null,
+     *   "price_info": {
+     *       "pending": {
+     *           "individual": 50,
+     *           "group": 100
+     *       }
+     *   },
+     *   "national_id": null,
+     *   "phones": null,
+     *   "suggested_subjects": null,
+     *   "other_subjects": null
+     * },
+     *"uni_degrees": [],
+     *"allSubjects": [
+     *   {
+     *       "id": 1, 
+     *       "title": "subj_test"
+     *   },
+     *   {
+     *       "id": 10,
+     *       "title": "subj_test"
+     *   }
+     * ],
+     * "langs": [
+     *   {
+     *       "id": 1,
+     *       "title": "english"
+     *   }
+     * ],
+     * "edus": [],
+     * "certificates": [],
+     *  "price_config": 50,
+     *   "user_certifications": null,
+     *   "payment_info": null,
+     *   "profilePower": 10,
+     *   "other_subjects": null,
+     *   "grades": [
+     *  {
+     *       "id": 1,
+     *       "title": "kg1"
+     *   }
+     *]
+     *   }
+     */
     public function getProfile($user){
         $profile=$user->profile;
         if(!$profile)
