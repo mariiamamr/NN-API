@@ -86,6 +86,23 @@ class PaymentController extends Controller
       "pending_groups"  => isset($allPendingGroups) ? $allPendingGroups : null
     ]);
   }
+/**
+    * Checkout 
+    *@group  payment
+    * Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.
+    * @bodyParam  items integer required at least one element in the array
+    * @bodyParam payment_method string required fawry or credit_card. Example: "fawry"
+    * @bodyParam percent integer optional discount percent of promocode. Example: "100"
+    * @response {
+    * "sucess": "thank you for checking out"
+    *}
+    * @response 302{
+    * "url": "https://pay-it.mobi/globalpayit/pciglobal/WebForms/Payitcheckoutservice%20.aspx?isysid=16001206822235&amount=50.00&description=Payed+Sessions+for+2020-09-05&description2=Payed+Sessions+for+2020-09-05&language=EN&merchant_name=NajahNow&akey=YW52DzYnU8E7PMyE&original=Uq85b%2Fz3Yu4iQ0efflLzXxso1Wsg11FrA6ZZNDCBWsI%3D&hash=0FD16DCFCFC7A92A8593042C1E22D17A5EF0F63F173CD0AA05D4683C66218428&timestamp=1600120683&rnd=&user_id=18"
+    * }
+    * @response 404{
+    * "error": "no items found for checkout"
+    *}
+    */
 
   public function checkout(Request $request)
   {
@@ -102,9 +119,9 @@ class PaymentController extends Controller
     }
 
     $url = $this->user_enrolls->checkout(Auth::id(), $request);
-
+    return response()->json(['url' => $url],200);   /////
     if (is_string($url)) {
-      return response()->json(['url' => $url],200);   
+      return response()->json(['url' => $url],302);   
     } elseif ($url instanceof Order) {
       
       return  $this->freeLectures($url);   
