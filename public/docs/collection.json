@@ -2,11 +2,107 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "9895637b-10fe-41ff-9327-9431fd4f3eba",
+        "_postman_id": "86d3f738-4af3-4228-b19a-fbde82ea35e4",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
     "item": [
+        {
+            "name": "Home",
+            "description": "Searches for teachers using Subject, language, grade or all of them. Gets the home page if no ilters are applied.",
+            "item": [
+                {
+                    "name": "Search",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/home",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"lang\": 15,\n    \"subject\": 12,\n    \"grade\": 1\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Ratings",
+            "description": "Used by the student to rate a teacher.",
+            "item": [
+                {
+                    "name": "Rating by student",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/ratingbystudent",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"lecture_id\": 13,\n    \"teacher_id\": 4,\n    \"rate\": 8,\n    \"content\": \"quo\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Rating by teacher",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/ratingbyteacher",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"lecture_id\": 12,\n    \"student_id\": 4,\n    \"rate\": 1,\n    \"content\": \"enim\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
         {
             "name": "Sessions",
             "description": "used to get past sessions of the students",
@@ -145,7 +241,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"time_from\": \"corrupti\",\n    \"date\": \"suscipit\",\n    \"weekly\": true\n}"
+                            "raw": "{\n    \"time_from\": \"iusto\",\n    \"date\": \"consequatur\",\n    \"weekly\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -201,7 +297,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"lecture_id\": \"esse\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -229,7 +325,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"nostrum\",\n    \"teacher_id\": \"consequuntur\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"reiciendis\",\n    \"teacher_id\": \"veniam\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -257,7 +353,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher_id\": \"fugit\",\n    \"month\": \"deleniti\",\n    \"year\": \"ut\"\n}"
+                            "raw": "{\n    \"teacher_id\": \"suscipit\",\n    \"month\": \"eos\",\n    \"year\": \"commodi\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -285,7 +381,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher\": \"non\",\n    \"date\": \"labore\"\n}"
+                            "raw": "{\n    \"teacher\": \"est\",\n    \"date\": \"similique\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -319,7 +415,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"aut\",\n    \"password\": \"qui\",\n    \"remember_me\": \"doloremque\"\n}"
+                            "raw": "{\n    \"username\": \"ratione\",\n    \"password\": \"veniam\",\n    \"remember_me\": \"natus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -347,7 +443,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"sunt\",\n    \"email\": \"aliquam\",\n    \"password\": \"recusandae\",\n    \"type\": \"s\",\n    \"birth\": \"unde\",\n    \"gender\": \"female\",\n    \"full_name\": \"neque\",\n    \"password_confirmation\": \"facilis\"\n}"
+                            "raw": "{\n    \"username\": \"autem\",\n    \"email\": \"tempora\",\n    \"password\": \"temporibus\",\n    \"type\": \"s\",\n    \"birth\": \"sit\",\n    \"gender\": \"female\",\n    \"full_name\": \"explicabo\",\n    \"password_confirmation\": \"laborum\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -478,7 +574,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"photo\": \"assumenda\"\n}"
+                            "raw": "{\n    \"photo\": \"necessitatibus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -506,7 +602,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"full_name\": \"fuga\",\n    \"birth\": \"dolorem\",\n    \"gender\": \"female\",\n    \"phone\": \"ut\",\n    \"nationality\": \"ea\"\n}"
+                            "raw": "{\n    \"full_name\": \"similique\",\n    \"birth\": \"dolores\",\n    \"gender\": \"female\",\n    \"phone\": \"optio\",\n    \"nationality\": \"facilis\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -1169,90 +1265,6 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/getprofile",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "api\/ratingbystudent",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/ratingbystudent",
-                            "query": []
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "api\/ratingbyteacher",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/ratingbyteacher",
-                            "query": []
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "api\/home",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/home",
                             "query": []
                         },
                         "method": "GET",

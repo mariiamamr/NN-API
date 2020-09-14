@@ -20,6 +20,306 @@ Welcome to the generated API reference.
 
 <!-- END_INFO -->
 
+#Home
+
+Searches for teachers using Subject, language, grade or all of them. Gets the home page if no ilters are applied.
+<!-- START_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
+## Search
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/home" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"lang":15,"subject":12,"grade":1}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/home"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "lang": 15,
+    "subject": 12,
+    "grade": 1
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "teachers": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 17,
+                "email": "test.1999@gmail.com",
+                "email_verified_at": null,
+                "created_at": "2020-08-27 14:31:25",
+                "updated_at": "2020-08-27 14:31:25",
+                "full_name": "wrcefc",
+                "type": "t",
+                "active": 1,
+                "birth": "2000-01-01",
+                "gender": "female",
+                "status": 1,
+                "image_url": null,
+                "username": "ayakolj",
+                "profile": {
+                    "id": 1,
+                    "user_id": 17,
+                    "nationality": null,
+                    "phone": null,
+                    "postal_code": null,
+                    "exp_years": null,
+                    "exp_desc": null,
+                    "payment_info": null,
+                    "avg_rate": 3,
+                    "month_rate": 0,
+                    "rank": 0,
+                    "rates_count": 1,
+                    "courses": null,
+                    "certifications": null,
+                    "master_degree": null,
+                    "weekly": null,
+                    "university_degree_id": null,
+                    "price_info": {
+                        "pending": {
+                            "individual": 50,
+                            "group": 100
+                        }
+                    },
+                    "national_id": null,
+                    "phones": null,
+                    "suggested_subjects": null,
+                    "other_subjects": null
+                },
+                "specialist_in": [
+                    {
+                        "id": 1,
+                        "slug": "sub",
+                        "title": "subj_test",
+                        "created_at": null,
+                        "updated_at": null,
+                        "is_active": 1,
+                        "pivot": {
+                            "user_id": 17,
+                            "subject_id": 1
+                        }
+                    },
+                    {
+                        "id": 1,
+                        "slug": "sub",
+                        "title": "subj_test",
+                        "created_at": null,
+                        "updated_at": null,
+                        "is_active": 1,
+                        "pivot": {
+                            "user_id": 17,
+                            "subject_id": 1
+                        }
+                    }
+                ],
+                "languages": [
+                    {
+                        "id": 1,
+                        "slug": "english",
+                        "title": "english",
+                        "pivot": {
+                            "user_id": 17,
+                            "language_id": 1
+                        }
+                    }
+                ],
+                "grades": [
+                    {
+                        "id": 1,
+                        "slug": "kg1",
+                        "title": "kg1",
+                        "created_at": "2020-08-31 16:04:27",
+                        "updated_at": "2020-08-31 16:04:27",
+                        "pivot": {
+                            "user_id": 17,
+                            "grade_id": 1
+                        }
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http:\/\/localhost:8000\/api\/home?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost:8000\/api\/home?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost:8000\/api\/home",
+        "per_page": "6",
+        "prev_page_url": null,
+        "to": 1,
+        "total": 1
+    }
+}
+```
+
+### HTTP Request
+`GET api/home`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `lang` | integer |  optional  | the selected language ID if exists.
+        `subject` | integer |  optional  | the selected subject ID if exists.
+        `grade` | integer |  optional  | the selected grade ID if exists.
+    
+<!-- END_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
+
+#Ratings
+
+Used by the student to rate a teacher.
+<!-- START_800ad2bc8558de3f527f6ef8b8fcf842 -->
+## Rating by student
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/ratingbystudent" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"lecture_id":13,"teacher_id":4,"rate":8,"content":"quo"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/ratingbystudent"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "lecture_id": 13,
+    "teacher_id": 4,
+    "rate": 8,
+    "content": "quo"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "message": "rating added"
+}
+```
+
+### HTTP Request
+`POST api/ratingbystudent`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `lecture_id` | integer |  optional  | the ID of the lecture about which the teacher will be rated.
+        `teacher_id` | integer |  optional  | the ID of the teacher to be rated.
+        `rate` | integer |  optional  | the rating value.
+        `content` | string |  optional  | rating message/ comments.
+    
+<!-- END_800ad2bc8558de3f527f6ef8b8fcf842 -->
+
+<!-- START_472f74a214bfb1bc280784c41dbc5ab4 -->
+## Rating by teacher
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/ratingbyteacher" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"lecture_id":12,"student_id":4,"rate":1,"content":"enim"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/ratingbyteacher"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "lecture_id": 12,
+    "student_id": 4,
+    "rate": 1,
+    "content": "enim"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "message": "rating added"
+}
+```
+
+### HTTP Request
+`POST api/ratingbyteacher`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `lecture_id` | integer |  optional  | the ID of the lecture about which the student will be rated.
+        `student_id` | integer |  optional  | the ID of the student to be rated.
+        `rate` | integer |  optional  | the rating value.
+        `content` | string |  optional  | rating message/ comments.
+    
+<!-- END_472f74a214bfb1bc280784c41dbc5ab4 -->
+
 #Sessions
 
 used to get past sessions of the students
@@ -390,7 +690,7 @@ curl -X POST \
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"corrupti","date":"suscipit","weekly":true}'
+    -d '{"time_from":"iusto","date":"consequatur","weekly":false}'
 
 ```
 
@@ -405,9 +705,9 @@ let headers = {
 };
 
 let body = {
-    "time_from": "corrupti",
-    "date": "suscipit",
-    "weekly": true
+    "time_from": "iusto",
+    "date": "consequatur",
+    "weekly": false
 }
 
 fetch(url, {
@@ -549,7 +849,9 @@ Parameter | Type | Status | Description
 curl -X DELETE \
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -d '{"lecture_id":"esse"}'
+
 ```
 
 ```javascript
@@ -562,9 +864,14 @@ let headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "lecture_id": "esse"
+}
+
 fetch(url, {
     method: "DELETE",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -581,13 +888,24 @@ fetch(url, {
 > Example response (401):
 
 ```json
+{
+    "error": "session can't be deleted"
+}
+```
+> Example response (404):
+
+```json
 null
 ```
 
 ### HTTP Request
 `DELETE api/deletesession`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `lecture_id` | required |  optional  | Integer
+    
 <!-- END_f81b4274b229ac53c3565b9761a85ff6 -->
 
 <!-- START_eefc9bff9711c3e809c2a9cd1589a8da -->
@@ -601,7 +919,7 @@ curl -X POST \
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"nostrum","teacher_id":"consequuntur"}'
+    -d '{"lecture_id":"reiciendis","teacher_id":"veniam"}'
 
 ```
 
@@ -616,8 +934,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "nostrum",
-    "teacher_id": "consequuntur"
+    "lecture_id": "reiciendis",
+    "teacher_id": "veniam"
 }
 
 fetch(url, {
@@ -663,7 +981,7 @@ curl -X GET \
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"fugit","month":"deleniti","year":"ut"}'
+    -d '{"teacher_id":"suscipit","month":"eos","year":"commodi"}'
 
 ```
 
@@ -678,9 +996,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "fugit",
-    "month": "deleniti",
-    "year": "ut"
+    "teacher_id": "suscipit",
+    "month": "eos",
+    "year": "commodi"
 }
 
 fetch(url, {
@@ -696,7 +1014,14 @@ fetch(url, {
 > Example response (200):
 
 ```json
-null
+{
+    "result": [
+        {
+            "date": "2020-07-29",
+            "badge": false
+        }
+    ]
+}
 ```
 
 ### HTTP Request
@@ -722,7 +1047,7 @@ curl -X GET \
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"non","date":"labore"}'
+    -d '{"teacher":"est","date":"similique"}'
 
 ```
 
@@ -737,8 +1062,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "non",
-    "date": "labore"
+    "teacher": "est",
+    "date": "similique"
 }
 
 fetch(url, {
@@ -781,7 +1106,7 @@ curl -X POST \
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"aut","password":"qui","remember_me":"doloremque"}'
+    -d '{"username":"ratione","password":"veniam","remember_me":"natus"}'
 
 ```
 
@@ -796,9 +1121,9 @@ let headers = {
 };
 
 let body = {
-    "username": "aut",
-    "password": "qui",
-    "remember_me": "doloremque"
+    "username": "ratione",
+    "password": "veniam",
+    "remember_me": "natus"
 }
 
 fetch(url, {
@@ -850,7 +1175,7 @@ curl -X POST \
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"sunt","email":"aliquam","password":"recusandae","type":"s","birth":"unde","gender":"female","full_name":"neque","password_confirmation":"facilis"}'
+    -d '{"username":"autem","email":"tempora","password":"temporibus","type":"s","birth":"sit","gender":"female","full_name":"explicabo","password_confirmation":"laborum"}'
 
 ```
 
@@ -865,14 +1190,14 @@ let headers = {
 };
 
 let body = {
-    "username": "sunt",
-    "email": "aliquam",
-    "password": "recusandae",
+    "username": "autem",
+    "email": "tempora",
+    "password": "temporibus",
     "type": "s",
-    "birth": "unde",
+    "birth": "sit",
     "gender": "female",
-    "full_name": "neque",
-    "password_confirmation": "facilis"
+    "full_name": "explicabo",
+    "password_confirmation": "laborum"
 }
 
 fetch(url, {
@@ -1075,7 +1400,7 @@ curl -X POST \
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"assumenda"}'
+    -d '{"photo":"necessitatibus"}'
 
 ```
 
@@ -1090,7 +1415,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "assumenda"
+    "photo": "necessitatibus"
 }
 
 fetch(url, {
@@ -1145,7 +1470,7 @@ curl -X POST \
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"fuga","birth":"dolorem","gender":"female","phone":"ut","nationality":"ea"}'
+    -d '{"full_name":"similique","birth":"dolores","gender":"female","phone":"optio","nationality":"facilis"}'
 
 ```
 
@@ -1160,11 +1485,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "fuga",
-    "birth": "dolorem",
+    "full_name": "similique",
+    "birth": "dolores",
     "gender": "female",
-    "phone": "ut",
-    "nationality": "ea"
+    "phone": "optio",
+    "nationality": "facilis"
 }
 
 fetch(url, {
@@ -2351,124 +2676,6 @@ fetch(url, {
 
 <!-- END_a3e1881290e56344612a4642673397ed -->
 
-<!-- START_800ad2bc8558de3f527f6ef8b8fcf842 -->
-## api/ratingbystudent
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost/api/ratingbystudent" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/ratingbystudent"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/ratingbystudent`
-
-
-<!-- END_800ad2bc8558de3f527f6ef8b8fcf842 -->
-
-<!-- START_472f74a214bfb1bc280784c41dbc5ab4 -->
-## api/ratingbyteacher
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost/api/ratingbyteacher" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/ratingbyteacher"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/ratingbyteacher`
-
-
-<!-- END_472f74a214bfb1bc280784c41dbc5ab4 -->
-
-<!-- START_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
-## api/home
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/api/home" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/home"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (401):
-
-```json
-{
-    "message": "Unauthenticated."
-}
-```
-
-### HTTP Request
-`GET api/home`
-
-
-<!-- END_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
-
 <!-- START_e65df2963c4f1f0bfdd426ee5170e8b7 -->
 ## api/notifications
 > Example request:
@@ -2589,11 +2796,11 @@ fetch(url, {
 ```
 
 
-> Example response (403):
+> Example response (429):
 
 ```json
 {
-    "message": "Invalid signature."
+    "message": "Too Many Attempts."
 }
 ```
 

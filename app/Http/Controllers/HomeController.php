@@ -48,13 +48,12 @@ class HomeController extends Controller
      * @bodyParam  subject integer the selected subject ID if exists.
      * @bodyParam  grade integer the selected grade ID if exists.
      * @response {
-     * {
      * "teachers": {
      *   "current_page": 1,
      *   "data": [
      *       {
      *           "id": 17,
-     *           "email": "ayaelsac.1999@gmail.com",
+     *           "email": "test.1999@gmail.com",
      *           "email_verified_at": null,
      *           "created_at": "2020-08-27 14:31:25",
      *           "updated_at": "2020-08-27 14:31:25",
@@ -159,7 +158,6 @@ class HomeController extends Controller
      *   "total": 1
      * }
      * }    
-     *  }
      */
 
   public function approvedTeachers()
