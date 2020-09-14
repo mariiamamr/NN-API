@@ -333,15 +333,11 @@ public function getUpcomingSessionsForTeachers(){
      * @bodyParam  new JSON required The session's old details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "05:00", "date":"2020-12-30", "weekly":"false"}
      * @bodyParam  old JSON required The session's new details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "07:00", "date":"2020-12-29", "weekly":"false"}
      * @response {
-     *   "slot": {
-     * "started":0,
-     *   "teacher_id":17,
-     *   "date":"2020-10-16",
-     *   "time_from":"09:00:00",
-     *   "time_to":"10:10:00",
-     *   "created_at":"2020-08-27 19:31:13",
-     *   "updated_at:"2020-08-27 19:31:13"
-     * }
+     *"slot": {
+     *   "date": "2020-07-06",
+     *   "time_from": "01:30",
+     *   "time_to": "02:30"
+     *  }
      * }
      * @response 401{
      *      "error": "unauthenticated"
