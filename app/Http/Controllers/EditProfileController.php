@@ -42,10 +42,81 @@ class EditProfileController extends Controller
         /**
         * @authenticated
         * @group  edit profile
+        * update teacher's experience
         * @bodyParam  exp_years string required experience years of a teacher. Example: 5
         * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
-        * update teacher's experience
-        * 
+        * @response {
+        * "success": {
+        * "id": 32,
+        * "user_id": 17,
+        * "nationality": null,
+        * "phone": null,
+        * "postal_code": null,
+        * "exp_years": "5",
+        * "exp_desc": "I love me",
+        * "payment_info": null,
+        * "avg_rate": 0,
+        * "month_rate": 0,
+        * "rank": 0,
+        * "rates_count": 0,
+        * "courses": null,
+        * "certifications": "[{\"certificate_id\":\"photo\",\"thumb_name\":\"files\\/159957261167645.jpg\"}]",
+        * "master_degree": null,
+        * "weekly": [
+        *    {
+        *        "on": "wed",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "07:30",
+        *                "started_from": "2020-09-30"
+        *            },
+        *            {
+        *                "time_from": "02:30",
+        *                "time_to": "03:40",
+        *                "started_from": "2020-07-29"
+        *            }
+        *        ]
+        *    },
+        *    {
+        *        "on": "mon",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "06:40",
+        *                "started_from": "2020-11-30"
+        *            }
+        *        ]
+        *    },
+        *    {
+        *        "on": "thu",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "05:50",
+        *                "started_from": "2020-1-30"
+        *            }
+        *        ]
+        *    },
+        *    {
+        *        "on": "sat",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "06:40",
+        *                "started_from": "2021-1-30"
+        *            }
+        *        ]
+        *    }
+        * ],
+        * "university_degree_id": null,
+        * "price_info": null,
+        * "national_id": null,
+        * "phones": null,
+        * "suggested_subjects": null,
+        * "other_subjects": null
+        * }
+        * }
         */
     public function updateExperience(Request $request){
         $request->validate([
@@ -77,8 +148,16 @@ class EditProfileController extends Controller
         /**
         * @authenticated
         * @group  edit profile
-        * @bodyParam  certifications array required array of certifications the user adds where each object contains certificate_id(the id that refers to the certificate in certificate table)and thumb(the file of the certificate). Example: [{'certificate_id':1,'thumb':image.jpg}]
         * update certifications of the user
+        * @bodyParam  certifications array required array of certifications the user adds where each object contains certificate_id(the id that refers to the certificate in certificate table)and thumb(the file of the certificate). Example: [{'certificate_id':1,'thumb':image.jpg}]
+        * @response {
+        * "success": [
+        * {
+        *    "certificate_id": "photo",
+        *    "thumb_name": "files/160011349783963.jpg"
+        * }
+        * ]
+        * }
         */
           public function updateCertificates(Request $data){
             $user = Auth::user(); 
@@ -116,9 +195,82 @@ class EditProfileController extends Controller
         /**
         * @authenticated
         * @group  edit profile
-        * @bodyParam  exp_years string required experience years of a teacher. Example: 5
-        * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
-        * update teacher's experience
+        * update teacher's education
+        * @bodyParam  uni_degree_id int required university degree id of the teacher. Example: 1
+        * @bodyParam  master_degree string required master degree of the teacher. 
+        * @bodyParam  courses string  required courses of the teacher.
+        * @response {
+        * "success": {
+        * "id": 32,
+        * "user_id": 17,
+        * "nationality": null,
+        * "phone": null,
+        * "postal_code": null,
+        * "exp_years": 5,
+        * "exp_desc": "I love me",
+        * "payment_info": null,
+        * "avg_rate": 0,
+        * "month_rate": 0,
+        * "rank": 0,
+        * "rates_count": 0,
+        * "courses": "ef.re;fr.fr.e'",
+        * "certifications": "[{\"certificate_id\":\"photo\",\"thumb_name\":\"files\\/159957261167645.jpg\"}]",
+        * "master_degree": "fdl[d]",
+        * "weekly": [
+        *    {
+        *        "on": "wed",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "07:30",
+        *                "started_from": "2020-09-30"
+        *            },
+        *            {
+        *                "time_from": "02:30",
+        *                "time_to": "03:40",
+        *                "started_from": "2020-07-29"
+        *            }
+        *        ]
+        *    },
+        *    {
+        *        "on": "mon",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "06:40",
+        *                "started_from": "2020-11-30"
+        *            }
+        *        ]
+        *    },
+        *    {
+        *        "on": "thu",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "05:50",
+        *                "started_from": "2020-1-30"
+        *            }
+        *        ]
+        *    },
+        *    {
+        *        "on": "sat",
+        *        "at": [
+        *            {
+        *                "time_from": "05:30",
+        *                "time_to": "06:40",
+        *                "started_from": "2021-1-30"
+        *            }
+        *        ]
+        *    }
+        * ],
+        * "university_degree_id": null,
+        * "price_info": null,
+        * "national_id": null,
+        * "phones": null,
+        * "suggested_subjects": null,
+        * "other_subjects": null
+        * }
+        * }
         */
         public function updateEducation(Request $request){
             $request->validate([
