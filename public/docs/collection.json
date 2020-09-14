@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "a0d2e3da-c6b2-4ffb-9e9b-eb0172551756",
+        "_postman_id": "108153db-55f5-4047-9dc1-22b096ee6f75",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lang\": 17,\n    \"subject\": 13,\n    \"grade\": 14\n}"
+                            "raw": "{\n    \"lang\": 19,\n    \"subject\": 11,\n    \"grade\": 11\n}"
                         },
                         "description": "",
                         "response": []
@@ -67,7 +67,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 17,\n    \"teacher_id\": 12,\n    \"rate\": 16,\n    \"content\": \"harum\"\n}"
+                            "raw": "{\n    \"lecture_id\": 8,\n    \"teacher_id\": 11,\n    \"rate\": 5,\n    \"content\": \"enim\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -95,7 +95,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 19,\n    \"student_id\": 2,\n    \"rate\": 17,\n    \"content\": \"optio\"\n}"
+                            "raw": "{\n    \"lecture_id\": 18,\n    \"student_id\": 12,\n    \"rate\": 8,\n    \"content\": \"est\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -241,7 +241,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"time_from\": \"esse\",\n    \"date\": \"perferendis\",\n    \"weekly\": false\n}"
+                            "raw": "{\n    \"time_from\": \"ratione\",\n    \"date\": \"officiis\",\n    \"weekly\": true\n}"
                         },
                         "description": "",
                         "response": []
@@ -297,7 +297,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"occaecati\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"possimus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -325,7 +325,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"nam\",\n    \"teacher_id\": \"fugiat\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"iure\",\n    \"teacher_id\": \"alias\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -353,7 +353,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher_id\": \"nihil\",\n    \"month\": \"temporibus\",\n    \"year\": \"perspiciatis\"\n}"
+                            "raw": "{\n    \"teacher_id\": \"rem\",\n    \"month\": \"non\",\n    \"year\": \"repellat\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -381,7 +381,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher\": \"consequatur\",\n    \"date\": \"quod\"\n}"
+                            "raw": "{\n    \"teacher\": \"error\",\n    \"date\": \"quia\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -415,7 +415,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"sit\",\n    \"password\": \"magni\",\n    \"remember_me\": \"recusandae\"\n}"
+                            "raw": "{\n    \"username\": \"non\",\n    \"password\": \"autem\",\n    \"remember_me\": \"doloribus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -443,7 +443,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"et\",\n    \"email\": \"quod\",\n    \"password\": \"in\",\n    \"type\": \"s\",\n    \"birth\": \"illum\",\n    \"gender\": \"female\",\n    \"full_name\": \"beatae\",\n    \"password_confirmation\": \"velit\"\n}"
+                            "raw": "{\n    \"username\": \"voluptatem\",\n    \"email\": \"et\",\n    \"password\": \"et\",\n    \"type\": \"s\",\n    \"birth\": \"repudiandae\",\n    \"gender\": \"female\",\n    \"full_name\": \"et\",\n    \"password_confirmation\": \"quia\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -574,7 +574,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"photo\": \"non\"\n}"
+                            "raw": "{\n    \"photo\": \"corrupti\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -602,7 +602,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"full_name\": \"vel\",\n    \"birth\": \"voluptas\",\n    \"gender\": \"female\",\n    \"phone\": \"rerum\",\n    \"nationality\": \"vero\"\n}"
+                            "raw": "{\n    \"full_name\": \"qui\",\n    \"birth\": \"ut\",\n    \"gender\": \"female\",\n    \"phone\": \"ut\",\n    \"nationality\": \"numquam\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -665,7 +665,7 @@
                     }
                 },
                 {
-                    "name": "api\/updateexperience",
+                    "name": "update teacher's experience",
                     "request": {
                         "url": {
                             "protocol": "http",
