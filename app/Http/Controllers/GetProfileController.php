@@ -55,7 +55,7 @@ class GetProfileController extends Controller
      * Get user profile
      * @group  getters
      * 
-     * used to get the user's profile.
+     * used to get the profile of the currently logged in user.
      *  
      * @response 200{
      *"user": {
