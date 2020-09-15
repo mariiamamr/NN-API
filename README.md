@@ -1,4 +1,4 @@
-## prerequisits
+## prerequisits:
 
    install XAMPP or WAMPP
    connect to mysql database using phpmyadmin
@@ -23,6 +23,6 @@
 
    /public/docs/index.html
 
-##You will find our suggested ui of the mobile application in the following link:
+## You will find our suggested ui of the mobile application in the following link:
 
    https://wireframepro.mockflow.com/view/M2617a53bba39b9d7c78bb260289c3be31595425324666#/page/6fa943511b3a4033b512010f63ab86a6
