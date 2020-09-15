@@ -33,7 +33,7 @@ curl -X GET \
     -G "http://localhost/api/home" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lang":6,"subject":17,"grade":8}'
+    -d '{"lang":12,"subject":14,"grade":8}'
 
 ```
 
@@ -48,8 +48,8 @@ let headers = {
 };
 
 let body = {
-    "lang": 6,
-    "subject": 17,
+    "lang": 12,
+    "subject": 14,
     "grade": 8
 }
 
@@ -355,7 +355,7 @@ curl -X POST \
     "http://localhost/api/ratingbystudent" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":9,"teacher_id":15,"rate":4,"content":"non"}'
+    -d '{"lecture_id":16,"teacher_id":4,"rate":16,"content":"libero"}'
 
 ```
 
@@ -370,10 +370,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 9,
-    "teacher_id": 15,
-    "rate": 4,
-    "content": "non"
+    "lecture_id": 16,
+    "teacher_id": 4,
+    "rate": 16,
+    "content": "libero"
 }
 
 fetch(url, {
@@ -418,7 +418,7 @@ curl -X POST \
     "http://localhost/api/ratingbyteacher" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":16,"student_id":7,"rate":6,"content":"eaque"}'
+    -d '{"lecture_id":8,"student_id":16,"rate":3,"content":"dolorem"}'
 
 ```
 
@@ -433,10 +433,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 16,
-    "student_id": 7,
-    "rate": 6,
-    "content": "eaque"
+    "lecture_id": 8,
+    "student_id": 16,
+    "rate": 3,
+    "content": "dolorem"
 }
 
 fetch(url, {
@@ -483,7 +483,7 @@ curl -X POST \
     "http://localhost/api/report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"content":"nam","teacher_id":13}'
+    -d '{"content":"fugit","teacher_id":13}'
 
 ```
 
@@ -498,7 +498,7 @@ let headers = {
 };
 
 let body = {
-    "content": "nam",
+    "content": "fugit",
     "teacher_id": 13
 }
 
@@ -541,9 +541,10 @@ Parameter | Type | Status | Description
 
 #Sessions
 
-used to get past sessions of the students
+
 <!-- START_a43f2788c329b827d52d8040d628e47c -->
 ## get past sessions for students
+used to get past sessions of the students
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
@@ -633,6 +634,7 @@ fetch(url, {
 
 <!-- START_f5a3e58e95eb661b04b28462c4a77da4 -->
 ## get upcoming sessions for students
+used to get upcoming sessions of the students
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
@@ -722,6 +724,7 @@ fetch(url, {
 
 <!-- START_be60b66154a7cd9515263863ccb00e4c -->
 ## get past sessions for students
+used to get past sessions of the students
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
@@ -811,6 +814,7 @@ fetch(url, {
 
 <!-- START_57152e11da29697d08eba23ed262bc9e -->
 ## get upcoming sessions for students
+used to get upcoming sessions of the students
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
@@ -900,6 +904,7 @@ fetch(url, {
 
 <!-- START_5c84cfafc1c6c4b6b4cefe787dc19ae2 -->
 ## Create a new session
+used to add a new available slot by a teacher. There must be at least 2 hours before the start time.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
@@ -909,7 +914,7 @@ curl -X POST \
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"sunt","date":"id","weekly":false}'
+    -d '{"time_from":"aperiam","date":"est","weekly":false}'
 
 ```
 
@@ -924,8 +929,8 @@ let headers = {
 };
 
 let body = {
-    "time_from": "sunt",
-    "date": "id",
+    "time_from": "aperiam",
+    "date": "est",
     "weekly": false
 }
 
@@ -984,6 +989,8 @@ Parameter | Type | Status | Description
 ## Update an upcoming session
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+used by the teacher to edit the details of one of his upcoming sessions. refer to create session for validations.
+
 > Example request:
 
 ```bash
@@ -1068,6 +1075,8 @@ Parameter | Type | Status | Description
 ## Delete session
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+used to delete sessions
+
 > Example request:
 
 ```bash
@@ -1075,7 +1084,7 @@ curl -X DELETE \
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"et"}'
+    -d '{"lecture_id":"rem"}'
 
 ```
 
@@ -1090,7 +1099,7 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "et"
+    "lecture_id": "rem"
 }
 
 fetch(url, {
@@ -1137,6 +1146,8 @@ Parameter | Type | Status | Description
 ## enroll session
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+used to enroll sessions for students
+
 > Example request:
 
 ```bash
@@ -1144,7 +1155,7 @@ curl -X POST \
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"consequatur","teacher_id":"debitis"}'
+    -d '{"lecture_id":"quam","teacher_id":"fuga"}'
 
 ```
 
@@ -1159,8 +1170,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "consequatur",
-    "teacher_id": "debitis"
+    "lecture_id": "quam",
+    "teacher_id": "fuga"
 }
 
 fetch(url, {
@@ -1196,9 +1207,11 @@ Parameter | Type | Status | Description
 <!-- END_eefc9bff9711c3e809c2a9cd1589a8da -->
 
 <!-- START_75aeedc9835147dbac6904a443cffb60 -->
-## used to check available days in a certain month and year
+## get available days
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+used to check available days in a certain month and year
+
 > Example request:
 
 ```bash
@@ -1206,7 +1219,7 @@ curl -X GET \
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"dolorum","month":"sed","year":"labore"}'
+    -d '{"teacher_id":"qui","month":"sequi","year":"rerum"}'
 
 ```
 
@@ -1221,9 +1234,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "dolorum",
-    "month": "sed",
-    "year": "labore"
+    "teacher_id": "qui",
+    "month": "sequi",
+    "year": "rerum"
 }
 
 fetch(url, {
@@ -1262,9 +1275,11 @@ Parameter | Type | Status | Description
 <!-- END_75aeedc9835147dbac6904a443cffb60 -->
 
 <!-- START_18730964c304801367eb526b42cf7a52 -->
-## used to check available slots in a certain date
+## get available slots
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+used to check available slots in a certain date
+
 > Example request:
 
 ```bash
@@ -1272,7 +1287,7 @@ curl -X GET \
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"voluptatum","date":"suscipit"}'
+    -d '{"teacher":"odit","date":"enim"}'
 
 ```
 
@@ -1287,8 +1302,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "voluptatum",
-    "date": "suscipit"
+    "teacher": "odit",
+    "date": "enim"
 }
 
 fetch(url, {
@@ -1352,7 +1367,7 @@ curl -X POST \
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"natus","password":"quam","remember_me":"et"}'
+    -d '{"username":"quidem","password":"voluptatibus","remember_me":"molestiae"}'
 
 ```
 
@@ -1367,9 +1382,9 @@ let headers = {
 };
 
 let body = {
-    "username": "natus",
-    "password": "quam",
-    "remember_me": "et"
+    "username": "quidem",
+    "password": "voluptatibus",
+    "remember_me": "molestiae"
 }
 
 fetch(url, {
@@ -1421,7 +1436,7 @@ curl -X POST \
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"et","email":"deleniti","password":"ipsum","type":"s","birth":"consequatur","gender":"female","full_name":"molestiae","password_confirmation":"modi"}'
+    -d '{"username":"officia","email":"dolor","password":"distinctio","type":"s","birth":"pariatur","gender":"female","full_name":"totam","password_confirmation":"placeat"}'
 
 ```
 
@@ -1436,14 +1451,14 @@ let headers = {
 };
 
 let body = {
-    "username": "et",
-    "email": "deleniti",
-    "password": "ipsum",
+    "username": "officia",
+    "email": "dolor",
+    "password": "distinctio",
     "type": "s",
-    "birth": "consequatur",
+    "birth": "pariatur",
     "gender": "female",
-    "full_name": "molestiae",
-    "password_confirmation": "modi"
+    "full_name": "totam",
+    "password_confirmation": "placeat"
 }
 
 fetch(url, {
@@ -1653,7 +1668,7 @@ curl -X POST \
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"nihil"}'
+    -d '{"photo":"ad"}'
 
 ```
 
@@ -1668,7 +1683,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "nihil"
+    "photo": "ad"
 }
 
 fetch(url, {
@@ -1723,7 +1738,7 @@ curl -X POST \
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"aperiam","birth":"non","gender":"female","phone":"distinctio","nationality":"rerum"}'
+    -d '{"full_name":"neque","birth":"sed","gender":"female","phone":"deserunt","nationality":"possimus"}'
 
 ```
 
@@ -1738,11 +1753,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "aperiam",
-    "birth": "non",
+    "full_name": "neque",
+    "birth": "sed",
     "gender": "female",
-    "phone": "distinctio",
-    "nationality": "rerum"
+    "phone": "deserunt",
+    "nationality": "possimus"
 }
 
 fetch(url, {
@@ -2040,7 +2055,7 @@ curl -X PUT \
     "http://localhost/api/updateeducation" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"uni_degree_id":1,"master_degree":"rerum","courses":"illo"}'
+    -d '{"uni_degree_id":1,"master_degree":"nemo","courses":"voluptatum"}'
 
 ```
 
@@ -2056,8 +2071,8 @@ let headers = {
 
 let body = {
     "uni_degree_id": 1,
-    "master_degree": "rerum",
-    "courses": "illo"
+    "master_degree": "nemo",
+    "courses": "voluptatum"
 }
 
 fetch(url, {
@@ -4086,9 +4101,10 @@ fetch(url, {
 
 #payment
 
-Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.
+
 <!-- START_d4be91a3a8d5235a2d282e7158c2bdb6 -->
 ## Checkout
+Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.
 
 > Example request:
 
@@ -4097,7 +4113,7 @@ curl -X POST \
     "http://localhost/api/checkout" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"items":12,"payment_method":"\"fawry\"","percent":0}'
+    -d '{"items":"[12]","payment_method":"\"fawry\"","percent":0}'
 
 ```
 
@@ -4112,7 +4128,7 @@ let headers = {
 };
 
 let body = {
-    "items": 12,
+    "items": "[12]",
     "payment_method": "\"fawry\"",
     "percent": 0
 }
@@ -4155,7 +4171,7 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `items` | integer |  required  | at least one element in the array
+    `items` | array |  required  | at least one element in the array.
         `payment_method` | string |  required  | fawry or credit_card.
         `percent` | integer |  optional  | optional discount percent of promocode.
     
