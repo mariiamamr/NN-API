@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "68fed0ff-e4bd-4beb-92b3-bc03567e596e",
+        "_postman_id": "a65329f8-497e-41a2-86ec-ee9f3f427f97",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lang\": 12,\n    \"subject\": 14,\n    \"grade\": 8\n}"
+                            "raw": "{\n    \"lang\": 13,\n    \"subject\": 10,\n    \"grade\": 18\n}"
                         },
                         "description": "",
                         "response": []
@@ -101,7 +101,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 16,\n    \"teacher_id\": 4,\n    \"rate\": 16,\n    \"content\": \"libero\"\n}"
+                            "raw": "{\n    \"lecture_id\": 19,\n    \"teacher_id\": 7,\n    \"rate\": 20,\n    \"content\": \"repellendus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -129,7 +129,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 8,\n    \"student_id\": 16,\n    \"rate\": 3,\n    \"content\": \"dolorem\"\n}"
+                            "raw": "{\n    \"lecture_id\": 20,\n    \"student_id\": 20,\n    \"rate\": 8,\n    \"content\": \"reprehenderit\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -163,7 +163,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"content\": \"fugit\",\n    \"teacher_id\": 13\n}"
+                            "raw": "{\n    \"content\": \"accusamus\",\n    \"teacher_id\": 12\n}"
                         },
                         "description": "",
                         "response": []
@@ -309,7 +309,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"time_from\": \"aperiam\",\n    \"date\": \"est\",\n    \"weekly\": false\n}"
+                            "raw": "{\n    \"time_from\": \"odit\",\n    \"date\": \"culpa\",\n    \"weekly\": true\n}"
                         },
                         "description": "",
                         "response": []
@@ -365,7 +365,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"rem\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"porro\"\n}"
                         },
                         "description": "used to delete sessions",
                         "response": []
@@ -393,7 +393,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"quam\",\n    \"teacher_id\": \"fuga\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"eligendi\",\n    \"teacher_id\": \"consectetur\"\n}"
                         },
                         "description": "used to enroll sessions for students",
                         "response": []
@@ -421,7 +421,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher_id\": \"qui\",\n    \"month\": \"sequi\",\n    \"year\": \"rerum\"\n}"
+                            "raw": "{\n    \"teacher_id\": \"veritatis\",\n    \"month\": \"omnis\",\n    \"year\": \"accusamus\"\n}"
                         },
                         "description": "used to check available days in a certain month and year",
                         "response": []
@@ -449,7 +449,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher\": \"odit\",\n    \"date\": \"enim\"\n}"
+                            "raw": "{\n    \"teacher\": \"rem\",\n    \"date\": \"aut\"\n}"
                         },
                         "description": "used to check available slots in a certain date",
                         "response": []
@@ -483,7 +483,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"quidem\",\n    \"password\": \"voluptatibus\",\n    \"remember_me\": \"molestiae\"\n}"
+                            "raw": "{\n    \"username\": \"est\",\n    \"password\": \"quo\",\n    \"remember_me\": \"doloribus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -511,7 +511,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"officia\",\n    \"email\": \"dolor\",\n    \"password\": \"distinctio\",\n    \"type\": \"s\",\n    \"birth\": \"pariatur\",\n    \"gender\": \"female\",\n    \"full_name\": \"totam\",\n    \"password_confirmation\": \"placeat\"\n}"
+                            "raw": "{\n    \"username\": \"nemo\",\n    \"email\": \"ea\",\n    \"password\": \"est\",\n    \"type\": \"s\",\n    \"birth\": \"molestias\",\n    \"gender\": \"female\",\n    \"full_name\": \"voluptas\",\n    \"password_confirmation\": \"blanditiis\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -642,14 +642,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"photo\": \"ad\"\n}"
+                            "raw": "{\n    \"photo\": \"et\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "Edit profile",
+                    "name": "Edit profile\nused to edit full name, birth, gender, phone, nationality",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -670,7 +670,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"full_name\": \"neque\",\n    \"birth\": \"sed\",\n    \"gender\": \"female\",\n    \"phone\": \"deserunt\",\n    \"nationality\": \"possimus\"\n}"
+                            "raw": "{\n    \"full_name\": \"laboriosam\",\n    \"birth\": \"atque\",\n    \"gender\": \"female\",\n    \"phone\": \"nostrum\",\n    \"nationality\": \"reprehenderit\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -705,7 +705,7 @@
                     }
                 },
                 {
-                    "name": "update certifications of the user",
+                    "name": "api\/updatecertificates",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -733,7 +733,7 @@
                     }
                 },
                 {
-                    "name": "update teacher's experience",
+                    "name": "api\/updateexperience",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -782,7 +782,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"nemo\",\n    \"courses\": \"voluptatum\"\n}"
+                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"at\",\n    \"courses\": \"quas\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -1249,34 +1249,6 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/details",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "api\/getprofile",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/getprofile",
                             "query": []
                         },
                         "method": "GET",
@@ -1834,8 +1806,36 @@
         },
         {
             "name": "getters",
-            "description": "used to get subjects",
+            "description": "used to get the profile of the currently logged in user.",
             "item": [
+                {
+                    "name": "Get user profile",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/getprofile",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
                 {
                     "name": "Get all subject",
                     "request": {
