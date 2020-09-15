@@ -59,7 +59,7 @@
     -G "http://localhost/api/home" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lang":12,"subject":14,"grade":8}'
+    -d '{"lang":13,"subject":10,"grade":18}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/home"
@@ -71,9 +71,9 @@ let headers = {
 };
 
 let body = {
-    "lang": 12,
-    "subject": 14,
-    "grade": 8
+    "lang": 13,
+    "subject": 10,
+    "grade": 18
 }
 
 fetch(url, {
@@ -380,7 +380,7 @@ fetch(url, {
     "http://localhost/api/ratingbystudent" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":16,"teacher_id":4,"rate":16,"content":"libero"}'
+    -d '{"lecture_id":19,"teacher_id":7,"rate":20,"content":"repellendus"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/ratingbystudent"
@@ -392,10 +392,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 16,
-    "teacher_id": 4,
-    "rate": 16,
-    "content": "libero"
+    "lecture_id": 19,
+    "teacher_id": 7,
+    "rate": 20,
+    "content": "repellendus"
 }
 
 fetch(url, {
@@ -461,7 +461,7 @@ fetch(url, {
     "http://localhost/api/ratingbyteacher" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":8,"student_id":16,"rate":3,"content":"dolorem"}'
+    -d '{"lecture_id":20,"student_id":20,"rate":8,"content":"reprehenderit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/ratingbyteacher"
@@ -473,10 +473,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 8,
-    "student_id": 16,
-    "rate": 3,
-    "content": "dolorem"
+    "lecture_id": 20,
+    "student_id": 20,
+    "rate": 8,
+    "content": "reprehenderit"
 }
 
 fetch(url, {
@@ -543,7 +543,7 @@ fetch(url, {
     "http://localhost/api/report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"content":"fugit","teacher_id":13}'
+    -d '{"content":"accusamus","teacher_id":12}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/report"
@@ -555,8 +555,8 @@ let headers = {
 };
 
 let body = {
-    "content": "fugit",
-    "teacher_id": 13
+    "content": "accusamus",
+    "teacher_id": 12
 }
 
 fetch(url, {
@@ -932,7 +932,7 @@ fetch(url, {
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"aperiam","date":"est","weekly":false}'
+    -d '{"time_from":"odit","date":"culpa","weekly":true}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/createsession"
@@ -944,9 +944,9 @@ let headers = {
 };
 
 let body = {
-    "time_from": "aperiam",
-    "date": "est",
-    "weekly": false
+    "time_from": "odit",
+    "date": "culpa",
+    "weekly": true
 }
 
 fetch(url, {
@@ -1115,7 +1115,7 @@ used to delete sessions</p>
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"rem"}'
+    -d '{"lecture_id":"porro"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/deletesession"
@@ -1127,7 +1127,7 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "rem"
+    "lecture_id": "porro"
 }
 
 fetch(url, {
@@ -1186,7 +1186,7 @@ used to enroll sessions for students</p>
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"quam","teacher_id":"fuga"}'
+    -d '{"lecture_id":"eligendi","teacher_id":"consectetur"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/enrollsession"
@@ -1198,8 +1198,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "quam",
-    "teacher_id": "fuga"
+    "lecture_id": "eligendi",
+    "teacher_id": "consectetur"
 }
 
 fetch(url, {
@@ -1257,7 +1257,7 @@ used to check available days in a certain month and year</p>
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"qui","month":"sequi","year":"rerum"}'
+    -d '{"teacher_id":"veritatis","month":"omnis","year":"accusamus"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/availabledays"
@@ -1269,9 +1269,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "qui",
-    "month": "sequi",
-    "year": "rerum"
+    "teacher_id": "veritatis",
+    "month": "omnis",
+    "year": "accusamus"
 }
 
 fetch(url, {
@@ -1337,7 +1337,7 @@ used to check available slots in a certain date</p>
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"odit","date":"enim"}'
+    -d '{"teacher":"rem","date":"aut"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/availableslots"
@@ -1349,8 +1349,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "odit",
-    "date": "enim"
+    "teacher": "rem",
+    "date": "aut"
 }
 
 fetch(url, {
@@ -1424,7 +1424,7 @@ fetch(url, {
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"quidem","password":"voluptatibus","remember_me":"molestiae"}'
+    -d '{"username":"est","password":"quo","remember_me":"doloribus"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/login"
@@ -1436,9 +1436,9 @@ let headers = {
 };
 
 let body = {
-    "username": "quidem",
-    "password": "voluptatibus",
-    "remember_me": "molestiae"
+    "username": "est",
+    "password": "quo",
+    "remember_me": "doloribus"
 }
 
 fetch(url, {
@@ -1504,7 +1504,7 @@ fetch(url, {
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"officia","email":"dolor","password":"distinctio","type":"s","birth":"pariatur","gender":"female","full_name":"totam","password_confirmation":"placeat"}'
+    -d '{"username":"nemo","email":"ea","password":"est","type":"s","birth":"molestias","gender":"female","full_name":"voluptas","password_confirmation":"blanditiis"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/register"
@@ -1516,14 +1516,14 @@ let headers = {
 };
 
 let body = {
-    "username": "officia",
-    "email": "dolor",
-    "password": "distinctio",
+    "username": "nemo",
+    "email": "ea",
+    "password": "est",
     "type": "s",
-    "birth": "pariatur",
+    "birth": "molestias",
     "gender": "female",
-    "full_name": "totam",
-    "password_confirmation": "placeat"
+    "full_name": "voluptas",
+    "password_confirmation": "blanditiis"
 }
 
 fetch(url, {
@@ -1736,7 +1736,7 @@ fetch(url, {
 <p><code>GET api/logout</code></p>
 <!-- END_00e7e21641f05de650dbe13f242c6f2c -->
 <h1>edit profile</h1>
-<p>used to edit profile</p>
+<p>used to edit price in teacher profile</p>
 <!-- START_09851fbd2b828e86dbb0087ce3bf68a2 -->
 <h2>api/uploadprofilepicture</h2>
 <p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
@@ -1747,7 +1747,7 @@ fetch(url, {
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"ad"}'
+    -d '{"photo":"et"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/uploadprofilepicture"
@@ -1759,7 +1759,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "ad"
+    "photo": "et"
 }
 
 fetch(url, {
@@ -1813,6 +1813,8 @@ fetch(url, {
 <!-- END_09851fbd2b828e86dbb0087ce3bf68a2 -->
 <!-- START_88a4c713715d6c9929f02fb704ae1a05 -->
 <h2>Edit profile</h2>
+<p>used to edit full name, birth, gender, phone, nationality</p>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1820,7 +1822,7 @@ fetch(url, {
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"neque","birth":"sed","gender":"female","phone":"deserunt","nationality":"possimus"}'
+    -d '{"full_name":"laboriosam","birth":"atque","gender":"female","phone":"nostrum","nationality":"reprehenderit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/editprofile"
@@ -1832,11 +1834,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "neque",
-    "birth": "sed",
+    "full_name": "laboriosam",
+    "birth": "atque",
     "gender": "female",
-    "phone": "deserunt",
-    "nationality": "possimus"
+    "phone": "nostrum",
+    "nationality": "reprehenderit"
 }
 
 fetch(url, {
@@ -1964,7 +1966,7 @@ fetch(url, {
 </table>
 <!-- END_72b936ae0ca359c0f20175257123c9c2 -->
 <!-- START_003250fdb51ad58e191a88343ae16988 -->
-<h2>update certifications of the user</h2>
+<h2>api/updatecertificates</h2>
 <p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
@@ -2029,7 +2031,7 @@ fetch(url, {
 </table>
 <!-- END_003250fdb51ad58e191a88343ae16988 -->
 <!-- START_ab3a1673faa84305dd23a5b5e5fff59f -->
-<h2>update teacher&#039;s experience</h2>
+<h2>api/updateexperience</h2>
 <p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
@@ -2174,7 +2176,7 @@ fetch(url, {
     "http://localhost/api/updateeducation" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"uni_degree_id":1,"master_degree":"nemo","courses":"voluptatum"}'
+    -d '{"uni_degree_id":1,"master_degree":"at","courses":"quas"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/updateeducation"
@@ -2187,8 +2189,8 @@ let headers = {
 
 let body = {
     "uni_degree_id": 1,
-    "master_degree": "nemo",
-    "courses": "voluptatum"
+    "master_degree": "at",
+    "courses": "quas"
 }
 
 fetch(url, {
@@ -2957,39 +2959,6 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET api/details</code></p>
 <!-- END_f50fecb2993d22653a99f84a5951e92c -->
-<!-- START_a3e1881290e56344612a4642673397ed -->
-<h2>api/getprofile</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/getprofile" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/getprofile"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response (401):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "message": "Unauthenticated."
-}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/getprofile</code></p>
-<!-- END_a3e1881290e56344612a4642673397ed -->
 <!-- START_31f430322462abe3fc3e4ba369b8f77d -->
 <h2>Resend the email verification notification.</h2>
 <blockquote>
@@ -3563,7 +3532,214 @@ fetch(url, {
 <p><code>POST email/resend</code></p>
 <!-- END_38334d357e7e155bf70b9ab94619ca3d -->
 <h1>getters</h1>
-<p>used to get subjects</p>
+<p>used to get the profile of the currently logged in user.</p>
+<!-- START_a3e1881290e56344612a4642673397ed -->
+<h2>Get user profile</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/getprofile" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/getprofile"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "user": {
+        "id": 17,
+        "email": "ayaelsac.1999@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2020-08-27 14:31:25",
+        "updated_at": "2020-08-27 14:31:25",
+        "full_name": "wrcefc",
+        "type": "t",
+        "active": 1,
+        "birth": "2000-01-01",
+        "gender": "female",
+        "status": 1,
+        "image_url": null,
+        "username": "ayakolj",
+        "profile": {
+            "id": 1,
+            "user_id": 17,
+            "nationality": null,
+            "phone": null,
+            "postal_code": null,
+            "exp_years": null,
+            "exp_desc": null,
+            "payment_info": null,
+            "avg_rate": 3,
+            "month_rate": 0,
+            "rank": 0,
+            "rates_count": 1,
+            "courses": null,
+            "certifications": null,
+            "master_degree": null,
+            "weekly": [
+                {
+                    "on": "mon",
+                    "at": [
+                        {
+                            "time_from": "01:30",
+                            "time_to": "02:40",
+                            "started_from": "2020-07-06"
+                        }
+                    ]
+                }
+            ],
+            "university_degree_id": null,
+            "price_info": {
+                "pending": {
+                    "individual": 50,
+                    "group": 100
+                }
+            },
+            "national_id": null,
+            "phones": null,
+            "suggested_subjects": null,
+            "other_subjects": null
+        },
+        "languages": [
+            {
+                "id": 1,
+                "slug": "english",
+                "title": "english",
+                "pivot": {
+                    "user_id": 17,
+                    "language_id": 1
+                }
+            }
+        ],
+        "specialist_in": [
+            {
+                "id": 1,
+                "slug": "sub",
+                "title": "subj_test",
+                "created_at": null,
+                "updated_at": null,
+                "is_active": 1,
+                "pivot": {
+                    "user_id": 17,
+                    "subject_id": 1
+                }
+            },
+            {
+                "id": 1,
+                "slug": "sub",
+                "title": "subj_test",
+                "created_at": null,
+                "updated_at": null,
+                "is_active": 1,
+                "pivot": {
+                    "user_id": 17,
+                    "subject_id": 1
+                }
+            }
+        ],
+        "grades": [
+            {
+                "id": 1,
+                "slug": "kg1",
+                "title": "kg1",
+                "created_at": "2020-08-31 16:04:27",
+                "updated_at": "2020-08-31 16:04:27",
+                "pivot": {
+                    "user_id": 17,
+                    "grade_id": 1
+                }
+            }
+        ]
+    },
+    "profile": {
+        "id": 1,
+        "user_id": 17,
+        "nationality": null,
+        "phone": null,
+        "postal_code": null,
+        "exp_years": null,
+        "exp_desc": null,
+        "payment_info": null,
+        "avg_rate": 3,
+        "month_rate": 0,
+        "rank": 0,
+        "rates_count": 1,
+        "courses": null,
+        "certifications": null,
+        "master_degree": null,
+        "weekly": [
+            {
+                "on": "mon",
+                "at": [
+                    {
+                        "time_from": "01:30",
+                        "time_to": "02:40",
+                        "started_from": "2020-07-06"
+                    }
+                ]
+            }
+        ],
+        "university_degree_id": null,
+        "price_info": {
+            "pending": {
+                "individual": 50,
+                "group": 100
+            }
+        },
+        "national_id": null,
+        "phones": null,
+        "suggested_subjects": null,
+        "other_subjects": null
+    },
+    "uni_degrees": [],
+    "allSubjects": [
+        {
+            "id": 1,
+            "title": "subj_test"
+        },
+        {
+            "id": 10,
+            "title": "subj_test"
+        }
+    ],
+    "langs": [
+        {
+            "id": 1,
+            "title": "english"
+        }
+    ],
+    "edus": [],
+    "certificates": [],
+    "price_config": 50,
+    "user_certifications": null,
+    "payment_info": null,
+    "profilePower": 10,
+    "other_subjects": null,
+    "grades": [
+        {
+            "id": 1,
+            "title": "kg1"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/getprofile</code></p>
+<!-- END_a3e1881290e56344612a4642673397ed -->
 <!-- START_2fe7213b84d8914a1f7c34334e2b20ca -->
 <h2>Get all subject</h2>
 <blockquote>

@@ -33,7 +33,7 @@ curl -X GET \
     -G "http://localhost/api/home" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lang":12,"subject":14,"grade":8}'
+    -d '{"lang":13,"subject":10,"grade":18}'
 
 ```
 
@@ -48,9 +48,9 @@ let headers = {
 };
 
 let body = {
-    "lang": 12,
-    "subject": 14,
-    "grade": 8
+    "lang": 13,
+    "subject": 10,
+    "grade": 18
 }
 
 fetch(url, {
@@ -355,7 +355,7 @@ curl -X POST \
     "http://localhost/api/ratingbystudent" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":16,"teacher_id":4,"rate":16,"content":"libero"}'
+    -d '{"lecture_id":19,"teacher_id":7,"rate":20,"content":"repellendus"}'
 
 ```
 
@@ -370,10 +370,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 16,
-    "teacher_id": 4,
-    "rate": 16,
-    "content": "libero"
+    "lecture_id": 19,
+    "teacher_id": 7,
+    "rate": 20,
+    "content": "repellendus"
 }
 
 fetch(url, {
@@ -418,7 +418,7 @@ curl -X POST \
     "http://localhost/api/ratingbyteacher" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":8,"student_id":16,"rate":3,"content":"dolorem"}'
+    -d '{"lecture_id":20,"student_id":20,"rate":8,"content":"reprehenderit"}'
 
 ```
 
@@ -433,10 +433,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 8,
-    "student_id": 16,
-    "rate": 3,
-    "content": "dolorem"
+    "lecture_id": 20,
+    "student_id": 20,
+    "rate": 8,
+    "content": "reprehenderit"
 }
 
 fetch(url, {
@@ -483,7 +483,7 @@ curl -X POST \
     "http://localhost/api/report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"content":"fugit","teacher_id":13}'
+    -d '{"content":"accusamus","teacher_id":12}'
 
 ```
 
@@ -498,8 +498,8 @@ let headers = {
 };
 
 let body = {
-    "content": "fugit",
-    "teacher_id": 13
+    "content": "accusamus",
+    "teacher_id": 12
 }
 
 fetch(url, {
@@ -914,7 +914,7 @@ curl -X POST \
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"aperiam","date":"est","weekly":false}'
+    -d '{"time_from":"odit","date":"culpa","weekly":true}'
 
 ```
 
@@ -929,9 +929,9 @@ let headers = {
 };
 
 let body = {
-    "time_from": "aperiam",
-    "date": "est",
-    "weekly": false
+    "time_from": "odit",
+    "date": "culpa",
+    "weekly": true
 }
 
 fetch(url, {
@@ -1084,7 +1084,7 @@ curl -X DELETE \
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"rem"}'
+    -d '{"lecture_id":"porro"}'
 
 ```
 
@@ -1099,7 +1099,7 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "rem"
+    "lecture_id": "porro"
 }
 
 fetch(url, {
@@ -1155,7 +1155,7 @@ curl -X POST \
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"quam","teacher_id":"fuga"}'
+    -d '{"lecture_id":"eligendi","teacher_id":"consectetur"}'
 
 ```
 
@@ -1170,8 +1170,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "quam",
-    "teacher_id": "fuga"
+    "lecture_id": "eligendi",
+    "teacher_id": "consectetur"
 }
 
 fetch(url, {
@@ -1219,7 +1219,7 @@ curl -X GET \
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"qui","month":"sequi","year":"rerum"}'
+    -d '{"teacher_id":"veritatis","month":"omnis","year":"accusamus"}'
 
 ```
 
@@ -1234,9 +1234,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "qui",
-    "month": "sequi",
-    "year": "rerum"
+    "teacher_id": "veritatis",
+    "month": "omnis",
+    "year": "accusamus"
 }
 
 fetch(url, {
@@ -1287,7 +1287,7 @@ curl -X GET \
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"odit","date":"enim"}'
+    -d '{"teacher":"rem","date":"aut"}'
 
 ```
 
@@ -1302,8 +1302,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "odit",
-    "date": "enim"
+    "teacher": "rem",
+    "date": "aut"
 }
 
 fetch(url, {
@@ -1367,7 +1367,7 @@ curl -X POST \
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"quidem","password":"voluptatibus","remember_me":"molestiae"}'
+    -d '{"username":"est","password":"quo","remember_me":"doloribus"}'
 
 ```
 
@@ -1382,9 +1382,9 @@ let headers = {
 };
 
 let body = {
-    "username": "quidem",
-    "password": "voluptatibus",
-    "remember_me": "molestiae"
+    "username": "est",
+    "password": "quo",
+    "remember_me": "doloribus"
 }
 
 fetch(url, {
@@ -1436,7 +1436,7 @@ curl -X POST \
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"officia","email":"dolor","password":"distinctio","type":"s","birth":"pariatur","gender":"female","full_name":"totam","password_confirmation":"placeat"}'
+    -d '{"username":"nemo","email":"ea","password":"est","type":"s","birth":"molestias","gender":"female","full_name":"voluptas","password_confirmation":"blanditiis"}'
 
 ```
 
@@ -1451,14 +1451,14 @@ let headers = {
 };
 
 let body = {
-    "username": "officia",
-    "email": "dolor",
-    "password": "distinctio",
+    "username": "nemo",
+    "email": "ea",
+    "password": "est",
     "type": "s",
-    "birth": "pariatur",
+    "birth": "molestias",
     "gender": "female",
-    "full_name": "totam",
-    "password_confirmation": "placeat"
+    "full_name": "voluptas",
+    "password_confirmation": "blanditiis"
 }
 
 fetch(url, {
@@ -1657,7 +1657,7 @@ fetch(url, {
 
 #edit profile
 
-used to edit profile
+used to edit price in teacher profile
 <!-- START_09851fbd2b828e86dbb0087ce3bf68a2 -->
 ## api/uploadprofilepicture
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -1668,7 +1668,7 @@ curl -X POST \
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"ad"}'
+    -d '{"photo":"et"}'
 
 ```
 
@@ -1683,7 +1683,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "ad"
+    "photo": "et"
 }
 
 fetch(url, {
@@ -1730,7 +1730,9 @@ Parameter | Type | Status | Description
 
 <!-- START_88a4c713715d6c9929f02fb704ae1a05 -->
 ## Edit profile
+used to edit full name, birth, gender, phone, nationality
 
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -1738,7 +1740,7 @@ curl -X POST \
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"neque","birth":"sed","gender":"female","phone":"deserunt","nationality":"possimus"}'
+    -d '{"full_name":"laboriosam","birth":"atque","gender":"female","phone":"nostrum","nationality":"reprehenderit"}'
 
 ```
 
@@ -1753,11 +1755,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "neque",
-    "birth": "sed",
+    "full_name": "laboriosam",
+    "birth": "atque",
     "gender": "female",
-    "phone": "deserunt",
-    "nationality": "possimus"
+    "phone": "nostrum",
+    "nationality": "reprehenderit"
 }
 
 fetch(url, {
@@ -1855,8 +1857,7 @@ Parameter | Type | Status | Description
 <!-- END_72b936ae0ca359c0f20175257123c9c2 -->
 
 <!-- START_003250fdb51ad58e191a88343ae16988 -->
-## update certifications of the user
-
+## api/updatecertificates
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -1917,8 +1918,7 @@ Parameter | Type | Status | Description
 <!-- END_003250fdb51ad58e191a88343ae16988 -->
 
 <!-- START_ab3a1673faa84305dd23a5b5e5fff59f -->
-## update teacher&#039;s experience
-
+## api/updateexperience
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
@@ -2055,7 +2055,7 @@ curl -X PUT \
     "http://localhost/api/updateeducation" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"uni_degree_id":1,"master_degree":"nemo","courses":"voluptatum"}'
+    -d '{"uni_degree_id":1,"master_degree":"at","courses":"quas"}'
 
 ```
 
@@ -2071,8 +2071,8 @@ let headers = {
 
 let body = {
     "uni_degree_id": 1,
-    "master_degree": "nemo",
-    "courses": "voluptatum"
+    "master_degree": "at",
+    "courses": "quas"
 }
 
 fetch(url, {
@@ -2990,50 +2990,6 @@ fetch(url, {
 
 <!-- END_f50fecb2993d22653a99f84a5951e92c -->
 
-<!-- START_a3e1881290e56344612a4642673397ed -->
-## api/getprofile
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/api/getprofile" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/getprofile"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (401):
-
-```json
-{
-    "message": "Unauthenticated."
-}
-```
-
-### HTTP Request
-`GET api/getprofile`
-
-
-<!-- END_a3e1881290e56344612a4642673397ed -->
-
 <!-- START_31f430322462abe3fc3e4ba369b8f77d -->
 ## Resend the email verification notification.
 
@@ -3827,7 +3783,226 @@ fetch(url, {
 
 #getters
 
-used to get subjects
+used to get the profile of the currently logged in user.
+<!-- START_a3e1881290e56344612a4642673397ed -->
+## Get user profile
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/getprofile" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/getprofile"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "user": {
+        "id": 17,
+        "email": "ayaelsac.1999@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2020-08-27 14:31:25",
+        "updated_at": "2020-08-27 14:31:25",
+        "full_name": "wrcefc",
+        "type": "t",
+        "active": 1,
+        "birth": "2000-01-01",
+        "gender": "female",
+        "status": 1,
+        "image_url": null,
+        "username": "ayakolj",
+        "profile": {
+            "id": 1,
+            "user_id": 17,
+            "nationality": null,
+            "phone": null,
+            "postal_code": null,
+            "exp_years": null,
+            "exp_desc": null,
+            "payment_info": null,
+            "avg_rate": 3,
+            "month_rate": 0,
+            "rank": 0,
+            "rates_count": 1,
+            "courses": null,
+            "certifications": null,
+            "master_degree": null,
+            "weekly": [
+                {
+                    "on": "mon",
+                    "at": [
+                        {
+                            "time_from": "01:30",
+                            "time_to": "02:40",
+                            "started_from": "2020-07-06"
+                        }
+                    ]
+                }
+            ],
+            "university_degree_id": null,
+            "price_info": {
+                "pending": {
+                    "individual": 50,
+                    "group": 100
+                }
+            },
+            "national_id": null,
+            "phones": null,
+            "suggested_subjects": null,
+            "other_subjects": null
+        },
+        "languages": [
+            {
+                "id": 1,
+                "slug": "english",
+                "title": "english",
+                "pivot": {
+                    "user_id": 17,
+                    "language_id": 1
+                }
+            }
+        ],
+        "specialist_in": [
+            {
+                "id": 1,
+                "slug": "sub",
+                "title": "subj_test",
+                "created_at": null,
+                "updated_at": null,
+                "is_active": 1,
+                "pivot": {
+                    "user_id": 17,
+                    "subject_id": 1
+                }
+            },
+            {
+                "id": 1,
+                "slug": "sub",
+                "title": "subj_test",
+                "created_at": null,
+                "updated_at": null,
+                "is_active": 1,
+                "pivot": {
+                    "user_id": 17,
+                    "subject_id": 1
+                }
+            }
+        ],
+        "grades": [
+            {
+                "id": 1,
+                "slug": "kg1",
+                "title": "kg1",
+                "created_at": "2020-08-31 16:04:27",
+                "updated_at": "2020-08-31 16:04:27",
+                "pivot": {
+                    "user_id": 17,
+                    "grade_id": 1
+                }
+            }
+        ]
+    },
+    "profile": {
+        "id": 1,
+        "user_id": 17,
+        "nationality": null,
+        "phone": null,
+        "postal_code": null,
+        "exp_years": null,
+        "exp_desc": null,
+        "payment_info": null,
+        "avg_rate": 3,
+        "month_rate": 0,
+        "rank": 0,
+        "rates_count": 1,
+        "courses": null,
+        "certifications": null,
+        "master_degree": null,
+        "weekly": [
+            {
+                "on": "mon",
+                "at": [
+                    {
+                        "time_from": "01:30",
+                        "time_to": "02:40",
+                        "started_from": "2020-07-06"
+                    }
+                ]
+            }
+        ],
+        "university_degree_id": null,
+        "price_info": {
+            "pending": {
+                "individual": 50,
+                "group": 100
+            }
+        },
+        "national_id": null,
+        "phones": null,
+        "suggested_subjects": null,
+        "other_subjects": null
+    },
+    "uni_degrees": [],
+    "allSubjects": [
+        {
+            "id": 1,
+            "title": "subj_test"
+        },
+        {
+            "id": 10,
+            "title": "subj_test"
+        }
+    ],
+    "langs": [
+        {
+            "id": 1,
+            "title": "english"
+        }
+    ],
+    "edus": [],
+    "certificates": [],
+    "price_config": 50,
+    "user_certifications": null,
+    "payment_info": null,
+    "profilePower": 10,
+    "other_subjects": null,
+    "grades": [
+        {
+            "id": 1,
+            "title": "kg1"
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET api/getprofile`
+
+
+<!-- END_a3e1881290e56344612a4642673397ed -->
+
 <!-- START_2fe7213b84d8914a1f7c34334e2b20ca -->
 ## Get all subject
 
