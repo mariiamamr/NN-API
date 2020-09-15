@@ -1,0 +1,249 @@
+
+/* Style for board item grid */
+#mfBoardListItems 
+{
+	overflow-x: auto;  
+	overflow-y: hidden;
+	padding-left: 10px; 
+	padding-right: 10px; 
+	padding-bottom: 27px;
+	white-space:nowrap;
+	width: 100%; 
+	height: 100%;  
+	-webkit-transform: translateZ(0);
+	position:absolute;
+	
+
+}
+
+
+
+#mfBoardListItems.emptyBoard:after
+{
+  content: "";
+  /*background-image: url('../../images/editor/boardplaceholder.png');
+  background-repeat: no-repeat;
+  background-position: 5px 0;*/
+  opacity: 0.15;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+  bottom: 0;
+  right: 0;
+}
+.mfBoardItemCls 
+{ 
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 250px;
+  display: inline-block;
+  text-align: center;
+  vertical-align:top;
+  background-color: #fff;
+  min-height:300px;
+  -webkit-transform: translateZ(0);
+  
+}
+
+.mfBoardItemCls.dragging
+{
+	
+
+	background:#fff;
+}
+.mfBoardItemCls:hover {
+	/*background-color:#f0f0f0; */
+}
+.mfInlineNewBoardBtn,
+#mfaddnewBoard
+{
+  display: inline-block;
+  margin: 15px;
+  text-align: center;
+  width: 250px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #b8b8b8;
+  border: 1px solid #b8b8b8;
+  border-radius: 5px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+
+.mfInlineNewBoardBtn:hover,
+#mfaddnewBoard
+{
+	opacity: 0.7;
+}
+.mfOutlineBtn
+{
+	width : 100%;
+	padding : 5px;
+	border: none;
+    background-color: #FC3;
+	text-align: center;
+	font-size : 14px;
+	-webkit-box-shadow: -1px 4px 6px 0px rgba(0,0,0,0.18);
+	-moz-box-shadow: -1px 4px 6px 0px rgba(0,0,0,0.18);
+	box-shadow: -1px 4px 6px 0px rgba(0,0,0,0.18);
+}
+.mfOutlineBtn:hover 
+{
+	opacity : 0.6;
+}
+.mfBoardTitleCls 
+{ 
+	color: #000;
+    height: 40px;
+    padding: 5px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid #eee;
+    width:100%;
+    text-align: left;
+} 
+.mfBoardTitleCls:hover 
+{
+	/*opacity: 0.7; */
+	cursor : move;
+}
+
+
+.ui-draggable-dragging 
+{
+	/*opacity : 0.7;*/
+	z-index: 2001;
+}
+.ui-state-highlight 
+{ 
+	display: inline-block;
+	width: 250px; 
+	height:95%;
+	margin: 15px;
+	background: rgba(255, 255, 255, 0.4);
+	padding: 5px;
+	border: 2px dashed #ddd;
+ }
+ .ui-state-hover
+ {
+ 	background: #FAFAFA;
+	border: none;
+ }
+ 
+ 
+ .mfWorkflowItemItemTxt
+ {
+ 	overflow: hidden;
+ 	width: 220px;
+ 	 white-space: nowrap;
+ 	  text-overflow: ellipsis;
+ 	  padding-left:27px;
+ }
+ 
+.mfBoardWorkflowItemsCls
+{
+	margin: 0;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	position: relative;
+	width: 100%;
+	min-height:190px; 
+    padding-top: 15px; 
+
+	-webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden; 
+	padding-top: 20px;
+}
+
+.mfBoardWorkflowItemsCls:hover {
+	
+	overflow-y:auto;
+    
+}
+ 
+ 
+.mfBoardWorkflowItemsCls li
+{
+	list-style-type: none;
+	position: relative;
+	margin-bottom: 10px;
+	margin-left: -40px;
+	width: 245px;
+}
+.mfBoardWorkflowItemsCls li .mfWorkflowItemItemLoader
+{
+    position: absolute;
+    top: calc(50% - 35px);
+    left: calc(50% - 3px);
+    color: #eee;
+    
+    font-size: 28px;
+    display: inline-block;
+    background-color: rgba(74, 74, 74, 0.37);
+    border-radius: 50%;
+    padding: 3px;
+} 
+
+.mfWorkflowItemItem
+{
+	position: relative;
+	list-style-type: none;
+	text-align: center;
+	padding-bottom: 10px;
+	
+}
+
+.mfWorkflowItemItem img
+{
+	
+	max-height : 200px;
+	max-width : 200px;
+	margin:5px;
+	cursor:pointer;
+	vertical-align: middle;
+	
+	-webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,0.07));
+    filter:         drop-shadow(0 1px 2px rgba(0,0,0,0.07)); 
+    
+    -webkit-backface-visibility: hidden;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    
+    
+    
+	/*
+	box-shadow: 0px 0px 20px 0px rgba(119, 119, 119, 0.59);
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(119, 119, 119, 0.59);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(119, 119, 119, 0.59);
+    */
+}
+
+.mfBoardOver
+{
+	
+	background: #ccc;
+}
+
+ .pageWorkflowCommentNum
+ {
+ 	position: absolute; 
+ 	top: -3px; 
+ 	left: 215px; 
+ 	width: 14px; 
+ 	height: 14px; 
+ 	overflow: hidden;
+ 	border-radius: 14px; 
+ 	background: #bbb;
+ 	color: #fff;
+ 	font-size: 12px;
+ 	text-align: center;
+ }

@@ -41,8 +41,8 @@ class EditProfileController extends Controller
     }
         /**
         * @authenticated
-        * @group  edit profile
         * update teacher's experience
+        * @group  edit profile
         * @bodyParam  exp_years string required experience years of a teacher. Example: 5
         * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
         * @response {
@@ -147,8 +147,8 @@ class EditProfileController extends Controller
     }
         /**
         * @authenticated
-        * @group  edit profile
         * update certifications of the user
+        * @group  edit profile
         * @bodyParam  certifications array required array of certifications the user adds where each object contains certificate_id(the id that refers to the certificate in certificate table)and thumb(the file of the certificate). Example: [{'certificate_id':1,'thumb':image.jpg}]
         * @response {
         * "success": [
@@ -337,9 +337,9 @@ class EditProfileController extends Controller
        
    /**
      * Edit profile
+     * used to edit full name, birth, gender, phone, nationality
+     * @authenticated
      * @group  edit profile
-     * 
-     * used to edit profile
      *  
      *
      * @bodyParam full_name required String

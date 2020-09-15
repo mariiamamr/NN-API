@@ -33,9 +33,9 @@ class CreateSessionController extends Controller
     }
       /**
      * Create a new session
+     * used to add a new available slot by a teacher. There must be at least 2 hours before the start time.
      * @group  Sessions
      * 
-     * used to add a new available slot by a teacher. There must be at least 2 hours before the start time.
      *  
      * @authenticated
      * @bodyParam  time_from time required The session's start time in the format hh:mm
@@ -92,9 +92,9 @@ class CreateSessionController extends Controller
     }
      /**
      * get past sessions for students
+     * used to get past sessions of the students
      * @group  Sessions
      * 
-     * used to get past sessions of the students
      *  
      * @authenticated
      * @response 200{
@@ -150,9 +150,9 @@ public function getPastSessionsForStudents(){
 }
 /**
      * get upcoming sessions for students
+     * used to get upcoming sessions of the students
      * @group  Sessions
      * 
-     * used to get upcoming sessions of the students
      *  
      * @authenticated
      * @response 200{
@@ -208,9 +208,9 @@ public function getUpcomingSessionsForStudents(){
 }
 /**
      * get past sessions for students
+     * used to get past sessions of the students
      * @group  Sessions
      * 
-     * used to get past sessions of the students
      *  
      * @authenticated
      * @response 200{
@@ -267,9 +267,10 @@ public function getPastSessionsForTeachers(){
 }
 /**
      * get upcoming sessions for students
+     * used to get upcoming sessions of the students
+     * 
      * @group  Sessions
      * 
-     * used to get upcoming sessions of the students
      *  
      * @authenticated
      * @response 200{
@@ -325,9 +326,10 @@ public function getUpcomingSessionsForTeachers(){
 }
       /**
      * Update an upcoming session
-     * @group  Sessions
      * 
      * used by the teacher to edit the details of one of his upcoming sessions. refer to create session for validations.
+     * @group  Sessions
+     * 
      *  
      * @authenticated
      * @bodyParam  new JSON required The session's old details: time_from (hh:mm), date (YYYY-MM-DD), and weekly (boolean). Example: {"time_from": "05:00", "date":"2020-12-30", "weekly":"false"}
@@ -388,9 +390,10 @@ public function getUpcomingSessionsForTeachers(){
     
   /**
      * Delete session
-     * @group  Sessions
      * 
      * used to delete sessions
+     * @group  Sessions
+     * 
      *  
      * @authenticated
      * @bodyParam  lecture_id required Integer
@@ -421,9 +424,10 @@ public function destroy(Request $request)
   }
   /**
      * enroll session
-     * @group  Sessions
      * 
      * used to enroll sessions for students
+     * @group  Sessions
+     * 
      *  
      * @authenticated
      * @bodyParam  lecture_id required Integer the lecture the student wants to enroll
@@ -443,10 +447,11 @@ public function destroy(Request $request)
 
 
     /**
-     * 
-     * @group  Sessions
+     * get available days
      * 
      * used to check available days in a certain month and year
+     * @group  Sessions
+     * 
      *  
      * @authenticated
      * @bodyParam  teacher_id required Integer the id of the teacher
@@ -489,10 +494,12 @@ public function destroy(Request $request)
         return response()->json(["result" => $result], 200);
     }
     /**
+     * get available slots
+     * 
+     * used to check available slots in a certain date
      * 
      * @group  Sessions
      * 
-     * used to check available slots in a certain date
      *  
      * @authenticated
      * @bodyParam  teacher required Integer the id of the teacher

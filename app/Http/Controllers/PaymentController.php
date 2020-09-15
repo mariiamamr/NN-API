@@ -88,9 +88,9 @@ class PaymentController extends Controller
   }
 /**
     * Checkout 
-    *@group  payment
     * Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.
-    * @bodyParam  items integer required at least one element in the array
+    * @group  payment
+    * @bodyParam  items array required at least one element in the array. Example: [12]
     * @bodyParam payment_method string required fawry or credit_card. Example: "fawry"
     * @bodyParam percent integer optional discount percent of promocode. Example: "100"
     * @response {

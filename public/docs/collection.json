@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "2e9e02ed-475f-47f3-b93f-319e602a60c6",
+        "_postman_id": "68fed0ff-e4bd-4beb-92b3-bc03567e596e",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lang\": 6,\n    \"subject\": 17,\n    \"grade\": 8\n}"
+                            "raw": "{\n    \"lang\": 12,\n    \"subject\": 14,\n    \"grade\": 8\n}"
                         },
                         "description": "",
                         "response": []
@@ -101,7 +101,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 9,\n    \"teacher_id\": 15,\n    \"rate\": 4,\n    \"content\": \"non\"\n}"
+                            "raw": "{\n    \"lecture_id\": 16,\n    \"teacher_id\": 4,\n    \"rate\": 16,\n    \"content\": \"libero\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -129,7 +129,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 16,\n    \"student_id\": 7,\n    \"rate\": 6,\n    \"content\": \"eaque\"\n}"
+                            "raw": "{\n    \"lecture_id\": 8,\n    \"student_id\": 16,\n    \"rate\": 3,\n    \"content\": \"dolorem\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -163,7 +163,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"content\": \"nam\",\n    \"teacher_id\": 13\n}"
+                            "raw": "{\n    \"content\": \"fugit\",\n    \"teacher_id\": 13\n}"
                         },
                         "description": "",
                         "response": []
@@ -173,10 +173,10 @@
         },
         {
             "name": "Sessions",
-            "description": "used to get past sessions of the students",
+            "description": "",
             "item": [
                 {
-                    "name": "get past sessions for students",
+                    "name": "get past sessions for students\nused to get past sessions of the students",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -204,7 +204,7 @@
                     }
                 },
                 {
-                    "name": "get upcoming sessions for students",
+                    "name": "get upcoming sessions for students\nused to get upcoming sessions of the students",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -232,7 +232,7 @@
                     }
                 },
                 {
-                    "name": "get past sessions for students",
+                    "name": "get past sessions for students\nused to get past sessions of the students",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -260,7 +260,7 @@
                     }
                 },
                 {
-                    "name": "get upcoming sessions for students",
+                    "name": "get upcoming sessions for students\nused to get upcoming sessions of the students",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -288,7 +288,7 @@
                     }
                 },
                 {
-                    "name": "Create a new session",
+                    "name": "Create a new session\nused to add a new available slot by a teacher. There must be at least 2 hours before the start time.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -309,7 +309,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"time_from\": \"sunt\",\n    \"date\": \"id\",\n    \"weekly\": false\n}"
+                            "raw": "{\n    \"time_from\": \"aperiam\",\n    \"date\": \"est\",\n    \"weekly\": false\n}"
                         },
                         "description": "",
                         "response": []
@@ -339,7 +339,7 @@
                             "mode": "raw",
                             "raw": "{\n    \"new\": \"{\\\"time_from\\\": \\\"05:00\\\", \\\"date\\\":\\\"2020-12-30\\\", \\\"weekly\\\":\\\"false\\\"}\",\n    \"old\": \"{\\\"time_from\\\": \\\"07:00\\\", \\\"date\\\":\\\"2020-12-29\\\", \\\"weekly\\\":\\\"false\\\"}\"\n}"
                         },
-                        "description": "",
+                        "description": "used by the teacher to edit the details of one of his upcoming sessions. refer to create session for validations.",
                         "response": []
                     }
                 },
@@ -365,9 +365,9 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"et\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"rem\"\n}"
                         },
-                        "description": "",
+                        "description": "used to delete sessions",
                         "response": []
                     }
                 },
@@ -393,14 +393,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"consequatur\",\n    \"teacher_id\": \"debitis\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"quam\",\n    \"teacher_id\": \"fuga\"\n}"
                         },
-                        "description": "",
+                        "description": "used to enroll sessions for students",
                         "response": []
                     }
                 },
                 {
-                    "name": "used to check available days in a certain month and year",
+                    "name": "get available days",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -421,14 +421,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher_id\": \"dolorum\",\n    \"month\": \"sed\",\n    \"year\": \"labore\"\n}"
+                            "raw": "{\n    \"teacher_id\": \"qui\",\n    \"month\": \"sequi\",\n    \"year\": \"rerum\"\n}"
                         },
-                        "description": "",
+                        "description": "used to check available days in a certain month and year",
                         "response": []
                     }
                 },
                 {
-                    "name": "used to check available slots in a certain date",
+                    "name": "get available slots",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -449,9 +449,9 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher\": \"voluptatum\",\n    \"date\": \"suscipit\"\n}"
+                            "raw": "{\n    \"teacher\": \"odit\",\n    \"date\": \"enim\"\n}"
                         },
-                        "description": "",
+                        "description": "used to check available slots in a certain date",
                         "response": []
                     }
                 }
@@ -483,7 +483,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"natus\",\n    \"password\": \"quam\",\n    \"remember_me\": \"et\"\n}"
+                            "raw": "{\n    \"username\": \"quidem\",\n    \"password\": \"voluptatibus\",\n    \"remember_me\": \"molestiae\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -511,7 +511,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"et\",\n    \"email\": \"deleniti\",\n    \"password\": \"ipsum\",\n    \"type\": \"s\",\n    \"birth\": \"consequatur\",\n    \"gender\": \"female\",\n    \"full_name\": \"molestiae\",\n    \"password_confirmation\": \"modi\"\n}"
+                            "raw": "{\n    \"username\": \"officia\",\n    \"email\": \"dolor\",\n    \"password\": \"distinctio\",\n    \"type\": \"s\",\n    \"birth\": \"pariatur\",\n    \"gender\": \"female\",\n    \"full_name\": \"totam\",\n    \"password_confirmation\": \"placeat\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -642,7 +642,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"photo\": \"nihil\"\n}"
+                            "raw": "{\n    \"photo\": \"ad\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -670,7 +670,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"full_name\": \"aperiam\",\n    \"birth\": \"non\",\n    \"gender\": \"female\",\n    \"phone\": \"distinctio\",\n    \"nationality\": \"rerum\"\n}"
+                            "raw": "{\n    \"full_name\": \"neque\",\n    \"birth\": \"sed\",\n    \"gender\": \"female\",\n    \"phone\": \"deserunt\",\n    \"nationality\": \"possimus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -782,7 +782,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"rerum\",\n    \"courses\": \"illo\"\n}"
+                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"nemo\",\n    \"courses\": \"voluptatum\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -1980,10 +1980,10 @@
         },
         {
             "name": "payment",
-            "description": "Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.",
+            "description": "",
             "item": [
                 {
-                    "name": "Checkout",
+                    "name": "Checkout\nLecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -2004,7 +2004,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"items\": 12,\n    \"payment_method\": \"\\\"fawry\\\"\",\n    \"percent\": 0\n}"
+                            "raw": "{\n    \"items\": \"[12]\",\n    \"payment_method\": \"\\\"fawry\\\"\",\n    \"percent\": 0\n}"
                         },
                         "description": "",
                         "response": []
