@@ -57,10 +57,10 @@ class FawryEloquent implements FawryContract
             ];
         }
 
-        /*$url = self::Endpoint . '?chargeRequest=' . json_encode($chargeRequest) . '&successPageUrl=' .
-            $this->redirectToURL . '&failerPageUrl=' . $this->failerPageUrl;*/
+        $url = self::Endpoint . '?chargeRequest=' . json_encode($chargeRequest) . '&successPageUrl=' .
+            $this->redirectToURL . '&failerPageUrl=' . $this->failerPageUrl;
 
-        return "url";
+        return $url;
     }
 
 }

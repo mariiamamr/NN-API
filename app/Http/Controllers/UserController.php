@@ -123,7 +123,7 @@ $input = $request->all();
 
         //create the user in the database and send email verification message
          $user = User::create($input);//->SendEmailVerificationNotification(); 
-       // event(new Registered($user = User::create($input)));
+       event(new Registered($user = User::create($input)));
 
         $success['token'] =  $user->createToken('MyApp')-> accessToken; //create the access token
         $success['name'] =  $user->full_name;

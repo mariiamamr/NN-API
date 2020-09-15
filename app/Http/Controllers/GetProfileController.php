@@ -51,6 +51,142 @@ class GetProfileController extends Controller
 
 
     }
+    public function getProfile($user){
+        $profile=$user->profile;
+        if(!$profile)
+    {
+    $profile = new \App\UserInfo;
+    $user->profile()->save($profile);
+        }
+       return UserInfo::firstOrCreate(['user_id'=>$user->id]);
+    
+    
+    }
+/**
+     * Get all subject
+     * @group  getters
+     * 
+     * used to get subjects
+     *  
+     * @response 200{
+    *"Subjects": [
+    *  {
+    *        "id": 1,
+    *        "slug": "hello",
+    *        "title": "hello",
+    *        "created_at": "2020-09-01 12:35:49",
+    *        "updated_at": "2020-09-01 12:35:49",
+    *        "is_active": 1
+    *    },
+    *    {
+    *        "id": 2,
+    *        "slug": "maths",
+    *        "title": "maths",
+    *        "created_at": "2020-09-09 00:00:00",
+    *        "updated_at": "2020-09-09 00:00:00",
+    *        "is_active": 1
+    *    }
+    *]
+    *}
+     * 
+     */
+
+public function getSubjects(){
+    $user = User::find(Auth::id());
+    if(!$user){
+        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
+    }
+    
+    $subjects=$this->subject->getAll();
+    return response()->json(['Subjects'=>$subjects], 200); 
+}
+
+/**
+     * Get all languages
+     * @group  getters
+     * 
+     * used to get languages
+     *  
+     * @response 200{
+     * "Languages": [
+     *   {
+     *       "id": 1,
+     *       "slug": "english",
+     *       "title": "english"
+     *   }
+     * ]
+     * }
+     * 
+     */
+public function getLanguages(){
+    $user = User::find(Auth::id());
+    if(!$user){
+        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
+    }
+    
+    $languages=$this->language->getAll();
+    return response()->json(['Languages'=>$languages], 200); 
+}
+
+/**
+     * Get all edusystems
+     * @group  getters
+     * 
+     * used to get edusystems
+     *  
+     * @response 200{
+     *"EduSystems": [
+     *   {
+     *       "id": 1,
+     *       "slug": "maam",
+     *       "title": "maamm",
+     *       "created_at": "2020-09-01 12:37:19",
+     *       "updated_at": "2020-09-01 12:37:19"
+     *   }
+     *]
+     *}
+     * 
+     */
+public function getEdusystems(){
+    $user = User::find(Auth::id());
+    if(!$user){
+        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
+    }
+    
+    $edu_systems=$this->edu_system->getAll();
+    return response()->json(['EduSystems'=>$edu_systems], 200); 
+}
+
+/**
+     * Get all grades
+     * @group  getters
+     * 
+     * used to get grades
+     *  
+     * @response 200{
+     * "Grades": [
+     *   {
+     *       "id": 1,
+     *       "slug": "kg1",
+     *       "title": "kg1",
+     *       "created_at": "2020-09-01 12:37:48",
+     *       "updated_at": "2020-09-01 12:37:48"
+     *   }
+     *]
+     *}
+     * 
+     */
+public function getGrades(){
+    $user = User::find(Auth::id());
+    if(!$user){
+        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
+    }
+    //Get All Grades
+    $grades=$this->grade->getAll();
+    return response()->json(['Grades'=>$grades], 200); 
+}
+
+
     /**
      * Get user profile
      * @group  getters
@@ -235,142 +371,7 @@ class GetProfileController extends Controller
      *]
      *   }
      */
-    public function getProfile($user){
-        $profile=$user->profile;
-        if(!$profile)
-    {
-    $profile = new \App\UserInfo;
-    $user->profile()->save($profile);
-        }
-       return UserInfo::firstOrCreate(['user_id'=>$user->id]);
-    
-    
-    }
-/**
-     * Get all subject
-     * @group  getters
-     * 
-     * used to get subjects
-     *  
-     * @response 200{
-    *"Subjects": [
-    *  {
-    *        "id": 1,
-    *        "slug": "hello",
-    *        "title": "hello",
-    *        "created_at": "2020-09-01 12:35:49",
-    *        "updated_at": "2020-09-01 12:35:49",
-    *        "is_active": 1
-    *    },
-    *    {
-    *        "id": 2,
-    *        "slug": "maths",
-    *        "title": "maths",
-    *        "created_at": "2020-09-09 00:00:00",
-    *        "updated_at": "2020-09-09 00:00:00",
-    *        "is_active": 1
-    *    }
-    *]
-    *}
-     * 
-     */
 
-public function getSubjects(){
-    $user = User::find(Auth::id());
-    if(!$user){
-        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
-    }
-    
-    $subjects=$this->subject->getAll();
-    return response()->json(['Subjects'=>$subjects], 200); 
-}
-
-/**
-     * Get all languages
-     * @group  getters
-     * 
-     * used to get languages
-     *  
-     * @response 200{
-     * "Languages": [
-     *   {
-     *       "id": 1,
-     *       "slug": "english",
-     *       "title": "english"
-     *   }
-     * ]
-     * }
-     * 
-     */
-public function getLanguages(){
-    $user = User::find(Auth::id());
-    if(!$user){
-        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
-    }
-    
-    $languages=$this->language->getAll();
-    return response()->json(['Languages'=>$languages], 200); 
-}
-
-/**
-     * Get all edusystems
-     * @group  getters
-     * 
-     * used to get edusystems
-     *  
-     * @response 200{
-     *"EduSystems": [
-     *   {
-     *       "id": 1,
-     *       "slug": "maam",
-     *       "title": "maamm",
-     *       "created_at": "2020-09-01 12:37:19",
-     *       "updated_at": "2020-09-01 12:37:19"
-     *   }
-     *]
-     *}
-     * 
-     */
-public function getEdusystems(){
-    $user = User::find(Auth::id());
-    if(!$user){
-        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
-    }
-    
-    $edu_systems=$this->edu_system->getAll();
-    return response()->json(['EduSystems'=>$edu_systems], 200); 
-}
-
-/**
-     * Get all grades
-     * @group  getters
-     * 
-     * used to get grades
-     *  
-     * @response 200{
-     * "Grades": [
-     *   {
-     *       "id": 1,
-     *       "slug": "kg1",
-     *       "title": "kg1",
-     *       "created_at": "2020-09-01 12:37:48",
-     *       "updated_at": "2020-09-01 12:37:48"
-     *   }
-     *]
-     *}
-     * 
-     */
-public function getGrades(){
-    $user = User::find(Auth::id());
-    if(!$user){
-        return response()->json(['error'=>'Unauthorized'], 401);        //unauthorized    
-    }
-    
-    $grades=$this->grade->getAll();
-    return response()->json(['Grades'=>$grades], 200); 
-}
-
-//Get All Grades
 public function getUserProfile(){
 
     $user = $this->user->getWith(Auth::id(), ['profile', 'languages', 'specialist_in', 'grades']);

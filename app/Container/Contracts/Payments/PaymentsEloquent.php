@@ -20,7 +20,7 @@ class PaymentsEloquent implements PaymentsContract
 
     public function __construct()
     {
-        //$this->responseUrl       = route('front.payments.callback');
+        //$this->responseUrl       = route('front.payments.callback'); //to be edited in frontend
         $this->paymentchannel    = config('payment.' . env('PAYMENT_COUNTRY') . '.payment_code');
     }
 
