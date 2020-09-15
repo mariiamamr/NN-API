@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "a65329f8-497e-41a2-86ec-ee9f3f427f97",
+        "_postman_id": "d08ba59f-d64a-42a9-a93e-81c2a3ba52a2",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lang\": 13,\n    \"subject\": 10,\n    \"grade\": 18\n}"
+                            "raw": "{\n    \"lang\": 4,\n    \"subject\": 6,\n    \"grade\": 4\n}"
                         },
                         "description": "",
                         "response": []
@@ -101,7 +101,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 19,\n    \"teacher_id\": 7,\n    \"rate\": 20,\n    \"content\": \"repellendus\"\n}"
+                            "raw": "{\n    \"lecture_id\": 10,\n    \"teacher_id\": 10,\n    \"rate\": 9,\n    \"content\": \"aut\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -129,7 +129,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 20,\n    \"student_id\": 20,\n    \"rate\": 8,\n    \"content\": \"reprehenderit\"\n}"
+                            "raw": "{\n    \"lecture_id\": 4,\n    \"student_id\": 16,\n    \"rate\": 5,\n    \"content\": \"et\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -163,7 +163,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"content\": \"accusamus\",\n    \"teacher_id\": 12\n}"
+                            "raw": "{\n    \"content\": \"omnis\",\n    \"teacher_id\": 10\n}"
                         },
                         "description": "",
                         "response": []
@@ -309,7 +309,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"time_from\": \"odit\",\n    \"date\": \"culpa\",\n    \"weekly\": true\n}"
+                            "raw": "{\n    \"time_from\": \"est\",\n    \"date\": \"dicta\",\n    \"weekly\": true\n}"
                         },
                         "description": "",
                         "response": []
@@ -365,7 +365,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"porro\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"repellat\"\n}"
                         },
                         "description": "used to delete sessions",
                         "response": []
@@ -393,7 +393,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"eligendi\",\n    \"teacher_id\": \"consectetur\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"aut\",\n    \"teacher_id\": \"quis\"\n}"
                         },
                         "description": "used to enroll sessions for students",
                         "response": []
@@ -421,7 +421,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher_id\": \"veritatis\",\n    \"month\": \"omnis\",\n    \"year\": \"accusamus\"\n}"
+                            "raw": "{\n    \"teacher_id\": \"esse\",\n    \"month\": \"fuga\",\n    \"year\": \"repellat\"\n}"
                         },
                         "description": "used to check available days in a certain month and year",
                         "response": []
@@ -449,7 +449,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher\": \"rem\",\n    \"date\": \"aut\"\n}"
+                            "raw": "{\n    \"teacher\": \"quo\",\n    \"date\": \"dolorem\"\n}"
                         },
                         "description": "used to check available slots in a certain date",
                         "response": []
@@ -483,7 +483,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"est\",\n    \"password\": \"quo\",\n    \"remember_me\": \"doloribus\"\n}"
+                            "raw": "{\n    \"username\": \"aut\",\n    \"password\": \"quasi\",\n    \"remember_me\": \"minus\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -511,7 +511,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"nemo\",\n    \"email\": \"ea\",\n    \"password\": \"est\",\n    \"type\": \"s\",\n    \"birth\": \"molestias\",\n    \"gender\": \"female\",\n    \"full_name\": \"voluptas\",\n    \"password_confirmation\": \"blanditiis\"\n}"
+                            "raw": "{\n    \"username\": \"impedit\",\n    \"email\": \"quia\",\n    \"password\": \"alias\",\n    \"type\": \"s\",\n    \"birth\": \"aliquam\",\n    \"gender\": \"female\",\n    \"full_name\": \"exercitationem\",\n    \"password_confirmation\": \"aspernatur\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -642,7 +642,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"photo\": \"et\"\n}"
+                            "raw": "{\n    \"photo\": \"dolor\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -670,7 +670,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"full_name\": \"laboriosam\",\n    \"birth\": \"atque\",\n    \"gender\": \"female\",\n    \"phone\": \"nostrum\",\n    \"nationality\": \"reprehenderit\"\n}"
+                            "raw": "{\n    \"full_name\": \"error\",\n    \"birth\": \"nulla\",\n    \"gender\": \"female\",\n    \"phone\": \"vel\",\n    \"nationality\": \"et\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -782,7 +782,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"at\",\n    \"courses\": \"quas\"\n}"
+                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"enim\",\n    \"courses\": \"quia\"\n}"
                         },
                         "description": "",
                         "response": []
