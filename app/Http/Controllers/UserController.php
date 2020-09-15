@@ -82,7 +82,7 @@ public $successStatus = 200;
      * Signup
      * @group  authentication
      * 
-     * used to register a user and create token
+     * used to register a user and create token. An email verification notification is sent to the registered address. the verification link sent in the email has to be modified by frontend in CustomVerifyEmailNotification.php 
      *  
      *
      * @bodyParam username required Unique string for every user
@@ -122,7 +122,6 @@ $input = $request->all();
         $input['password'] = bcrypt($input['password']); 
 
         //create the user in the database and send email verification message
-         $user = User::create($input);//->SendEmailVerificationNotification(); 
        event(new Registered($user = User::create($input)));
 
         $success['token'] =  $user->createToken('MyApp')-> accessToken; //create the access token
