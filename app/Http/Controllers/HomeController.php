@@ -38,11 +38,12 @@ class HomeController extends Controller
 
   }
 
-        /**
+    /**
+     * @authenticated
      * Search
+     * Searches for teachers using Subject, language, grade or all of them. Gets the home page if no ilters are applied.
      * @group  Home
      * 
-     * Searches for teachers using Subject, language, grade or all of them. Gets the home page if no ilters are applied.
      *  
      * @bodyParam  lang integer the selected language ID if exists.
      * @bodyParam  subject integer the selected subject ID if exists.

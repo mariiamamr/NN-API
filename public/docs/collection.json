@@ -2,17 +2,17 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "d08ba59f-d64a-42a9-a93e-81c2a3ba52a2",
+        "_postman_id": "000fecd1-3514-4c4b-a07f-1aa4f69a4bd6",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
     "item": [
         {
             "name": "Home",
-            "description": "Searches for teachers using Subject, language, grade or all of them. Gets the home page if no ilters are applied.",
+            "description": "",
             "item": [
                 {
-                    "name": "Search",
+                    "name": "api\/home",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -33,7 +33,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lang\": 4,\n    \"subject\": 6,\n    \"grade\": 4\n}"
+                            "raw": "{\n    \"lang\": 6,\n    \"subject\": 15,\n    \"grade\": 17\n}"
                         },
                         "description": "",
                         "response": []
@@ -77,10 +77,10 @@
         },
         {
             "name": "Ratings",
-            "description": "Used by the student to rate a teacher.",
+            "description": "",
             "item": [
                 {
-                    "name": "Rating by student",
+                    "name": "Rating by student\nUsed by the student to rate a teacher.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -101,7 +101,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 10,\n    \"teacher_id\": 10,\n    \"rate\": 9,\n    \"content\": \"aut\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"temporibus\",\n    \"teacher_id\": \"ad\",\n    \"rate\": \"alias\",\n    \"content\": \"corporis\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -129,7 +129,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": 4,\n    \"student_id\": 16,\n    \"rate\": 5,\n    \"content\": \"et\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"dolor\",\n    \"student_id\": \"molestiae\",\n    \"rate\": \"nihil\",\n    \"content\": \"sunt\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -139,10 +139,10 @@
         },
         {
             "name": "Report",
-            "description": "used to report a teacher",
+            "description": "",
             "item": [
                 {
-                    "name": "Report teacher",
+                    "name": "api\/report",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -163,7 +163,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"content\": \"omnis\",\n    \"teacher_id\": 10\n}"
+                            "raw": "{\n    \"content\": \"facere\",\n    \"teacher_id\": 9\n}"
                         },
                         "description": "",
                         "response": []
@@ -309,7 +309,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"time_from\": \"est\",\n    \"date\": \"dicta\",\n    \"weekly\": true\n}"
+                            "raw": "{\n    \"time_from\": \"iste\",\n    \"date\": \"et\",\n    \"weekly\": true\n}"
                         },
                         "description": "",
                         "response": []
@@ -365,7 +365,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"repellat\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"veniam\"\n}"
                         },
                         "description": "used to delete sessions",
                         "response": []
@@ -393,7 +393,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"lecture_id\": \"aut\",\n    \"teacher_id\": \"quis\"\n}"
+                            "raw": "{\n    \"lecture_id\": \"voluptas\",\n    \"teacher_id\": \"rerum\"\n}"
                         },
                         "description": "used to enroll sessions for students",
                         "response": []
@@ -421,7 +421,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher_id\": \"esse\",\n    \"month\": \"fuga\",\n    \"year\": \"repellat\"\n}"
+                            "raw": "{\n    \"teacher_id\": \"dolores\",\n    \"month\": \"dolorem\",\n    \"year\": \"velit\"\n}"
                         },
                         "description": "used to check available days in a certain month and year",
                         "response": []
@@ -449,7 +449,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"teacher\": \"quo\",\n    \"date\": \"dolorem\"\n}"
+                            "raw": "{\n    \"teacher\": \"aliquam\",\n    \"date\": \"molestias\"\n}"
                         },
                         "description": "used to check available slots in a certain date",
                         "response": []
@@ -459,10 +459,10 @@
         },
         {
             "name": "authentication",
-            "description": "used to login and create token",
+            "description": "",
             "item": [
                 {
-                    "name": "Login",
+                    "name": "Login\nused to login and create token",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -483,14 +483,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"aut\",\n    \"password\": \"quasi\",\n    \"remember_me\": \"minus\"\n}"
+                            "raw": "{\n    \"username\": \"ut\",\n    \"password\": \"minima\",\n    \"remember_me\": \"est\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "Signup",
+                    "name": "Signup\nused to register a user and create token. An email verification notification is sent to the registered address. the verification link sent in the email has to be modified by frontend in CustomVerifyEmailNotification.php",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -511,7 +511,35 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"impedit\",\n    \"email\": \"quia\",\n    \"password\": \"alias\",\n    \"type\": \"s\",\n    \"birth\": \"aliquam\",\n    \"gender\": \"female\",\n    \"full_name\": \"exercitationem\",\n    \"password_confirmation\": \"aspernatur\"\n}"
+                            "raw": "{\n    \"username\": \"cupiditate\",\n    \"email\": \"magni\",\n    \"password\": \"ea\",\n    \"type\": \"s\",\n    \"birth\": \"vero\",\n    \"gender\": \"female\",\n    \"full_name\": \"sed\",\n    \"password_confirmation\": \"inventore\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Logout user (Revoke the token)",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/logout",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
                         },
                         "description": "",
                         "response": []
@@ -583,40 +611,6 @@
             ]
         },
         {
-            "name": "authentication ",
-            "description": "",
-            "item": [
-                {
-                    "name": "Logout user (Revoke the token)",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/logout",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                }
-            ]
-        },
-        {
             "name": "edit profile",
             "description": "",
             "item": [
@@ -642,7 +636,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"photo\": \"dolor\"\n}"
+                            "raw": "{\n    \"photo\": \"sed\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -670,14 +664,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"full_name\": \"error\",\n    \"birth\": \"nulla\",\n    \"gender\": \"female\",\n    \"phone\": \"vel\",\n    \"nationality\": \"et\"\n}"
+                            "raw": "{\n    \"full_name\": \"non\",\n    \"birth\": \"est\",\n    \"gender\": \"female\",\n    \"phone\": \"eaque\",\n    \"nationality\": \"nulla\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "Add other price",
+                    "name": "api\/priceinfo",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -754,7 +748,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"exp_years\": \"5\",\n    \"exp_desc\": 0\n}"
+                            "raw": "{\n    \"exp_years\": \"5\",\n    \"exp_desc\": \"I have worked as a teacher for 7 years\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -782,14 +776,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"uni_degree_id\": 1,\n    \"master_degree\": \"enim\",\n    \"courses\": \"quia\"\n}"
+                            "raw": "{\n    \"uni_degree_id\": \"1\",\n    \"master_degree\": \"ducimus\",\n    \"courses\": \"sit\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "Update subjects",
+                    "name": "api\/updatesubjects",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1806,10 +1800,10 @@
         },
         {
             "name": "getters",
-            "description": "used to get the profile of the currently logged in user.",
+            "description": "",
             "item": [
                 {
-                    "name": "Get user profile",
+                    "name": "api\/getprofile",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1888,12 +1882,12 @@
                             "mode": "raw",
                             "raw": "[]"
                         },
-                        "description": "",
+                        "description": "used to get languages",
                         "response": []
                     }
                 },
                 {
-                    "name": "Get all edusystems",
+                    "name": "Get all edusystems\nused to get edusystems",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1921,7 +1915,7 @@
                     }
                 },
                 {
-                    "name": "Get all grades",
+                    "name": "Get all grades\nused to get grades",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1949,7 +1943,7 @@
                     }
                 },
                 {
-                    "name": "Get prices approved by the admin from options table",
+                    "name": "api\/getprice",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1983,7 +1977,7 @@
             "description": "",
             "item": [
                 {
-                    "name": "Checkout\nLecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.",
+                    "name": "api\/checkout",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -2004,7 +1998,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"items\": \"[12]\",\n    \"payment_method\": \"\\\"fawry\\\"\",\n    \"percent\": 0\n}"
+                            "raw": "{\n    \"items\": \"[12]\",\n    \"payment_method\": \"\\\"fawry\\\"\",\n    \"percent\": \"\\\"100\\\"\"\n}"
                         },
                         "description": "",
                         "response": []

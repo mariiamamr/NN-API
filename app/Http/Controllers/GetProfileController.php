@@ -65,7 +65,7 @@ class GetProfileController extends Controller
 /**
      * Get all subject
      * @group  getters
-     * 
+     * @authenticated
      * used to get subjects
      *  
      * @response 200{
@@ -103,9 +103,10 @@ public function getSubjects(){
 
 /**
      * Get all languages
-     * @group  getters
      * 
      * used to get languages
+     * @group  getters
+     * @authenticated
      *  
      * @response 200{
      * "Languages": [
@@ -130,9 +131,9 @@ public function getLanguages(){
 
 /**
      * Get all edusystems
-     * @group  getters
-     * 
      * used to get edusystems
+     * @group  getters
+     * @authenticated
      *  
      * @response 200{
      *"EduSystems": [
@@ -159,10 +160,10 @@ public function getEdusystems(){
 
 /**
      * Get all grades
-     * @group  getters
-     * 
      * used to get grades
-     *  
+     * @group  getters
+     * @authenticated
+     *      
      * @response 200{
      * "Grades": [
      *   {
@@ -188,10 +189,11 @@ public function getGrades(){
 
 
     /**
+     * @authenticated
      * Get user profile
+     * used to get the profile of the currently logged in user.
      * @group  getters
      * 
-     * used to get the profile of the currently logged in user.
      *  
      * @response 200{
      *"user": {

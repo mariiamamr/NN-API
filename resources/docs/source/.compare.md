@@ -22,10 +22,10 @@ Welcome to the generated API reference.
 
 #Home
 
-Searches for teachers using Subject, language, grade or all of them. Gets the home page if no ilters are applied.
-<!-- START_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
-## Search
 
+<!-- START_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
+## api/home
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -33,7 +33,7 @@ curl -X GET \
     -G "http://localhost/api/home" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lang":4,"subject":6,"grade":4}'
+    -d '{"lang":6,"subject":15,"grade":17}'
 
 ```
 
@@ -48,9 +48,9 @@ let headers = {
 };
 
 let body = {
-    "lang": 4,
-    "subject": 6,
-    "grade": 4
+    "lang": 6,
+    "subject": 15,
+    "grade": 17
 }
 
 fetch(url, {
@@ -343,9 +343,10 @@ fetch(url, {
 
 #Ratings
 
-Used by the student to rate a teacher.
+Used by the teacher to rate a student.
 <!-- START_800ad2bc8558de3f527f6ef8b8fcf842 -->
 ## Rating by student
+Used by the student to rate a teacher.
 
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
@@ -355,7 +356,7 @@ curl -X POST \
     "http://localhost/api/ratingbystudent" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":10,"teacher_id":10,"rate":9,"content":"aut"}'
+    -d '{"lecture_id":"temporibus","teacher_id":"ad","rate":"alias","content":"corporis"}'
 
 ```
 
@@ -370,10 +371,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 10,
-    "teacher_id": 10,
-    "rate": 9,
-    "content": "aut"
+    "lecture_id": "temporibus",
+    "teacher_id": "ad",
+    "rate": "alias",
+    "content": "corporis"
 }
 
 fetch(url, {
@@ -400,10 +401,10 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `lecture_id` | integer |  optional  | the ID of the lecture about which the teacher will be rated.
-        `teacher_id` | integer |  optional  | the ID of the teacher to be rated.
-        `rate` | integer |  optional  | the rating value.
-        `content` | string |  optional  | rating message/ comments.
+    `lecture_id` | Integer |  required  | the ID of the lecture about which the teacher will be rated.
+        `teacher_id` | Integer |  required  | the ID of the teacher to be rated.
+        `rate` | Integer |  required  | the rating value.
+        `content` | string |  required  | rating message/ comments.
     
 <!-- END_800ad2bc8558de3f527f6ef8b8fcf842 -->
 
@@ -418,7 +419,7 @@ curl -X POST \
     "http://localhost/api/ratingbyteacher" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":4,"student_id":16,"rate":5,"content":"et"}'
+    -d '{"lecture_id":"dolor","student_id":"molestiae","rate":"nihil","content":"sunt"}'
 
 ```
 
@@ -433,10 +434,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 4,
-    "student_id": 16,
-    "rate": 5,
-    "content": "et"
+    "lecture_id": "dolor",
+    "student_id": "molestiae",
+    "rate": "nihil",
+    "content": "sunt"
 }
 
 fetch(url, {
@@ -463,19 +464,19 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `lecture_id` | integer |  optional  | the ID of the lecture about which the student will be rated.
-        `student_id` | integer |  optional  | the ID of the student to be rated.
-        `rate` | integer |  optional  | the rating value.
-        `content` | string |  optional  | rating message/ comments.
+    `lecture_id` | Integer |  required  | the ID of the lecture about which the student will be rated.
+        `student_id` | Integer |  required  | the ID of the student to be rated.
+        `rate` | Integer |  required  | the rating value.
+        `content` | string |  required  | rating message/ comments.
     
 <!-- END_472f74a214bfb1bc280784c41dbc5ab4 -->
 
 #Report
 
-used to report a teacher
-<!-- START_513d4e19011ae1f92bd8858b5eb059b2 -->
-## Report teacher
 
+<!-- START_513d4e19011ae1f92bd8858b5eb059b2 -->
+## api/report
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -483,7 +484,7 @@ curl -X POST \
     "http://localhost/api/report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"content":"omnis","teacher_id":10}'
+    -d '{"content":"facere","teacher_id":9}'
 
 ```
 
@@ -498,8 +499,8 @@ let headers = {
 };
 
 let body = {
-    "content": "omnis",
-    "teacher_id": 10
+    "content": "facere",
+    "teacher_id": 9
 }
 
 fetch(url, {
@@ -914,7 +915,7 @@ curl -X POST \
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"est","date":"dicta","weekly":true}'
+    -d '{"time_from":"iste","date":"et","weekly":true}'
 
 ```
 
@@ -929,8 +930,8 @@ let headers = {
 };
 
 let body = {
-    "time_from": "est",
-    "date": "dicta",
+    "time_from": "iste",
+    "date": "et",
     "weekly": true
 }
 
@@ -1084,7 +1085,7 @@ curl -X DELETE \
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"repellat"}'
+    -d '{"lecture_id":"veniam"}'
 
 ```
 
@@ -1099,7 +1100,7 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "repellat"
+    "lecture_id": "veniam"
 }
 
 fetch(url, {
@@ -1138,7 +1139,7 @@ null
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `lecture_id` | required |  optional  | Integer
+    `lecture_id` | Integer |  required  | id of the lecture.
     
 <!-- END_f81b4274b229ac53c3565b9761a85ff6 -->
 
@@ -1155,7 +1156,7 @@ curl -X POST \
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"aut","teacher_id":"quis"}'
+    -d '{"lecture_id":"voluptas","teacher_id":"rerum"}'
 
 ```
 
@@ -1170,8 +1171,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "aut",
-    "teacher_id": "quis"
+    "lecture_id": "voluptas",
+    "teacher_id": "rerum"
 }
 
 fetch(url, {
@@ -1201,8 +1202,8 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `lecture_id` | required |  optional  | Integer the lecture the student wants to enroll
-        `teacher_id` | required |  optional  | Integer the teacher the student want to enroll the lecture with
+    `lecture_id` | Integer |  required  | the lecture the student wants to enroll
+        `teacher_id` | Integer |  required  | the teacher the student want to enroll the lecture with
     
 <!-- END_eefc9bff9711c3e809c2a9cd1589a8da -->
 
@@ -1219,7 +1220,7 @@ curl -X GET \
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"esse","month":"fuga","year":"repellat"}'
+    -d '{"teacher_id":"dolores","month":"dolorem","year":"velit"}'
 
 ```
 
@@ -1234,9 +1235,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "esse",
-    "month": "fuga",
-    "year": "repellat"
+    "teacher_id": "dolores",
+    "month": "dolorem",
+    "year": "velit"
 }
 
 fetch(url, {
@@ -1268,9 +1269,9 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `teacher_id` | required |  optional  | Integer the id of the teacher
-        `month` | required |  optional  | Integer
-        `year` | required |  optional  | Integer
+    `teacher_id` | Integer |  required  | the id of the teacher
+        `month` | Integer |  required  | 
+        `year` | Integer |  required  | 
     
 <!-- END_75aeedc9835147dbac6904a443cffb60 -->
 
@@ -1287,7 +1288,7 @@ curl -X GET \
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"quo","date":"dolorem"}'
+    -d '{"teacher":"aliquam","date":"molestias"}'
 
 ```
 
@@ -1302,8 +1303,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "quo",
-    "date": "dolorem"
+    "teacher": "aliquam",
+    "date": "molestias"
 }
 
 fetch(url, {
@@ -1349,16 +1350,17 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `teacher` | required |  optional  | Integer the id of the teacher
-        `date` | required |  optional  | date
+    `teacher` | Integer |  required  | the id of the teacher
+        `date` | date |  required  | 
     
 <!-- END_18730964c304801367eb526b42cf7a52 -->
 
 #authentication
 
-used to login and create token
+
 <!-- START_c3fa189a6c95ca36ad6ac4791a873d23 -->
 ## Login
+used to login and create token
 
 > Example request:
 
@@ -1367,7 +1369,7 @@ curl -X POST \
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"aut","password":"quasi","remember_me":"minus"}'
+    -d '{"username":"ut","password":"minima","remember_me":"est"}'
 
 ```
 
@@ -1382,9 +1384,9 @@ let headers = {
 };
 
 let body = {
-    "username": "aut",
-    "password": "quasi",
-    "remember_me": "minus"
+    "username": "ut",
+    "password": "minima",
+    "remember_me": "est"
 }
 
 fetch(url, {
@@ -1420,14 +1422,15 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `username` | required |  optional  | "this will be username or email"
-        `password` | required |  optional  | 
-        `remember_me` | required |  optional  | boolen with value 1 or 0
+    `username` | string |  required  | "this will be username or email"
+        `password` | string |  required  | 
+        `remember_me` | boolen |  required  | with value 1 or 0
     
 <!-- END_c3fa189a6c95ca36ad6ac4791a873d23 -->
 
 <!-- START_d7b7952e7fdddc07c978c9bdaf757acf -->
 ## Signup
+used to register a user and create token. An email verification notification is sent to the registered address. the verification link sent in the email has to be modified by frontend in CustomVerifyEmailNotification.php
 
 > Example request:
 
@@ -1436,7 +1439,7 @@ curl -X POST \
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"impedit","email":"quia","password":"alias","type":"s","birth":"aliquam","gender":"female","full_name":"exercitationem","password_confirmation":"aspernatur"}'
+    -d '{"username":"cupiditate","email":"magni","password":"ea","type":"s","birth":"vero","gender":"female","full_name":"sed","password_confirmation":"inventore"}'
 
 ```
 
@@ -1451,14 +1454,14 @@ let headers = {
 };
 
 let body = {
-    "username": "impedit",
-    "email": "quia",
-    "password": "alias",
+    "username": "cupiditate",
+    "email": "magni",
+    "password": "ea",
     "type": "s",
-    "birth": "aliquam",
+    "birth": "vero",
     "gender": "female",
-    "full_name": "exercitationem",
-    "password_confirmation": "aspernatur"
+    "full_name": "sed",
+    "password_confirmation": "inventore"
 }
 
 fetch(url, {
@@ -1495,16 +1498,62 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `username` | required |  optional  | Unique string for every user
-        `email` | required |  optional  | Unique string for every user
-        `password` | required |  optional  | Minimun 6 char
-        `type` | required |  optional  | The type of the user teacher "t" or student "s".
-        `birth` | required |  optional  | Must be in format "YYYY-MM-DD"
-        `gender` | required |  optional  | The gender of the user "male" or "female".
-        `full_name` | required |  optional  | Must be a string
-        `password_confirmation` | required |  optional  | Must be a the same as the password
+    `username` | string |  required  | Unique string for every user
+        `email` | string |  required  | Unique string for every user
+        `password` | string |  required  | Minimun 6 char
+        `type` | string |  required  | The type of the user teacher "t" or student "s".
+        `birth` | numeric |  required  | Must be in format "YYYY-MM-DD"
+        `gender` | string |  required  | The gender of the user "male" or "female".
+        `full_name` | string |  required  | Must be a string
+        `password_confirmation` | string |  required  | Must be a the same as the password
     
 <!-- END_d7b7952e7fdddc07c978c9bdaf757acf -->
+
+<!-- START_00e7e21641f05de650dbe13f242c6f2c -->
+## Logout user (Revoke the token)
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "message": "Successfully logged out"
+}
+```
+
+### HTTP Request
+`GET api/logout`
+
+
+<!-- END_00e7e21641f05de650dbe13f242c6f2c -->
 
 <!-- START_55223d515da2d77462d233ebb97e3c40 -->
 ## login with facebook
@@ -1607,57 +1656,9 @@ fetch(url, {
 
 <!-- END_89b9a98360ef8fa1d3520efdf619cec0 -->
 
-#authentication 
-
-
-<!-- START_00e7e21641f05de650dbe13f242c6f2c -->
-## Logout user (Revoke the token)
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/api/logout" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/logout"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "message": "Successfully logged out"
-}
-```
-
-### HTTP Request
-`GET api/logout`
-
-
-<!-- END_00e7e21641f05de650dbe13f242c6f2c -->
-
 #edit profile
 
-used to edit price in teacher profile
+
 <!-- START_09851fbd2b828e86dbb0087ce3bf68a2 -->
 ## api/uploadprofilepicture
 <br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
@@ -1668,7 +1669,7 @@ curl -X POST \
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"dolor"}'
+    -d '{"photo":"sed"}'
 
 ```
 
@@ -1683,7 +1684,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "dolor"
+    "photo": "sed"
 }
 
 fetch(url, {
@@ -1740,7 +1741,7 @@ curl -X POST \
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"error","birth":"nulla","gender":"female","phone":"vel","nationality":"et"}'
+    -d '{"full_name":"non","birth":"est","gender":"female","phone":"eaque","nationality":"nulla"}'
 
 ```
 
@@ -1755,11 +1756,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "error",
-    "birth": "nulla",
+    "full_name": "non",
+    "birth": "est",
     "gender": "female",
-    "phone": "vel",
-    "nationality": "et"
+    "phone": "eaque",
+    "nationality": "nulla"
 }
 
 fetch(url, {
@@ -1792,17 +1793,17 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `full_name` | required |  optional  | String
-        `birth` | required |  optional  | Must be in format "YYYY-MM-DD"
-        `gender` | required |  optional  | The gender of the user "male" or "female".
-        `phone` | not |  required  | Must be a numeric
-        `nationality` | not |  required  | String
+    `full_name` | String |  required  | 
+        `birth` | date |  required  | Must be in format "YYYY-MM-DD"
+        `gender` | String |  required  | The gender of the user "male" or "female".
+        `phone` | Integer |  optional  | Must be a numeric
+        `nationality` | String |  optional  | user's nationality
     
 <!-- END_88a4c713715d6c9929f02fb704ae1a05 -->
 
 <!-- START_72b936ae0ca359c0f20175257123c9c2 -->
-## Add other price
-
+## api/priceinfo
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -1852,7 +1853,7 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `price_info` | required |  optional  | Object of two prices includes individual price and group price written in json.
+    `price_info` | JSON |  required  | Object of two prices includes individual price and group price written in json.
     
 <!-- END_72b936ae0ca359c0f20175257123c9c2 -->
 
@@ -1927,7 +1928,7 @@ curl -X PUT \
     "http://localhost/api/updateexperience" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"exp_years":"5","exp_desc":0}'
+    -d '{"exp_years":"5","exp_desc":"I have worked as a teacher for 7 years"}'
 
 ```
 
@@ -1943,7 +1944,7 @@ let headers = {
 
 let body = {
     "exp_years": "5",
-    "exp_desc": 0
+    "exp_desc": "I have worked as a teacher for 7 years"
 }
 
 fetch(url, {
@@ -2040,7 +2041,7 @@ fetch(url, {
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     `exp_years` | string |  required  | experience years of a teacher.
-        `exp_desc` | integer |  required  | The description of teacher's experience.
+        `exp_desc` | Integer |  required  | The description of teacher's experience.
     
 <!-- END_ab3a1673faa84305dd23a5b5e5fff59f -->
 
@@ -2055,7 +2056,7 @@ curl -X PUT \
     "http://localhost/api/updateeducation" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"uni_degree_id":1,"master_degree":"enim","courses":"quia"}'
+    -d '{"uni_degree_id":"1","master_degree":"ducimus","courses":"sit"}'
 
 ```
 
@@ -2070,9 +2071,9 @@ let headers = {
 };
 
 let body = {
-    "uni_degree_id": 1,
-    "master_degree": "enim",
-    "courses": "quia"
+    "uni_degree_id": "1",
+    "master_degree": "ducimus",
+    "courses": "sit"
 }
 
 fetch(url, {
@@ -2168,15 +2169,15 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `uni_degree_id` | integer |  required  | university degree id of the teacher.
+    `uni_degree_id` | Integer |  required  | university degree id of the teacher.
         `master_degree` | string |  required  | master degree of the teacher.
         `courses` | string |  required  | courses of the teacher.
     
 <!-- END_e0e0c684f73c35683de9f5fe1236338e -->
 
 <!-- START_da571d78351055720e61a336a3338d51 -->
-## Update subjects
-
+## api/updatesubjects
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -2330,10 +2331,10 @@ fetch(url, {
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    `subjects` | not |  required  | Array of subject id.
-        `languages` | not |  required  | Array of subject id.
-        `grades` | not |  required  | Array of subject id.
-        `edu_systems` | not |  required  | Array of subject id.
+    `subjects` | array |  optional  | Array of subject id.
+        `languages` | array |  optional  | Array of subject id.
+        `grades` | array |  optional  | Array of subject id.
+        `edu_systems` | array |  optional  | Array of subject id.
     
 <!-- END_da571d78351055720e61a336a3338d51 -->
 
@@ -3783,10 +3784,10 @@ fetch(url, {
 
 #getters
 
-used to get the profile of the currently logged in user.
-<!-- START_a3e1881290e56344612a4642673397ed -->
-## Get user profile
 
+<!-- START_a3e1881290e56344612a4642673397ed -->
+## api/getprofile
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -4006,6 +4007,7 @@ fetch(url, {
 <!-- START_2fe7213b84d8914a1f7c34334e2b20ca -->
 ## Get all subject
 
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -4068,6 +4070,9 @@ fetch(url, {
 <!-- START_316f3a551f3cde626ccf0f6f5490cffd -->
 ## Get all languages
 
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+used to get languages
+
 > Example request:
 
 ```bash
@@ -4118,7 +4123,9 @@ fetch(url, {
 
 <!-- START_cd2ad2ff332e4f2176ee4f93b81e1d1f -->
 ## Get all edusystems
+used to get edusystems
 
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -4171,7 +4178,9 @@ fetch(url, {
 
 <!-- START_f064dd136cf1beeca8ce9d6324142aa5 -->
 ## Get all grades
+used to get grades
 
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -4223,8 +4232,8 @@ fetch(url, {
 <!-- END_f064dd136cf1beeca8ce9d6324142aa5 -->
 
 <!-- START_9c02760d4d20e71c342fa52a8838d2fd -->
-## Get prices approved by the admin from options table
-
+## api/getprice
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -4278,9 +4287,8 @@ fetch(url, {
 
 
 <!-- START_d4be91a3a8d5235a2d282e7158c2bdb6 -->
-## Checkout
-Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.
-
+## api/checkout
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -4288,7 +4296,7 @@ curl -X POST \
     "http://localhost/api/checkout" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"items":"[12]","payment_method":"\"fawry\"","percent":0}'
+    -d '{"items":"[12]","payment_method":"\"fawry\"","percent":"\"100\""}'
 
 ```
 
@@ -4305,7 +4313,7 @@ let headers = {
 let body = {
     "items": "[12]",
     "payment_method": "\"fawry\"",
-    "percent": 0
+    "percent": "\"100\""
 }
 
 fetch(url, {
@@ -4348,7 +4356,7 @@ Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     `items` | array |  required  | at least one element in the array.
         `payment_method` | string |  required  | fawry or credit_card.
-        `percent` | integer |  optional  | optional discount percent of promocode.
+        `percent` | Integer |  optional  | optional discount percent of promocode.
     
 <!-- END_d4be91a3a8d5235a2d282e7158c2bdb6 -->
 

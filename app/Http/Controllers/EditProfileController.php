@@ -44,7 +44,7 @@ class EditProfileController extends Controller
         * update teacher's experience
         * @group  edit profile
         * @bodyParam  exp_years string required experience years of a teacher. Example: 5
-        * @bodyParam  exp_desc int  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
+        * @bodyParam  exp_desc Integer  required The description of teacher's experience. Example: I have worked as a teacher for 7 years
         * @response {
         * "success": {
         * "id": 32,
@@ -196,7 +196,7 @@ class EditProfileController extends Controller
         * @authenticated
         * @group  edit profile
         * update teacher's education
-        * @bodyParam  uni_degree_id int required university degree id of the teacher. Example: 1
+        * @bodyParam  uni_degree_id Integer required university degree id of the teacher. Example: 1
         * @bodyParam  master_degree string required master degree of the teacher. 
         * @bodyParam  courses string  required courses of the teacher.
         * @response {
@@ -342,11 +342,11 @@ class EditProfileController extends Controller
      * @group  edit profile
      *  
      *
-     * @bodyParam full_name required String
-     * @bodyParam birth required Must be in format "YYYY-MM-DD"
-     * @bodyParam gender required The gender of the user "male" or "female". Example: female
-     * @bodyParam phone not required Must be a numeric 
-     * @bodyParam nationality not required String
+     * @bodyParam full_name String required
+     * @bodyParam birth date required Must be in format "YYYY-MM-DD"
+     * @bodyParam gender String required The gender of the user "male" or "female". Example: female
+     * @bodyParam phone Integer Must be a numeric 
+     * @bodyParam nationality String user's nationality
      * @response 200{
      *      "user": [
      *   "mariam",
@@ -401,16 +401,17 @@ class EditProfileController extends Controller
       }
 
       /**
+     * @authenticated
      * Update subjects
+     * used to update subjects
      * @group  edit profile
      * 
-     * used to update subjects
      *  
      *
-     * @bodyParam subjects not required Array of subject id. Example: [1]
-     * @bodyParam languages not required Array of subject id. Example: [1]
-     * @bodyParam grades not required Array of subject id. Example: [3]
-     * @bodyParam edu_systems not required Array of subject id. Example: [2] 
+     * @bodyParam subjects array Array of subject id. Example: [1]
+     * @bodyParam languages array Array of subject id. Example: [1]
+     * @bodyParam grades array Array of subject id. Example: [3]
+     * @bodyParam edu_systems array Array of subject id. Example: [2] 
      * @response 200
      *      {
      * "id": 4,

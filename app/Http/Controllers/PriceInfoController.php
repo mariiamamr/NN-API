@@ -25,13 +25,14 @@ class PriceInfoController extends Controller
        
     }
     /**
+     * @authenticated
      * Add other price
+     * used to edit price in teacher profile
      * @group  edit profile
      * 
-     * used to edit price in teacher profile
      *  
      *
-     * @bodyParam price_info required Object of two prices includes individual price and group price written in json. Example: {"individual":"50","group":"150"}
+     * @bodyParam price_info JSON required Object of two prices includes individual price and group price written in json. Example: {"individual":"50","group":"150"}
      * @response 200{
      *"msg": "price pending"
     *}
@@ -45,10 +46,11 @@ class PriceInfoController extends Controller
 
     }
        /**
-     * Get prices approved by the admin from options table
+     * @authenticated
+     * Get prices
+     * used to get prices approved by the admin from options table
      * @group  getters
      * 
-     * used to get prices
      *  
      * @response 200{
      *"price": "{\"individual\":[\"50\",\"100\"],\r\n\"group\":[\"100\",\"200\"]}"

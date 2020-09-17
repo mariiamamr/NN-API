@@ -19,9 +19,9 @@ public $successStatus = 200;
 
       /**
      * Login
+     * used to login and create token
      * @group  authentication
      * 
-     * used to login and create token
      *  
      *
      * @bodyParam username string required "this will be username or email"
@@ -80,9 +80,9 @@ public $successStatus = 200;
     
    /**
      * Signup
+     * used to register a user and create token. An email verification notification is sent to the registered address. the verification link sent in the email has to be modified by frontend in CustomVerifyEmailNotification.php 
      * @group  authentication
      * 
-     * used to register a user and create token. An email verification notification is sent to the registered address. the verification link sent in the email has to be modified by frontend in CustomVerifyEmailNotification.php 
      *  
      *
      * @bodyParam username string required Unique string for every user
@@ -131,7 +131,8 @@ return response()->json(['success'=>$success], $this-> successStatus);
     }
 
      /**
-     * @group authentication 
+     * @authenticated
+     * @group  authentication
      * Logout user (Revoke the token)
      *
      * @response 200{

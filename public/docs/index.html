@@ -49,9 +49,9 @@
 <a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
 <h1>Home</h1>
-<p>Searches for teachers using Subject, language, grade or all of them. Gets the home page if no ilters are applied.</p>
 <!-- START_2b349f7f0ce1ce2ae13b3d385ae6e476 -->
-<h2>Search</h2>
+<h2>api/home</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -59,7 +59,7 @@
     -G "http://localhost/api/home" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lang":4,"subject":6,"grade":4}'
+    -d '{"lang":6,"subject":15,"grade":17}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/home"
@@ -71,9 +71,9 @@ let headers = {
 };
 
 let body = {
-    "lang": 4,
-    "subject": 6,
-    "grade": 4
+    "lang": 6,
+    "subject": 15,
+    "grade": 17
 }
 
 fetch(url, {
@@ -369,9 +369,10 @@ fetch(url, {
 <p><code>GET api/notifications</code></p>
 <!-- END_e65df2963c4f1f0bfdd426ee5170e8b7 -->
 <h1>Ratings</h1>
-<p>Used by the student to rate a teacher.</p>
+<p>Used by the teacher to rate a student.</p>
 <!-- START_800ad2bc8558de3f527f6ef8b8fcf842 -->
 <h2>Rating by student</h2>
+<p>Used by the student to rate a teacher.</p>
 <p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
@@ -380,7 +381,7 @@ fetch(url, {
     "http://localhost/api/ratingbystudent" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":10,"teacher_id":10,"rate":9,"content":"aut"}'
+    -d '{"lecture_id":"temporibus","teacher_id":"ad","rate":"alias","content":"corporis"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/ratingbystudent"
@@ -392,10 +393,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 10,
-    "teacher_id": 10,
-    "rate": 9,
-    "content": "aut"
+    "lecture_id": "temporibus",
+    "teacher_id": "ad",
+    "rate": "alias",
+    "content": "corporis"
 }
 
 fetch(url, {
@@ -426,26 +427,26 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>lecture_id</code></td>
-<td>integer</td>
-<td>optional</td>
+<td>Integer</td>
+<td>required</td>
 <td>the ID of the lecture about which the teacher will be rated.</td>
 </tr>
 <tr>
 <td><code>teacher_id</code></td>
-<td>integer</td>
-<td>optional</td>
+<td>Integer</td>
+<td>required</td>
 <td>the ID of the teacher to be rated.</td>
 </tr>
 <tr>
 <td><code>rate</code></td>
-<td>integer</td>
-<td>optional</td>
+<td>Integer</td>
+<td>required</td>
 <td>the rating value.</td>
 </tr>
 <tr>
 <td><code>content</code></td>
 <td>string</td>
-<td>optional</td>
+<td>required</td>
 <td>rating message/ comments.</td>
 </tr>
 </tbody>
@@ -461,7 +462,7 @@ fetch(url, {
     "http://localhost/api/ratingbyteacher" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":4,"student_id":16,"rate":5,"content":"et"}'
+    -d '{"lecture_id":"dolor","student_id":"molestiae","rate":"nihil","content":"sunt"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/ratingbyteacher"
@@ -473,10 +474,10 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": 4,
-    "student_id": 16,
-    "rate": 5,
-    "content": "et"
+    "lecture_id": "dolor",
+    "student_id": "molestiae",
+    "rate": "nihil",
+    "content": "sunt"
 }
 
 fetch(url, {
@@ -507,35 +508,35 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>lecture_id</code></td>
-<td>integer</td>
-<td>optional</td>
+<td>Integer</td>
+<td>required</td>
 <td>the ID of the lecture about which the student will be rated.</td>
 </tr>
 <tr>
 <td><code>student_id</code></td>
-<td>integer</td>
-<td>optional</td>
+<td>Integer</td>
+<td>required</td>
 <td>the ID of the student to be rated.</td>
 </tr>
 <tr>
 <td><code>rate</code></td>
-<td>integer</td>
-<td>optional</td>
+<td>Integer</td>
+<td>required</td>
 <td>the rating value.</td>
 </tr>
 <tr>
 <td><code>content</code></td>
 <td>string</td>
-<td>optional</td>
+<td>required</td>
 <td>rating message/ comments.</td>
 </tr>
 </tbody>
 </table>
 <!-- END_472f74a214bfb1bc280784c41dbc5ab4 -->
 <h1>Report</h1>
-<p>used to report a teacher</p>
 <!-- START_513d4e19011ae1f92bd8858b5eb059b2 -->
-<h2>Report teacher</h2>
+<h2>api/report</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -543,7 +544,7 @@ fetch(url, {
     "http://localhost/api/report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"content":"omnis","teacher_id":10}'
+    -d '{"content":"facere","teacher_id":9}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/report"
@@ -555,8 +556,8 @@ let headers = {
 };
 
 let body = {
-    "content": "omnis",
-    "teacher_id": 10
+    "content": "facere",
+    "teacher_id": 9
 }
 
 fetch(url, {
@@ -932,7 +933,7 @@ fetch(url, {
     "http://localhost/api/createsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"time_from":"est","date":"dicta","weekly":true}'
+    -d '{"time_from":"iste","date":"et","weekly":true}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/createsession"
@@ -944,8 +945,8 @@ let headers = {
 };
 
 let body = {
-    "time_from": "est",
-    "date": "dicta",
+    "time_from": "iste",
+    "date": "et",
     "weekly": true
 }
 
@@ -1115,7 +1116,7 @@ used to delete sessions</p>
     "http://localhost/api/deletesession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"repellat"}'
+    -d '{"lecture_id":"veniam"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/deletesession"
@@ -1127,7 +1128,7 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "repellat"
+    "lecture_id": "veniam"
 }
 
 fetch(url, {
@@ -1168,9 +1169,9 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>lecture_id</code></td>
-<td>required</td>
-<td>optional</td>
 <td>Integer</td>
+<td>required</td>
+<td>id of the lecture.</td>
 </tr>
 </tbody>
 </table>
@@ -1186,7 +1187,7 @@ used to enroll sessions for students</p>
     "http://localhost/api/enrollsession" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"lecture_id":"aut","teacher_id":"quis"}'
+    -d '{"lecture_id":"voluptas","teacher_id":"rerum"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/enrollsession"
@@ -1198,8 +1199,8 @@ let headers = {
 };
 
 let body = {
-    "lecture_id": "aut",
-    "teacher_id": "quis"
+    "lecture_id": "voluptas",
+    "teacher_id": "rerum"
 }
 
 fetch(url, {
@@ -1233,15 +1234,15 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>lecture_id</code></td>
+<td>Integer</td>
 <td>required</td>
-<td>optional</td>
-<td>Integer the lecture the student wants to enroll</td>
+<td>the lecture the student wants to enroll</td>
 </tr>
 <tr>
 <td><code>teacher_id</code></td>
+<td>Integer</td>
 <td>required</td>
-<td>optional</td>
-<td>Integer the teacher the student want to enroll the lecture with</td>
+<td>the teacher the student want to enroll the lecture with</td>
 </tr>
 </tbody>
 </table>
@@ -1257,7 +1258,7 @@ used to check available days in a certain month and year</p>
     -G "http://localhost/api/availabledays" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher_id":"esse","month":"fuga","year":"repellat"}'
+    -d '{"teacher_id":"dolores","month":"dolorem","year":"velit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/availabledays"
@@ -1269,9 +1270,9 @@ let headers = {
 };
 
 let body = {
-    "teacher_id": "esse",
-    "month": "fuga",
-    "year": "repellat"
+    "teacher_id": "dolores",
+    "month": "dolorem",
+    "year": "velit"
 }
 
 fetch(url, {
@@ -1307,21 +1308,19 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>teacher_id</code></td>
+<td>Integer</td>
 <td>required</td>
-<td>optional</td>
-<td>Integer the id of the teacher</td>
+<td>the id of the teacher</td>
 </tr>
 <tr>
 <td><code>month</code></td>
-<td>required</td>
-<td>optional</td>
 <td>Integer</td>
+<td>required</td>
 </tr>
 <tr>
 <td><code>year</code></td>
-<td>required</td>
-<td>optional</td>
 <td>Integer</td>
+<td>required</td>
 </tr>
 </tbody>
 </table>
@@ -1337,7 +1336,7 @@ used to check available slots in a certain date</p>
     -G "http://localhost/api/availableslots" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"teacher":"quo","date":"dolorem"}'
+    -d '{"teacher":"aliquam","date":"molestias"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/availableslots"
@@ -1349,8 +1348,8 @@ let headers = {
 };
 
 let body = {
-    "teacher": "quo",
-    "date": "dolorem"
+    "teacher": "aliquam",
+    "date": "molestias"
 }
 
 fetch(url, {
@@ -1400,23 +1399,22 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>teacher</code></td>
+<td>Integer</td>
 <td>required</td>
-<td>optional</td>
-<td>Integer the id of the teacher</td>
+<td>the id of the teacher</td>
 </tr>
 <tr>
 <td><code>date</code></td>
-<td>required</td>
-<td>optional</td>
 <td>date</td>
+<td>required</td>
 </tr>
 </tbody>
 </table>
 <!-- END_18730964c304801367eb526b42cf7a52 -->
 <h1>authentication</h1>
-<p>used to login and create token</p>
 <!-- START_c3fa189a6c95ca36ad6ac4791a873d23 -->
 <h2>Login</h2>
+<p>used to login and create token</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1424,7 +1422,7 @@ fetch(url, {
     "http://localhost/api/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"aut","password":"quasi","remember_me":"minus"}'
+    -d '{"username":"ut","password":"minima","remember_me":"est"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/login"
@@ -1436,9 +1434,9 @@ let headers = {
 };
 
 let body = {
-    "username": "aut",
-    "password": "quasi",
-    "remember_me": "minus"
+    "username": "ut",
+    "password": "minima",
+    "remember_me": "est"
 }
 
 fetch(url, {
@@ -1477,26 +1475,27 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>username</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>&quot;this will be username or email&quot;</td>
 </tr>
 <tr>
 <td><code>password</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 </tr>
 <tr>
 <td><code>remember_me</code></td>
+<td>boolen</td>
 <td>required</td>
-<td>optional</td>
-<td>boolen with value 1 or 0</td>
+<td>with value 1 or 0</td>
 </tr>
 </tbody>
 </table>
 <!-- END_c3fa189a6c95ca36ad6ac4791a873d23 -->
 <!-- START_d7b7952e7fdddc07c978c9bdaf757acf -->
 <h2>Signup</h2>
+<p>used to register a user and create token. An email verification notification is sent to the registered address. the verification link sent in the email has to be modified by frontend in CustomVerifyEmailNotification.php</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1504,7 +1503,7 @@ fetch(url, {
     "http://localhost/api/register" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"username":"impedit","email":"quia","password":"alias","type":"s","birth":"aliquam","gender":"female","full_name":"exercitationem","password_confirmation":"aspernatur"}'
+    -d '{"username":"cupiditate","email":"magni","password":"ea","type":"s","birth":"vero","gender":"female","full_name":"sed","password_confirmation":"inventore"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/register"
@@ -1516,14 +1515,14 @@ let headers = {
 };
 
 let body = {
-    "username": "impedit",
-    "email": "quia",
-    "password": "alias",
+    "username": "cupiditate",
+    "email": "magni",
+    "password": "ea",
     "type": "s",
-    "birth": "aliquam",
+    "birth": "vero",
     "gender": "female",
-    "full_name": "exercitationem",
-    "password_confirmation": "aspernatur"
+    "full_name": "sed",
+    "password_confirmation": "inventore"
 }
 
 fetch(url, {
@@ -1563,55 +1562,89 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>username</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>Unique string for every user</td>
 </tr>
 <tr>
 <td><code>email</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>Unique string for every user</td>
 </tr>
 <tr>
 <td><code>password</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>Minimun 6 char</td>
 </tr>
 <tr>
 <td><code>type</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>The type of the user teacher &quot;t&quot; or student &quot;s&quot;.</td>
 </tr>
 <tr>
 <td><code>birth</code></td>
+<td>numeric</td>
 <td>required</td>
-<td>optional</td>
 <td>Must be in format &quot;YYYY-MM-DD&quot;</td>
 </tr>
 <tr>
 <td><code>gender</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>The gender of the user &quot;male&quot; or &quot;female&quot;.</td>
 </tr>
 <tr>
 <td><code>full_name</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>Must be a string</td>
 </tr>
 <tr>
 <td><code>password_confirmation</code></td>
+<td>string</td>
 <td>required</td>
-<td>optional</td>
 <td>Must be a the same as the password</td>
 </tr>
 </tbody>
 </table>
 <!-- END_d7b7952e7fdddc07c978c9bdaf757acf -->
+<!-- START_00e7e21641f05de650dbe13f242c6f2c -->
+<h2>Logout user (Revoke the token)</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Successfully logged out"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/logout</code></p>
+<!-- END_00e7e21641f05de650dbe13f242c6f2c -->
 <!-- START_55223d515da2d77462d233ebb97e3c40 -->
 <h2>login with facebook</h2>
 <blockquote>
@@ -1701,42 +1734,7 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET api/login/facebook/callback</code></p>
 <!-- END_89b9a98360ef8fa1d3520efdf619cec0 -->
-<h1>authentication</h1>
-<!-- START_00e7e21641f05de650dbe13f242c6f2c -->
-<h2>Logout user (Revoke the token)</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/logout" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/logout"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "message": "Successfully logged out"
-}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/logout</code></p>
-<!-- END_00e7e21641f05de650dbe13f242c6f2c -->
 <h1>edit profile</h1>
-<p>used to edit price in teacher profile</p>
 <!-- START_09851fbd2b828e86dbb0087ce3bf68a2 -->
 <h2>api/uploadprofilepicture</h2>
 <p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
@@ -1747,7 +1745,7 @@ fetch(url, {
     "http://localhost/api/uploadprofilepicture" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"photo":"dolor"}'
+    -d '{"photo":"sed"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/uploadprofilepicture"
@@ -1759,7 +1757,7 @@ let headers = {
 };
 
 let body = {
-    "photo": "dolor"
+    "photo": "sed"
 }
 
 fetch(url, {
@@ -1822,7 +1820,7 @@ fetch(url, {
     "http://localhost/api/editprofile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"full_name":"error","birth":"nulla","gender":"female","phone":"vel","nationality":"et"}'
+    -d '{"full_name":"non","birth":"est","gender":"female","phone":"eaque","nationality":"nulla"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/editprofile"
@@ -1834,11 +1832,11 @@ let headers = {
 };
 
 let body = {
-    "full_name": "error",
-    "birth": "nulla",
+    "full_name": "non",
+    "birth": "est",
     "gender": "female",
-    "phone": "vel",
-    "nationality": "et"
+    "phone": "eaque",
+    "nationality": "nulla"
 }
 
 fetch(url, {
@@ -1875,39 +1873,39 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>full_name</code></td>
-<td>required</td>
-<td>optional</td>
 <td>String</td>
+<td>required</td>
 </tr>
 <tr>
 <td><code>birth</code></td>
+<td>date</td>
 <td>required</td>
-<td>optional</td>
 <td>Must be in format &quot;YYYY-MM-DD&quot;</td>
 </tr>
 <tr>
 <td><code>gender</code></td>
+<td>String</td>
 <td>required</td>
-<td>optional</td>
 <td>The gender of the user &quot;male&quot; or &quot;female&quot;.</td>
 </tr>
 <tr>
 <td><code>phone</code></td>
-<td>not</td>
-<td>required</td>
+<td>Integer</td>
+<td>optional</td>
 <td>Must be a numeric</td>
 </tr>
 <tr>
 <td><code>nationality</code></td>
-<td>not</td>
-<td>required</td>
 <td>String</td>
+<td>optional</td>
+<td>user's nationality</td>
 </tr>
 </tbody>
 </table>
 <!-- END_88a4c713715d6c9929f02fb704ae1a05 -->
 <!-- START_72b936ae0ca359c0f20175257123c9c2 -->
-<h2>Add other price</h2>
+<h2>api/priceinfo</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1958,8 +1956,8 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>price_info</code></td>
+<td>JSON</td>
 <td>required</td>
-<td>optional</td>
 <td>Object of two prices includes individual price and group price written in json.</td>
 </tr>
 </tbody>
@@ -2040,7 +2038,7 @@ fetch(url, {
     "http://localhost/api/updateexperience" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"exp_years":"5","exp_desc":0}'
+    -d '{"exp_years":"5","exp_desc":"I have worked as a teacher for 7 years"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/updateexperience"
@@ -2053,7 +2051,7 @@ let headers = {
 
 let body = {
     "exp_years": "5",
-    "exp_desc": 0
+    "exp_desc": "I have worked as a teacher for 7 years"
 }
 
 fetch(url, {
@@ -2159,7 +2157,7 @@ fetch(url, {
 </tr>
 <tr>
 <td><code>exp_desc</code></td>
-<td>integer</td>
+<td>Integer</td>
 <td>required</td>
 <td>The description of teacher's experience.</td>
 </tr>
@@ -2176,7 +2174,7 @@ fetch(url, {
     "http://localhost/api/updateeducation" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"uni_degree_id":1,"master_degree":"enim","courses":"quia"}'
+    -d '{"uni_degree_id":"1","master_degree":"ducimus","courses":"sit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/updateeducation"
@@ -2188,9 +2186,9 @@ let headers = {
 };
 
 let body = {
-    "uni_degree_id": 1,
-    "master_degree": "enim",
-    "courses": "quia"
+    "uni_degree_id": "1",
+    "master_degree": "ducimus",
+    "courses": "sit"
 }
 
 fetch(url, {
@@ -2290,7 +2288,7 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>uni_degree_id</code></td>
-<td>integer</td>
+<td>Integer</td>
 <td>required</td>
 <td>university degree id of the teacher.</td>
 </tr>
@@ -2310,7 +2308,8 @@ fetch(url, {
 </table>
 <!-- END_e0e0c684f73c35683de9f5fe1236338e -->
 <!-- START_da571d78351055720e61a336a3338d51 -->
-<h2>Update subjects</h2>
+<h2>api/updatesubjects</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -2465,26 +2464,26 @@ fetch(url, {
 <tbody>
 <tr>
 <td><code>subjects</code></td>
-<td>not</td>
-<td>required</td>
+<td>array</td>
+<td>optional</td>
 <td>Array of subject id.</td>
 </tr>
 <tr>
 <td><code>languages</code></td>
-<td>not</td>
-<td>required</td>
+<td>array</td>
+<td>optional</td>
 <td>Array of subject id.</td>
 </tr>
 <tr>
 <td><code>grades</code></td>
-<td>not</td>
-<td>required</td>
+<td>array</td>
+<td>optional</td>
 <td>Array of subject id.</td>
 </tr>
 <tr>
 <td><code>edu_systems</code></td>
-<td>not</td>
-<td>required</td>
+<td>array</td>
+<td>optional</td>
 <td>Array of subject id.</td>
 </tr>
 </tbody>
@@ -3532,9 +3531,9 @@ fetch(url, {
 <p><code>POST email/resend</code></p>
 <!-- END_38334d357e7e155bf70b9ab94619ca3d -->
 <h1>getters</h1>
-<p>used to get the profile of the currently logged in user.</p>
 <!-- START_a3e1881290e56344612a4642673397ed -->
-<h2>Get user profile</h2>
+<h2>api/getprofile</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3742,6 +3741,7 @@ fetch(url, {
 <!-- END_a3e1881290e56344612a4642673397ed -->
 <!-- START_2fe7213b84d8914a1f7c34334e2b20ca -->
 <h2>Get all subject</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3792,6 +3792,8 @@ fetch(url, {
 <!-- END_2fe7213b84d8914a1f7c34334e2b20ca -->
 <!-- START_316f3a551f3cde626ccf0f6f5490cffd -->
 <h2>Get all languages</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+used to get languages</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3831,6 +3833,8 @@ fetch(url, {
 <!-- END_316f3a551f3cde626ccf0f6f5490cffd -->
 <!-- START_cd2ad2ff332e4f2176ee4f93b81e1d1f -->
 <h2>Get all edusystems</h2>
+<p>used to get edusystems</p>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3872,6 +3876,8 @@ fetch(url, {
 <!-- END_cd2ad2ff332e4f2176ee4f93b81e1d1f -->
 <!-- START_f064dd136cf1beeca8ce9d6324142aa5 -->
 <h2>Get all grades</h2>
+<p>used to get grades</p>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3912,7 +3918,8 @@ fetch(url, {
 <p><code>GET api/getgrades</code></p>
 <!-- END_f064dd136cf1beeca8ce9d6324142aa5 -->
 <!-- START_9c02760d4d20e71c342fa52a8838d2fd -->
-<h2>Get prices approved by the admin from options table</h2>
+<h2>api/getprice</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3952,8 +3959,8 @@ fetch(url, {
 <!-- END_9c02760d4d20e71c342fa52a8838d2fd -->
 <h1>payment</h1>
 <!-- START_d4be91a3a8d5235a2d282e7158c2bdb6 -->
-<h2>Checkout</h2>
-<p>Lecture to be checked out must be scheduled in schedule table with success=NULL and payed=0. if the lecture is free(percent=100) 200 response is sent, otherwise it returns 302 with the payment link.Links have to be modified by fontened in FawryEloquent.php and PaymentEloquent.php.</p>
+<h2>api/checkout</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -3961,7 +3968,7 @@ fetch(url, {
     "http://localhost/api/checkout" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"items":"[12]","payment_method":"\"fawry\"","percent":0}'
+    -d '{"items":"[12]","payment_method":"\"fawry\"","percent":"\"100\""}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/checkout"
@@ -3975,7 +3982,7 @@ let headers = {
 let body = {
     "items": "[12]",
     "payment_method": "\"fawry\"",
-    "percent": 0
+    "percent": "\"100\""
 }
 
 fetch(url, {
@@ -4030,7 +4037,7 @@ fetch(url, {
 </tr>
 <tr>
 <td><code>percent</code></td>
-<td>integer</td>
+<td>Integer</td>
 <td>optional</td>
 <td>optional discount percent of promocode.</td>
 </tr>

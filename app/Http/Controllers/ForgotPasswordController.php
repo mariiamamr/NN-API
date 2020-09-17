@@ -28,7 +28,7 @@ class ForgotPasswordController extends Controller
      * 
      * used to send a reset link to the required email.
      *  
-     * @bodyParam  email the email associated with the account whose password will be forgotten. a link will be sent to that address
+     * @bodyParam  email string required the email associated with the account whose password will be forgotten. a link will be sent to that address
      * @response {
      *  "message": "We have e-mailed your password reset link!"
      *  }

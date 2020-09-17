@@ -396,7 +396,7 @@ public function getUpcomingSessionsForTeachers(){
      * 
      *  
      * @authenticated
-     * @bodyParam  lecture_id required Integer
+     * @bodyParam  lecture_id Integer required id of the lecture.
      * @response {
      *      "message": "session deleted"
      * }
@@ -430,8 +430,8 @@ public function destroy(Request $request)
      * 
      *  
      * @authenticated
-     * @bodyParam  lecture_id required Integer the lecture the student wants to enroll
-     * @bodyParam  teacher_id required Integer the teacher the student want to enroll the lecture with
+     * @bodyParam  lecture_id Integer required the lecture the student wants to enroll
+     * @bodyParam  teacher_id Integer required the teacher the student want to enroll the lecture with
      * @response 200{
      * "result": {
      *   "checkedout": true,
@@ -454,9 +454,9 @@ public function destroy(Request $request)
      * 
      *  
      * @authenticated
-     * @bodyParam  teacher_id required Integer the id of the teacher
-     * @bodyParam  month required Integer
-     * @bodyParam  year required Integer
+     * @bodyParam  teacher_id Integer required the id of the teacher
+     * @bodyParam  month Integer required
+     * @bodyParam  year Integer required
      * @response 200{
      * "result": [
      * {
@@ -502,8 +502,8 @@ public function destroy(Request $request)
      * 
      *  
      * @authenticated
-     * @bodyParam  teacher required Integer the id of the teacher
-     * @bodyParam  date required date
+     * @bodyParam  teacher Integer required the id of the teacher
+     * @bodyParam  date date required
      * @response 200{
      * "date": {
      *   "date": "Wednesday, July 29, 2020",

@@ -22,10 +22,11 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
       /**
+     * @authenticated
      * Reset Password
+     * used to send a reset link to the required email.
      * @group  Password
      * 
-     * used to send a reset link to the required email.
      *  
      * @bodyParam  email string the email associated with the account whose password will be forgotten. a link will be sent to that address.
      * @bodyParam  password string the new password.
